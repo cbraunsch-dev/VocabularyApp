@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vph-Lc-x7s">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Sets View Controller-->
+        <scene sceneID="c53-Yx-Dua">
+            <objects>
+                <viewController storyboardIdentifier="SetsViewController" id="9TH-ad-DUL" customClass="SetsViewController" customModule="VocabularyApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="y4w-iA-xdU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOK-7P-Mpj">
+                                <rect key="frame" x="149.5" y="323" width="76" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZOK-7P-Mpj" firstAttribute="centerY" secondItem="y4w-iA-xdU" secondAttribute="centerY" id="8pW-1C-zlL"/>
+                            <constraint firstItem="ZOK-7P-Mpj" firstAttribute="centerX" secondItem="y4w-iA-xdU" secondAttribute="centerX" id="i39-IH-ica"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hnT-Zf-y8V"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZtP-Rw-Jqd"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a63-KG-bfD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1016.8" y="143.47826086956522"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="BqB-7a-cUQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vph-Lc-x7s" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="frI-3E-Xvh">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9TH-ad-DUL" kind="relationship" relationship="rootViewController" id="6U8-Z2-x9x"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cJs-HI-Bsv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="77.599999999999994" y="143.47826086956522"/>
+        </scene>
+    </scenes>
+</document>
