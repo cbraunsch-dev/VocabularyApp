@@ -12,9 +12,42 @@ import Foundation
 // swiftlint:disable nesting type_body_length type_name
 internal enum L10n {
 
+  internal enum Action {
+    /// Cancel
+    internal static let cancel = L10n.tr("Localizable", "action.cancel")
+    /// Ok
+    internal static let ok = L10n.tr("Localizable", "action.ok")
+    internal enum AddSet {
+      /// Press the + button to add a new vocabulary set.
+      internal static let hint = L10n.tr("Localizable", "action.addSet.hint")
+      /// Set name
+      internal static let name = L10n.tr("Localizable", "action.addSet.name")
+    }
+  }
+
+  internal enum Alert {
+    internal enum AddSet {
+      /// Enter a name for the set.
+      internal static let message = L10n.tr("Localizable", "alert.addSet.message")
+      internal enum TextField {
+        /// Set name
+        internal static let placeholder = L10n.tr("Localizable", "alert.addSet.textField.placeholder")
+      }
+    }
+  }
+
   internal enum Title {
+    /// Add Set
+    internal static let addSet = L10n.tr("Localizable", "title.addSet")
     /// Your Sets
     internal static let sets = L10n.tr("Localizable", "title.sets")
+  }
+
+  internal enum ViewController {
+    internal enum AddSet {
+      /// Tap on the item below to set or change the name of the set.
+      internal static let hint = L10n.tr("Localizable", "viewController.addSet.hint")
+    }
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length

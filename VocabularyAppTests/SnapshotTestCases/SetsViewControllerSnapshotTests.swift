@@ -35,7 +35,7 @@ class SetsViewControllerSnapshotTests: FBSnapshotTestCase {
         self.navigationViewController = nil
     }
     
-    func testViewDidLoad() {
+    func testViewDidLoad_when_noSets_then_showEmptyView() {
         //Arrange/Act
         self.loadView(of: self.viewController)
         

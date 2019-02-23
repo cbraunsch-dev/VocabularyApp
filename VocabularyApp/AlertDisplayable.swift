@@ -13,10 +13,10 @@ protocol AlertDisplayable {}
 
 extension AlertDisplayable where Self: UIViewController {
     func showMessageAlert(title: String, message: String) {
-        /*let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: L10n.Action.ok, style: .default)
         alert.addAction(action)
-        self.present(alert, animated: true)*/
+        self.present(alert, animated: true)
     }
     
     func showMessageAlert(title: String, message: String, actions: [UIAlertAction]) {
@@ -28,7 +28,7 @@ extension AlertDisplayable where Self: UIViewController {
     }
     
     func showMessageAlertWithTextField(title: String, message: String, actionTitle: String, placeholder: String, text: String?, confirmAction: @escaping (_: String) -> Void) {
-        /*let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: actionTitle, style: .default) { action in
             guard let textFields = alert.textFields else {
                 return
@@ -52,6 +52,6 @@ extension AlertDisplayable where Self: UIViewController {
             textField.placeholder = placeholder
             textField.text = text
         }
-        self.present(alert, animated: true)*/
+        self.present(alert, animated: true)
     }
 }

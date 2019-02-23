@@ -12,6 +12,8 @@ import Swinject
 
 extension SwinjectStoryboard {
     @objc class func setup() {
-        
+        defaultContainer.storyboardInitCompleted(AddSetViewController.self) { r, c in
+            c.viewModel = appContainer.resolve(AddSetViewModelType.self)!
+        }
     }
 }

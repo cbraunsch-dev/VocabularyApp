@@ -7,3 +7,14 @@
 */
 
 "title.sets" = "Your Sets";
+"title.addSet" = "Add Set";
+
+"action.ok" = "Ok";
+"action.cancel" = "Cancel";
+"action.addSet.hint" = "Press the + button to add a new vocabulary set.";
+"action.addSet.name" = "Set name";
+
+"viewController.addSet.hint" = "Tap on the item below to set or change the name of the set.";
+
+"alert.addSet.message" = "Enter a name for the set.";
+"alert.addSet.textField.placeholder" = "Set name";

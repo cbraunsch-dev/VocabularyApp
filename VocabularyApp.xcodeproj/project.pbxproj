@@ -40,6 +40,23 @@
 		661F6CB222106EC200B11FDE /* FBSnapshotTestCase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661F6CAF22106EC200B11FDE /* FBSnapshotTestCase+Extension.swift */; };
 		661F6CB322106EC200B11FDE /* TestDataGenerating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661F6CB022106EC200B11FDE /* TestDataGenerating.swift */; };
 		661F6CB522106F4500B11FDE /* StoryboardName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661F6CB422106F4500B11FDE /* StoryboardName.swift */; };
+		66B910B02221950F00C5D0B5 /* AddSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910AF2221950F00C5D0B5 /* AddSetViewController.swift */; };
+		66B910B22221964D00C5D0B5 /* AddSetViewControllerSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910B12221964D00C5D0B5 /* AddSetViewControllerSnapshotTests.swift */; };
+		66B910B62221973100C5D0B5 /* TitleValueCellContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910B52221973100C5D0B5 /* TitleValueCellContentView.swift */; };
+		66B910B8222197A300C5D0B5 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910B7222197A300C5D0B5 /* AppConstants.swift */; };
+		66B910BA222197CC00C5D0B5 /* TitleValueCellContentViewSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910B9222197CC00C5D0B5 /* TitleValueCellContentViewSnapshotTests.swift */; };
+		66B910BC2221986000C5D0B5 /* TitleValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910BB2221986000C5D0B5 /* TitleValueTableViewCell.swift */; };
+		66B910BE222198AD00C5D0B5 /* AddSetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910BD222198AD00C5D0B5 /* AddSetViewModel.swift */; };
+		66B910C02221998500C5D0B5 /* TableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910BF2221998500C5D0B5 /* TableSection.swift */; };
+		66B910C2222199A900C5D0B5 /* TableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910C1222199A900C5D0B5 /* TableItem.swift */; };
+		66B910C4222199C300C5D0B5 /* TableItemAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910C3222199C300C5D0B5 /* TableItemAction.swift */; };
+		66B910C6222199E200C5D0B5 /* TableItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910C5222199E200C5D0B5 /* TableItemType.swift */; };
+		66B910C822219A0900C5D0B5 /* TitleValueTableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910C722219A0900C5D0B5 /* TitleValueTableSection.swift */; };
+		66B910CA22219A1B00C5D0B5 /* TitleValueTableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910C922219A1B00C5D0B5 /* TitleValueTableItem.swift */; };
+		66B910CC22219A4400C5D0B5 /* GenericTableItemAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910CB22219A4400C5D0B5 /* GenericTableItemAction.swift */; };
+		66B910CE22219B5D00C5D0B5 /* IoCContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910CD22219B5D00C5D0B5 /* IoCContainer.swift */; };
+		66B910D022219E6100C5D0B5 /* GenericItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910CF22219E6100C5D0B5 /* GenericItemType.swift */; };
+		66B910D32221A25900C5D0B5 /* AddSetViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910D22221A25900C5D0B5 /* AddSetViewModelTests.swift */; };
 		B63361A6BBB3E604D557E51A /* Pods_VocabularyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6781E710D61109875C62B361 /* Pods_VocabularyApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -107,6 +124,23 @@
 		661F6CAF22106EC200B11FDE /* FBSnapshotTestCase+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FBSnapshotTestCase+Extension.swift"; sourceTree = "<group>"; };
 		661F6CB022106EC200B11FDE /* TestDataGenerating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDataGenerating.swift; sourceTree = "<group>"; };
 		661F6CB422106F4500B11FDE /* StoryboardName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardName.swift; sourceTree = "<group>"; };
+		66B910AF2221950F00C5D0B5 /* AddSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSetViewController.swift; sourceTree = "<group>"; };
+		66B910B12221964D00C5D0B5 /* AddSetViewControllerSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSetViewControllerSnapshotTests.swift; sourceTree = "<group>"; };
+		66B910B52221973100C5D0B5 /* TitleValueCellContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleValueCellContentView.swift; sourceTree = "<group>"; };
+		66B910B7222197A300C5D0B5 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		66B910B9222197CC00C5D0B5 /* TitleValueCellContentViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleValueCellContentViewSnapshotTests.swift; sourceTree = "<group>"; };
+		66B910BB2221986000C5D0B5 /* TitleValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleValueTableViewCell.swift; sourceTree = "<group>"; };
+		66B910BD222198AD00C5D0B5 /* AddSetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSetViewModel.swift; sourceTree = "<group>"; };
+		66B910BF2221998500C5D0B5 /* TableSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSection.swift; sourceTree = "<group>"; };
+		66B910C1222199A900C5D0B5 /* TableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableItem.swift; sourceTree = "<group>"; };
+		66B910C3222199C300C5D0B5 /* TableItemAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableItemAction.swift; sourceTree = "<group>"; };
+		66B910C5222199E200C5D0B5 /* TableItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableItemType.swift; sourceTree = "<group>"; };
+		66B910C722219A0900C5D0B5 /* TitleValueTableSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleValueTableSection.swift; sourceTree = "<group>"; };
+		66B910C922219A1B00C5D0B5 /* TitleValueTableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleValueTableItem.swift; sourceTree = "<group>"; };
+		66B910CB22219A4400C5D0B5 /* GenericTableItemAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableItemAction.swift; sourceTree = "<group>"; };
+		66B910CD22219B5D00C5D0B5 /* IoCContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IoCContainer.swift; sourceTree = "<group>"; };
+		66B910CF22219E6100C5D0B5 /* GenericItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericItemType.swift; sourceTree = "<group>"; };
+		66B910D22221A25900C5D0B5 /* AddSetViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSetViewModelTests.swift; sourceTree = "<group>"; };
 		6781E710D61109875C62B361 /* Pods_VocabularyApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VocabularyApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		720555DC7B530DAEFBCE178E /* Pods-VocabularyAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VocabularyAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VocabularyAppTests/Pods-VocabularyAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		724FB5CFFBC29E465A8DF008 /* Pods-VocabularyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VocabularyApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VocabularyApp/Pods-VocabularyApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -168,6 +202,8 @@
 		661F6C43221066B000B11FDE /* VocabularyApp */ = {
 			isa = PBXGroup;
 			children = (
+				66B910B42221971100C5D0B5 /* TableViewCells */,
+				66B910B32221970800C5D0B5 /* Views */,
 				661F6C9D22106B6200B11FDE /* DataModels */,
 				661F6C9C22106B5C00B11FDE /* Entities */,
 				661F6C78221069FC00B11FDE /* TableItemActions */,
@@ -197,6 +233,8 @@
 				661F6C4B221066B100B11FDE /* Assets.xcassets */,
 				661F6C4D221066B100B11FDE /* LaunchScreen.storyboard */,
 				661F6C50221066B100B11FDE /* Info.plist */,
+				66B910B7222197A300C5D0B5 /* AppConstants.swift */,
+				66B910CD22219B5D00C5D0B5 /* IoCContainer.swift */,
 			);
 			path = VocabularyApp;
 			sourceTree = "<group>";
@@ -204,6 +242,7 @@
 		661F6C58221066B100B11FDE /* VocabularyAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				66B910D12221A24B00C5D0B5 /* ViewModels */,
 				661F6CAB22106E4800B11FDE /* SnapshotTestCases */,
 				661F6CAE22106EC100B11FDE /* AssertionDataExtractionCapable.swift */,
 				661F6CAF22106EC200B11FDE /* FBSnapshotTestCase+Extension.swift */,
@@ -226,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				661F6CA022106BE000B11FDE /* SetsViewController.swift */,
+				66B910AF2221950F00C5D0B5 /* AddSetViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -233,6 +273,7 @@
 		661F6C6F2210699400B11FDE /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				66B910BD222198AD00C5D0B5 /* AddSetViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -274,6 +315,8 @@
 		661F6C75221069EC00B11FDE /* TableItems */ = {
 			isa = PBXGroup;
 			children = (
+				66B910C1222199A900C5D0B5 /* TableItem.swift */,
+				66B910C922219A1B00C5D0B5 /* TitleValueTableItem.swift */,
 			);
 			path = TableItems;
 			sourceTree = "<group>";
@@ -281,6 +324,8 @@
 		661F6C76221069F200B11FDE /* TableSections */ = {
 			isa = PBXGroup;
 			children = (
+				66B910BF2221998500C5D0B5 /* TableSection.swift */,
+				66B910C722219A0900C5D0B5 /* TitleValueTableSection.swift */,
 			);
 			path = TableSections;
 			sourceTree = "<group>";
@@ -288,6 +333,8 @@
 		661F6C77221069F700B11FDE /* TableItemTypes */ = {
 			isa = PBXGroup;
 			children = (
+				66B910C5222199E200C5D0B5 /* TableItemType.swift */,
+				66B910CF22219E6100C5D0B5 /* GenericItemType.swift */,
 			);
 			path = TableItemTypes;
 			sourceTree = "<group>";
@@ -295,6 +342,8 @@
 		661F6C78221069FC00B11FDE /* TableItemActions */ = {
 			isa = PBXGroup;
 			children = (
+				66B910C3222199C300C5D0B5 /* TableItemAction.swift */,
+				66B910CB22219A4400C5D0B5 /* GenericTableItemAction.swift */,
 			);
 			path = TableItemActions;
 			sourceTree = "<group>";
@@ -317,8 +366,34 @@
 			isa = PBXGroup;
 			children = (
 				661F6CAC22106E9D00B11FDE /* SetsViewControllerSnapshotTests.swift */,
+				66B910B12221964D00C5D0B5 /* AddSetViewControllerSnapshotTests.swift */,
+				66B910B9222197CC00C5D0B5 /* TitleValueCellContentViewSnapshotTests.swift */,
 			);
 			path = SnapshotTestCases;
+			sourceTree = "<group>";
+		};
+		66B910B32221970800C5D0B5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				66B910B52221973100C5D0B5 /* TitleValueCellContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		66B910B42221971100C5D0B5 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				66B910BB2221986000C5D0B5 /* TitleValueTableViewCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		66B910D12221A24B00C5D0B5 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				66B910D22221A25900C5D0B5 /* AddSetViewModelTests.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		E22029A891448EE005C87487 /* Frameworks */ = {
@@ -585,22 +660,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66B910C6222199E200C5D0B5 /* TableItemType.swift in Sources */,
+				66B910C02221998500C5D0B5 /* TableSection.swift in Sources */,
 				661F6C8F22106A3800B11FDE /* ResultType.swift in Sources */,
+				66B910B62221973100C5D0B5 /* TitleValueCellContentView.swift in Sources */,
+				66B910CE22219B5D00C5D0B5 /* IoCContainer.swift in Sources */,
 				661F6CB522106F4500B11FDE /* StoryboardName.swift in Sources */,
 				661F6C8A22106A3800B11FDE /* ResultConverter.swift in Sources */,
+				66B910B8222197A300C5D0B5 /* AppConstants.swift in Sources */,
 				661F6C8522106A3800B11FDE /* OperationResult.swift in Sources */,
+				66B910CA22219A1B00C5D0B5 /* TitleValueTableItem.swift in Sources */,
+				66B910CC22219A4400C5D0B5 /* GenericTableItemAction.swift in Sources */,
+				66B910C2222199A900C5D0B5 /* TableItem.swift in Sources */,
 				661F6C8922106A3800B11FDE /* Lenses.swift in Sources */,
 				661F6C8622106A3800B11FDE /* Errors.swift in Sources */,
 				661F6C9522106A8300B11FDE /* UITableView+Extension.swift in Sources */,
+				66B910BE222198AD00C5D0B5 /* AddSetViewModel.swift in Sources */,
 				661F6C9022106A3800B11FDE /* TableDisplayCapable.swift in Sources */,
+				66B910C4222199C300C5D0B5 /* TableItemAction.swift in Sources */,
+				66B910BC2221986000C5D0B5 /* TitleValueTableViewCell.swift in Sources */,
 				661F6C8E22106A3800B11FDE /* SegueHandlerType.swift in Sources */,
 				661F6C8D22106A3800B11FDE /* ErrorBindable.swift in Sources */,
 				661F6C9422106A8300B11FDE /* SwinjectStoryboard+Extension.swift in Sources */,
+				66B910D022219E6100C5D0B5 /* GenericItemType.swift in Sources */,
 				661F6C6D2210690E00B11FDE /* Strings.swift in Sources */,
 				661F6C8C22106A3800B11FDE /* ErrorEmissionCapable.swift in Sources */,
+				66B910B02221950F00C5D0B5 /* AddSetViewController.swift in Sources */,
 				661F6CA322106C4A00B11FDE /* ErrorMessageService.swift in Sources */,
 				661F6C9622106A8300B11FDE /* UITableViewCell+Extension.swift in Sources */,
 				661F6C8722106A3800B11FDE /* ErrorType.swift in Sources */,
+				66B910C822219A0900C5D0B5 /* TitleValueTableSection.swift in Sources */,
 				661F6CA122106BE000B11FDE /* SetsViewController.swift in Sources */,
 				661F6C8822106A3800B11FDE /* ReusableView.swift in Sources */,
 				661F6C45221066B000B11FDE /* AppDelegate.swift in Sources */,
@@ -613,6 +702,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				661F6CB222106EC200B11FDE /* FBSnapshotTestCase+Extension.swift in Sources */,
+				66B910BA222197CC00C5D0B5 /* TitleValueCellContentViewSnapshotTests.swift in Sources */,
+				66B910B22221964D00C5D0B5 /* AddSetViewControllerSnapshotTests.swift in Sources */,
+				66B910D32221A25900C5D0B5 /* AddSetViewModelTests.swift in Sources */,
 				661F6CAD22106E9D00B11FDE /* SetsViewControllerSnapshotTests.swift in Sources */,
 				661F6CB322106EC200B11FDE /* TestDataGenerating.swift in Sources */,
 				661F6CB122106EC200B11FDE /* AssertionDataExtractionCapable.swift in Sources */,
