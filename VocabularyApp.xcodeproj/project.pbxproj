@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		3AFC2A74E1886DE9389AE783 /* Pods_VocabularyAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CF350501C9A7B32312DD74E /* Pods_VocabularyAppTests.framework */; };
 		6601D9D7222E338B007ABC28 /* Realm+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6601D9D6222E338B007ABC28 /* Realm+Extension.swift */; };
+		6601D9D9222E3AC8007ABC28 /* SetLocalDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6601D9D8222E3AC8007ABC28 /* SetLocalDataService.swift */; };
+		6601D9DB222E3AF3007ABC28 /* RealmLocalDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6601D9DA222E3AF3007ABC28 /* RealmLocalDataService.swift */; };
+		6601D9DD222E3B1C007ABC28 /* RealmSetLocalDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6601D9DC222E3B1C007ABC28 /* RealmSetLocalDataService.swift */; };
+		6601D9E0222E3B88007ABC28 /* RealmSetLocalDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6601D9DF222E3B88007ABC28 /* RealmSetLocalDataServiceTests.swift */; };
 		661F6C45221066B000B11FDE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661F6C44221066B000B11FDE /* AppDelegate.swift */; };
 		661F6C4C221066B100B11FDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 661F6C4B221066B100B11FDE /* Assets.xcassets */; };
 		661F6C4F221066B100B11FDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 661F6C4D221066B100B11FDE /* LaunchScreen.storyboard */; };
@@ -41,13 +45,7 @@
 		661F6CB222106EC200B11FDE /* FBSnapshotTestCase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661F6CAF22106EC200B11FDE /* FBSnapshotTestCase+Extension.swift */; };
 		661F6CB322106EC200B11FDE /* TestDataGenerating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661F6CB022106EC200B11FDE /* TestDataGenerating.swift */; };
 		661F6CB522106F4500B11FDE /* StoryboardName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661F6CB422106F4500B11FDE /* StoryboardName.swift */; };
-		6690B4CE222CE28F00B3CE14 /* LocalDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6690B4CD222CE28F00B3CE14 /* LocalDataModel.swift */; };
 		6690B4D0222CE32700B3CE14 /* RealmConfigurationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6690B4CF222CE32700B3CE14 /* RealmConfigurationProvider.swift */; };
-		6690B4D2222CE36B00B3CE14 /* LocalDataAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6690B4D1222CE36B00B3CE14 /* LocalDataAccessor.swift */; };
-		6690B4D4222CE39200B3CE14 /* SetDataAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6690B4D3222CE39200B3CE14 /* SetDataAccessor.swift */; };
-		6690B4D6222CE44500B3CE14 /* LoggingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6690B4D5222CE44500B3CE14 /* LoggingService.swift */; };
-		6690B4DA222CE69000B3CE14 /* RealmLocalSetDataAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6690B4D9222CE69000B3CE14 /* RealmLocalSetDataAccessor.swift */; };
-		6690B4DD222CE71B00B3CE14 /* RealmLocalSetDataAccessorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6690B4DC222CE71B00B3CE14 /* RealmLocalSetDataAccessorTests.swift */; };
 		6690B4DF222CE7E500B3CE14 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6690B4DE222CE7E500B3CE14 /* Mocks.swift */; };
 		6690B4E1222CE9DB00B3CE14 /* SetLocalDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6690B4E0222CE9DB00B3CE14 /* SetLocalDataModel.swift */; };
 		6690B4E3222CE9FB00B3CE14 /* SetEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6690B4E2222CE9FB00B3CE14 /* SetEntity.swift */; };
@@ -101,6 +99,10 @@
 		1CF350501C9A7B32312DD74E /* Pods_VocabularyAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VocabularyAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DD4A6A7AE4671D9713FBF32 /* Pods-VocabularyAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VocabularyAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VocabularyAppTests/Pods-VocabularyAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		6601D9D6222E338B007ABC28 /* Realm+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+Extension.swift"; sourceTree = "<group>"; };
+		6601D9D8222E3AC8007ABC28 /* SetLocalDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetLocalDataService.swift; sourceTree = "<group>"; };
+		6601D9DA222E3AF3007ABC28 /* RealmLocalDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmLocalDataService.swift; sourceTree = "<group>"; };
+		6601D9DC222E3B1C007ABC28 /* RealmSetLocalDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSetLocalDataService.swift; sourceTree = "<group>"; };
+		6601D9DF222E3B88007ABC28 /* RealmSetLocalDataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSetLocalDataServiceTests.swift; sourceTree = "<group>"; };
 		661F6C41221066B000B11FDE /* VocabularyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VocabularyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		661F6C44221066B000B11FDE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		661F6C4B221066B100B11FDE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -136,13 +138,7 @@
 		661F6CAF22106EC200B11FDE /* FBSnapshotTestCase+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FBSnapshotTestCase+Extension.swift"; sourceTree = "<group>"; };
 		661F6CB022106EC200B11FDE /* TestDataGenerating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDataGenerating.swift; sourceTree = "<group>"; };
 		661F6CB422106F4500B11FDE /* StoryboardName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardName.swift; sourceTree = "<group>"; };
-		6690B4CD222CE28F00B3CE14 /* LocalDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataModel.swift; sourceTree = "<group>"; };
 		6690B4CF222CE32700B3CE14 /* RealmConfigurationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmConfigurationProvider.swift; sourceTree = "<group>"; };
-		6690B4D1222CE36B00B3CE14 /* LocalDataAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataAccessor.swift; sourceTree = "<group>"; };
-		6690B4D3222CE39200B3CE14 /* SetDataAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDataAccessor.swift; sourceTree = "<group>"; };
-		6690B4D5222CE44500B3CE14 /* LoggingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingService.swift; sourceTree = "<group>"; };
-		6690B4D9222CE69000B3CE14 /* RealmLocalSetDataAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmLocalSetDataAccessor.swift; sourceTree = "<group>"; };
-		6690B4DC222CE71B00B3CE14 /* RealmLocalSetDataAccessorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmLocalSetDataAccessorTests.swift; sourceTree = "<group>"; };
 		6690B4DE222CE7E500B3CE14 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		6690B4E0222CE9DB00B3CE14 /* SetLocalDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetLocalDataModel.swift; sourceTree = "<group>"; };
 		6690B4E2222CE9FB00B3CE14 /* SetEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetEntity.swift; sourceTree = "<group>"; };
@@ -201,6 +197,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		6601D9DE222E3B75007ABC28 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				6601D9DF222E3B88007ABC28 /* RealmSetLocalDataServiceTests.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		661F6C38221066B000B11FDE = {
 			isa = PBXGroup;
 			children = (
@@ -234,7 +238,6 @@
 				661F6C75221069EC00B11FDE /* TableItems */,
 				661F6C74221069CA00B11FDE /* Extensions */,
 				661F6C73221069C100B11FDE /* Storyboards */,
-				661F6C712210699D00B11FDE /* DataAccessors */,
 				661F6C702210699900B11FDE /* Services */,
 				661F6C6F2210699400B11FDE /* ViewModels */,
 				661F6C6E2210698F00B11FDE /* ViewControllers */,
@@ -265,7 +268,7 @@
 		661F6C58221066B100B11FDE /* VocabularyAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				6690B4DB222CE70900B3CE14 /* DataAccessors */,
+				6601D9DE222E3B75007ABC28 /* Services */,
 				66B910D12221A24B00C5D0B5 /* ViewModels */,
 				661F6CAB22106E4800B11FDE /* SnapshotTestCases */,
 				661F6CAE22106EC100B11FDE /* AssertionDataExtractionCapable.swift */,
@@ -307,19 +310,11 @@
 			isa = PBXGroup;
 			children = (
 				661F6CA222106C4A00B11FDE /* ErrorMessageService.swift */,
-				6690B4D5222CE44500B3CE14 /* LoggingService.swift */,
+				6601D9D8222E3AC8007ABC28 /* SetLocalDataService.swift */,
+				6601D9DA222E3AF3007ABC28 /* RealmLocalDataService.swift */,
+				6601D9DC222E3B1C007ABC28 /* RealmSetLocalDataService.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		661F6C712210699D00B11FDE /* DataAccessors */ = {
-			isa = PBXGroup;
-			children = (
-				6690B4D1222CE36B00B3CE14 /* LocalDataAccessor.swift */,
-				6690B4D3222CE39200B3CE14 /* SetDataAccessor.swift */,
-				6690B4D9222CE69000B3CE14 /* RealmLocalSetDataAccessor.swift */,
-			);
-			path = DataAccessors;
 			sourceTree = "<group>";
 		};
 		661F6C73221069C100B11FDE /* Storyboards */ = {
@@ -389,7 +384,6 @@
 		661F6C9D22106B6200B11FDE /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
-				6690B4CD222CE28F00B3CE14 /* LocalDataModel.swift */,
 				6690B4E0222CE9DB00B3CE14 /* SetLocalDataModel.swift */,
 			);
 			path = DataModels;
@@ -403,14 +397,6 @@
 				66B910B9222197CC00C5D0B5 /* TitleValueCellContentViewSnapshotTests.swift */,
 			);
 			path = SnapshotTestCases;
-			sourceTree = "<group>";
-		};
-		6690B4DB222CE70900B3CE14 /* DataAccessors */ = {
-			isa = PBXGroup;
-			children = (
-				6690B4DC222CE71B00B3CE14 /* RealmLocalSetDataAccessorTests.swift */,
-			);
-			path = DataAccessors;
 			sourceTree = "<group>";
 		};
 		66B910B32221970800C5D0B5 /* Views */ = {
@@ -701,13 +687,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6690B4DA222CE69000B3CE14 /* RealmLocalSetDataAccessor.swift in Sources */,
+				6601D9DB222E3AF3007ABC28 /* RealmLocalDataService.swift in Sources */,
 				66B910C6222199E200C5D0B5 /* TableItemType.swift in Sources */,
 				66B910C02221998500C5D0B5 /* TableSection.swift in Sources */,
 				6601D9D7222E338B007ABC28 /* Realm+Extension.swift in Sources */,
 				661F6C8F22106A3800B11FDE /* ResultType.swift in Sources */,
 				66B910B62221973100C5D0B5 /* TitleValueCellContentView.swift in Sources */,
 				66B910CE22219B5D00C5D0B5 /* IoCContainer.swift in Sources */,
+				6601D9DD222E3B1C007ABC28 /* RealmSetLocalDataService.swift in Sources */,
 				661F6CB522106F4500B11FDE /* StoryboardName.swift in Sources */,
 				661F6C8A22106A3800B11FDE /* ResultConverter.swift in Sources */,
 				66B910B8222197A300C5D0B5 /* AppConstants.swift in Sources */,
@@ -724,12 +711,10 @@
 				66B910C4222199C300C5D0B5 /* TableItemAction.swift in Sources */,
 				66B910BC2221986000C5D0B5 /* TitleValueTableViewCell.swift in Sources */,
 				661F6C8E22106A3800B11FDE /* SegueHandlerType.swift in Sources */,
-				6690B4D2222CE36B00B3CE14 /* LocalDataAccessor.swift in Sources */,
 				661F6C8D22106A3800B11FDE /* ErrorBindable.swift in Sources */,
-				6690B4D4222CE39200B3CE14 /* SetDataAccessor.swift in Sources */,
+				6601D9D9222E3AC8007ABC28 /* SetLocalDataService.swift in Sources */,
 				661F6C9422106A8300B11FDE /* SwinjectStoryboard+Extension.swift in Sources */,
 				66B910D022219E6100C5D0B5 /* GenericItemType.swift in Sources */,
-				6690B4CE222CE28F00B3CE14 /* LocalDataModel.swift in Sources */,
 				661F6C6D2210690E00B11FDE /* Strings.swift in Sources */,
 				661F6C8C22106A3800B11FDE /* ErrorEmissionCapable.swift in Sources */,
 				66B910B02221950F00C5D0B5 /* AddSetViewController.swift in Sources */,
@@ -737,7 +722,6 @@
 				661F6CA322106C4A00B11FDE /* ErrorMessageService.swift in Sources */,
 				661F6C9622106A8300B11FDE /* UITableViewCell+Extension.swift in Sources */,
 				661F6C8722106A3800B11FDE /* ErrorType.swift in Sources */,
-				6690B4D6222CE44500B3CE14 /* LoggingService.swift in Sources */,
 				6690B4D0222CE32700B3CE14 /* RealmConfigurationProvider.swift in Sources */,
 				66B910C822219A0900C5D0B5 /* TitleValueTableSection.swift in Sources */,
 				661F6CA122106BE000B11FDE /* SetsViewController.swift in Sources */,
@@ -757,9 +741,9 @@
 				66B910D32221A25900C5D0B5 /* AddSetViewModelTests.swift in Sources */,
 				661F6CAD22106E9D00B11FDE /* SetsViewControllerSnapshotTests.swift in Sources */,
 				6690B4DF222CE7E500B3CE14 /* Mocks.swift in Sources */,
+				6601D9E0222E3B88007ABC28 /* RealmSetLocalDataServiceTests.swift in Sources */,
 				661F6CB322106EC200B11FDE /* TestDataGenerating.swift in Sources */,
 				661F6CB122106EC200B11FDE /* AssertionDataExtractionCapable.swift in Sources */,
-				6690B4DD222CE71B00B3CE14 /* RealmLocalSetDataAccessorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

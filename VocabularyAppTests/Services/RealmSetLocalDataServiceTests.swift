@@ -1,8 +1,8 @@
 //
-//  RealmLocalSetDataAccessorTests.swift
+//  RealmSetLocalDataServiceTests.swift
 //  VocabularyAppTests
 //
-//  Created by Chris Braunschweiler on 04.03.19.
+//  Created by Chris Braunschweiler on 05.03.19.
 //  Copyright © 2019 braunsch. All rights reserved.
 //
 
@@ -12,10 +12,10 @@ import RxTest
 import RxSwift
 @testable import VocabularyApp
 
-class RealmLocalSetDataAccessorTests: XCTestCase, AssertionDataExtractionCapable, TestDataGenerating {
+class RealmSetLocalDataServiceTests: XCTestCase, AssertionDataExtractionCapable, TestDataGenerating {
     private let bag = DisposeBag()
     private var mockConfigurationProvider: MockRealmConfigurationProvider!
-    private var testee: RealmLocalSetDataAccessor!
+    private var testee: RealmSetLocalDataService!
     private var scheduler: TestScheduler!
     
     override func setUp() {
@@ -29,17 +29,17 @@ class RealmLocalSetDataAccessorTests: XCTestCase, AssertionDataExtractionCapable
         try! realm.write {
             realm.deleteAll()
         }
-        self.testee = RealmLocalSetDataAccessor(configurationProvider: self.mockConfigurationProvider)
+        self.testee = RealmSetLocalDataService(configurationProvider: self.mockConfigurationProvider)
         self.scheduler = TestScheduler(initialClock: 0)
     }
-
+    
     override func tearDown() {
         self.mockConfigurationProvider = nil
         self.testee = nil
         self.scheduler = nil
         super.tearDown()
     }
-
+    
     func testReadAll_when_noExistingItems_then_returnEmptyList() {
         //Arrange
         let observer = self.scheduler.createObserver([SetLocalDataModel].self)

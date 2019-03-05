@@ -1,15 +1,15 @@
 //
-//  LocalDataAccessor.swift
+//  SetLocalDataService.swift
 //  VocabularyApp
 //
-//  Created by Chris Braunschweiler on 04.03.19.
+//  Created by Chris Braunschweiler on 05.03.19.
 //  Copyright © 2019 braunsch. All rights reserved.
 //
 
 import Foundation
 import RxSwift
 
-protocol SetDataAccessor {
+protocol SetLocalDataService {
     func readAll() -> Observable<[SetLocalDataModel]>
     
     func getItemById(with id: String) -> Observable<SetLocalDataModel?>

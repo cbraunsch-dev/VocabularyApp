@@ -1,8 +1,8 @@
 //
-//  RealmLocalSetDataAccessor.swift
+//  RealmSetLocalDataService.swift
 //  VocabularyApp
 //
-//  Created by Chris Braunschweiler on 04.03.19.
+//  Created by Chris Braunschweiler on 05.03.19.
 //  Copyright © 2019 braunsch. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RealmSwift
 
-class RealmLocalSetDataAccessor: LocalDataAccessor, SetDataAccessor {
+class RealmSetLocalDataService: RealmLocalDataService, SetLocalDataService {
     private let bag = DisposeBag()
     
     func readAll() -> Observable<[SetLocalDataModel]> {

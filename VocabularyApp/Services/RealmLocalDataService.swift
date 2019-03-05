@@ -1,16 +1,16 @@
 //
-//  DataAccessor.swift
+//  RealmLocalDataService.swift
 //  VocabularyApp
 //
-//  Created by Chris Braunschweiler on 04.03.19.
+//  Created by Chris Braunschweiler on 05.03.19.
 //  Copyright © 2019 braunsch. All rights reserved.
 //
 
 import Foundation
-import RealmSwift
 import RxSwift
+import RealmSwift
 
-public class LocalDataAccessor {
+class RealmLocalDataService {
     private let configurationProvider: RealmConfigurationProvider
     
     init(configurationProvider: RealmConfigurationProvider) {
