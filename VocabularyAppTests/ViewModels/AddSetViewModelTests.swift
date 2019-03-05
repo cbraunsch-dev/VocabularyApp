@@ -14,15 +14,18 @@ import RxTest
 
 class AddSetViewModelTests: XCTestCase, AssertionDataExtractionCapable {
     private let bag = DisposeBag()
+    private var mockSetLocalDataService: MockSetLocalDataService!
     private var testee: AddSetViewModel!
     private var scheduler: TestScheduler!
     
     override func setUp() {
-        self.testee = AddSetViewModel()
+        self.mockSetLocalDataService = MockSetLocalDataService()
+        self.testee = AddSetViewModel(setLocalDataService: self.mockSetLocalDataService, resultConverter: VocabularyAppResultConverter(errorMessageService: LocalizedErrorMessageService()))
         self.scheduler = TestScheduler(initialClock: 0)
     }
 
     override func tearDown() {
+        self.mockSetLocalDataService = nil
         self.testee = nil
         self.scheduler = nil
     }
@@ -64,5 +67,65 @@ class AddSetViewModelTests: XCTestCase, AssertionDataExtractionCapable {
             return
         }
         XCTAssertEqual(alreadySetName, nameToEdit)
+    }
+    
+    func testSaveButtonTaps_then_saveData() {
+        //Arrange
+        let alreadySetName = "Spanish Set"
+        let scheduler1 = TestScheduler(initialClock: 0)
+        let scheduler2 = TestScheduler(initialClock: 0)
+        self.mockSetLocalDataService.saveItemStub = Observable<Void>.empty()
+        scheduler1.createColdObservable([next(100, alreadySetName)]).asObservable().bind(to: self.testee.inputs.setName).disposed(by: self.bag)
+        scheduler1.start()
+        
+        //Act
+        scheduler2.createColdObservable([next(100, ())]).asObservable().bind(to: self.testee.inputs.saveButtonTaps).disposed(by: self.bag)
+        scheduler2.start()
+        
+        //Assert
+        XCTAssertTrue(self.mockSetLocalDataService.didSaveItem)
+        XCTAssertEqual(alreadySetName, self.mockSetLocalDataService.savedItem?.name)
+    }
+    
+    func testSaveButtonTaps_when_saveFailed_then_emitError() {
+        //Arrange
+        let alreadySetName = "Spanish Set"
+        let scheduler1 = TestScheduler(initialClock: 0)
+        let scheduler2 = TestScheduler(initialClock: 0)
+        let observer = scheduler2.createObserver((errorOccurred: Bool, title: String, message: String).self)
+        self.testee.outputs.error.subscribe(observer).disposed(by: self.bag)
+        self.mockSetLocalDataService.saveItemStub = scheduler2.createColdObservable([error(100, DataAccessorError.failedToAccessDatabase)]).asObservable()
+        scheduler1.createColdObservable([next(100, alreadySetName)]).asObservable().bind(to: self.testee.inputs.setName).disposed(by: self.bag)
+        scheduler1.start()
+        
+        //Act
+        scheduler2.createColdObservable([next(100, ())]).asObservable().bind(to: self.testee.inputs.saveButtonTaps).disposed(by: self.bag)
+        scheduler2.start()
+        
+        //Assert
+        XCTAssertNotNil(self.extractValue(from: observer), "Failed to emit error")
+    }
+    
+    func testSaveButtonTaps_when_savedData_then_emitThatSetWasSaved() {
+        //Arrange
+        let setName = "Spanish Set"
+        let scheduler1 = TestScheduler(initialClock: 0)
+        let scheduler2 = TestScheduler(initialClock: 0)
+        let observer = scheduler2.createObserver(SetLocalDataModel.self)
+        self.testee.outputs.setSaved.subscribe(observer).disposed(by: self.bag)
+        self.mockSetLocalDataService.saveItemStub = scheduler2.createColdObservable([next(100, ())]).asObservable()
+        scheduler1.createColdObservable([next(100, setName)]).asObservable().bind(to: self.testee.inputs.setName).disposed(by: self.bag)
+        scheduler1.start()
+        
+        //Act
+        scheduler2.createColdObservable([next(100, ())]).asObservable().bind(to: self.testee.inputs.saveButtonTaps).disposed(by: self.bag)
+        scheduler2.start()
+        
+        //Assert
+        guard let savedSet = self.extractValue(from: observer) else {
+            XCTFail("Failed to emit that set was saved")
+            return
+        }
+        XCTAssertEqual(setName, savedSet.name)
     }
 }

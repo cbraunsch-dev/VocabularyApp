@@ -17,10 +17,11 @@ protocol AddSetViewModelInputs {
     var setName: PublishSubject<String> { get }
 }
 
-protocol AddSetViewModelOutputs {
+protocol AddSetViewModelOutputs: ErrorEmissionCapable {
     var sections: PublishSubject<[TitleValueTableSection]> { get }
     var saveButtonEnabled: PublishSubject<Bool> { get }
     var editName: PublishSubject<String> { get }
+    var setSaved: PublishSubject<SetLocalDataModel> { get }
 }
 
 protocol AddSetViewModelType {
@@ -28,8 +29,11 @@ protocol AddSetViewModelType {
     var outputs: AddSetViewModelOutputs { get }
 }
 
-class AddSetViewModel: AddSetViewModelType, AddSetViewModelInputs, AddSetViewModelOutputs {
+class AddSetViewModel: AddSetViewModelType, AddSetViewModelInputs, AddSetViewModelOutputs, ErrorBindable {
     private let bag = DisposeBag()
+    private let setLocalDataService: SetLocalDataService
+    private let resultConverter: ResultConverter
+    private let saveResult = PublishSubject<OperationResult<SetLocalDataModel>>()
     
     var inputs: AddSetViewModelInputs { return self }
     var outputs: AddSetViewModelOutputs { return self }
@@ -41,8 +45,12 @@ class AddSetViewModel: AddSetViewModelType, AddSetViewModelInputs, AddSetViewMod
     let sections = PublishSubject<[TitleValueTableSection]>()
     let saveButtonEnabled = PublishSubject<Bool>()
     let editName = PublishSubject<String>()
+    let setSaved = PublishSubject<SetLocalDataModel>()
+    let error = PublishSubject<(errorOccurred: Bool, title: String, message: String)>()
     
-    init() {
+    init(setLocalDataService: SetLocalDataService, resultConverter: ResultConverter) {
+        self.setLocalDataService = setLocalDataService
+        self.resultConverter = resultConverter
         self.inputs.viewDidLoad
             .withLatestFrom(self.inputs.setName)
             .map { self.createSections(setName: $0) }
@@ -66,6 +74,23 @@ class AddSetViewModel: AddSetViewModelType, AddSetViewModelInputs, AddSetViewMod
             .map { return $0.count > 0 }
             .bind(to: self.outputs.saveButtonEnabled)
             .disposed(by: self.bag)
+        self.inputs.saveButtonTaps
+            .withLatestFrom(self.inputs.setName)
+            .map { SetLocalDataModel(name: $0) }
+            .flatMapLatest { set -> Observable<OperationResult<SetLocalDataModel>> in
+                let operation = self.setLocalDataService.save(item: set)
+                    .map { set }
+                return self.resultConverter.convert(result: operation)
+            }.bind(to: self.saveResult)
+            .disposed(by: self.bag)
+        
+        self.saveResult
+            .filter { $0.resultValue != nil }
+            .map { $0.resultValue! }
+            .bind(to: self.outputs.setSaved)
+            .disposed(by: self.bag)
+        
+        self.bindError(of: saveResult, disposedWith: self.bag)
     }
     
     private func createSections(setName: String) -> [TitleValueTableSection] {

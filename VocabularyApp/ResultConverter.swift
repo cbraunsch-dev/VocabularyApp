@@ -13,7 +13,7 @@ protocol ResultConverter {
     func convert<E>(result: Observable<E>) -> Observable<OperationResult<E>>
 }
 
-class TaskManagerResultConverter: ResultConverter {
+class VocabularyAppResultConverter: ResultConverter {
     private let bag = DisposeBag()
     private let errorMessageService: ErrorMessageService
     

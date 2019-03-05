@@ -16,6 +16,7 @@ import RxTest
 class AddSetViewControllerSnapshotTests: FBSnapshotTestCase {
     private let bag = DisposeBag()
     private var scheduler: TestScheduler!
+    private var mockSetLocalDataService: MockSetLocalDataService!
     private var viewModel: AddSetViewModel!
     private var viewController: AddSetViewController!
     private var navigationViewController: UINavigationController!
@@ -25,7 +26,8 @@ class AddSetViewControllerSnapshotTests: FBSnapshotTestCase {
         self.setupSnapshotTest()
         self.recordMode = false
         self.scheduler = TestScheduler(initialClock: 0)
-        self.viewModel = AddSetViewModel()
+        self.mockSetLocalDataService = MockSetLocalDataService()
+        self.viewModel = AddSetViewModel(setLocalDataService: self.mockSetLocalDataService, resultConverter: VocabularyAppResultConverter(errorMessageService: LocalizedErrorMessageService()))
         self.viewController = (UIStoryboard(name: StoryboardName.sets.rawValue, bundle: Bundle.main).instantiateViewController(withIdentifier: "AddSetViewController") as! AddSetViewController)
         self.viewController.viewModel = self.viewModel
         self.navigationViewController = UINavigationController()
@@ -34,6 +36,7 @@ class AddSetViewControllerSnapshotTests: FBSnapshotTestCase {
     
     override func tearDown() {
         self.scheduler = nil
+        self.mockSetLocalDataService = nil
         self.viewModel = nil
         self.viewController = nil
         self.navigationViewController = nil
