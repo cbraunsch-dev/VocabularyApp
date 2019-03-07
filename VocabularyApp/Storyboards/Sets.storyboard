@@ -53,7 +53,7 @@
                     <navigationItem key="navigationItem" title="Title" id="viJ-MH-4C4">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="yg4-8R-jnj">
                             <connections>
-                                <segue destination="IRq-JR-JyV" kind="presentation" id="beR-0h-EKv"/>
+                                <segue destination="IRq-JR-JyV" kind="presentation" identifier="addSet" id="beR-0h-EKv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -61,11 +61,20 @@
                         <outlet property="emptyView" destination="PLS-kG-3oZ" id="NYs-yE-uIC"/>
                         <outlet property="infoIcon" destination="UMS-56-YzZ" id="BZf-2E-ZhV"/>
                         <outlet property="infoLabel" destination="CRL-lR-b1S" id="h44-QE-xSZ"/>
+                        <segue destination="9CE-6I-Gaw" kind="show" identifier="showSet" id="8Rq-Uz-HFg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a63-KG-bfD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1016.8" y="143.47826086956522"/>
+        </scene>
+        <!--Set-->
+        <scene sceneID="pHK-e5-dVs">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Set" id="9CE-6I-Gaw" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TkO-xQ-QQR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1923" y="116"/>
         </scene>
         <!--Title-->
         <scene sceneID="dNP-Dg-6NO">

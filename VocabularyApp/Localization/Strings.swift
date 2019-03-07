@@ -15,6 +15,8 @@ internal enum L10n {
   internal enum Action {
     /// Cancel
     internal static let cancel = L10n.tr("Localizable", "action.cancel")
+    /// Learn
+    internal static let learn = L10n.tr("Localizable", "action.learn")
     /// Ok
     internal static let ok = L10n.tr("Localizable", "action.ok")
     internal enum AddSet {

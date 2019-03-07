@@ -16,6 +16,7 @@ class AddSetViewController: UIViewController, TableDisplayCapable, AlertDisplaya
     
     var tableView: UITableView { get { return self.myTableView } }
     var viewModel: AddSetViewModelType!
+    var delegate: AddSetViewControllerDelegate?
     
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -46,6 +47,14 @@ class AddSetViewController: UIViewController, TableDisplayCapable, AlertDisplaya
                 self.showMessageAlertWithTextField(title: L10n.Action.AddSet.name, message: L10n.Alert.AddSet.message, actionTitle: L10n.Action.ok, placeholder: L10n.Alert.AddSet.TextField.placeholder, text: name, confirmAction: { newName in
                     self.viewModel.inputs.setName.onNext(newName)
                 })
+            }).disposed(by: self.bag)
+        self.viewModel.outputs.setSaved
+            .subscribe(onNext: { set in
+                self.delegate?.didSaveSet(set: set)
+            }).disposed(by: self.bag)
+        self.viewModel.outputs.error
+            .subscribe(onNext: { error in
+                self.showMessageAlert(title: error.title, message: error.message)
             }).disposed(by: self.bag)
         
         self.viewModel.inputs.setName.onNext("")
@@ -81,4 +90,8 @@ class AddSetViewController: UIViewController, TableDisplayCapable, AlertDisplaya
         tableView.deselectRow(at: indexPath, animated: true)
         self.viewModel.inputs.selectItem.onNext(indexPath)
     }
+}
+
+protocol AddSetViewControllerDelegate {
+    func didSaveSet(set: SetLocalDataModel)
 }

@@ -10,4 +10,6 @@ import Foundation
 
 enum StoryboardName: String {
     case sets = "Sets"
+    case set = "Set"
+    case addVocabulary = "AddVocabulary"
 }

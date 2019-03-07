@@ -13,6 +13,7 @@
 "action.cancel" = "Cancel";
 "action.addSet.hint" = "Press the + button to add a new vocabulary set.";
 "action.addSet.name" = "Set name";
+"action.learn" = "Learn";
 
 "viewController.addSet.hint" = "Tap on the item below to set or change the name of the set.";
 
