@@ -31,6 +31,12 @@ let appContainer: Container = {
         )
     }
     
+    container.register(SetsViewModelType.self) { r in
+        SetsViewModel(
+            setLocalDataService: r.resolve(SetLocalDataService.self)!,
+            resultConverter: r.resolve(ResultConverter.self)!
+        )
+    }
     container.register(AddSetViewModelType.self) { r in
         AddSetViewModel(
             setLocalDataService: r.resolve(SetLocalDataService.self)!,

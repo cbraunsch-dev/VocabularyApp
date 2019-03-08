@@ -18,6 +18,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="zLz-Pq-7qD">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UITableViewCell" id="lN6-2n-HKa">
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lN6-2n-HKa" id="zGN-xk-FbK">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PLS-kG-3oZ">
                                 <rect key="frame" x="16" y="306.5" width="343" height="54.5"/>
                                 <subviews>
@@ -45,8 +59,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="PLS-kG-3oZ" firstAttribute="centerY" secondItem="y4w-iA-xdU" secondAttribute="centerY" id="Hum-eU-02d"/>
+                            <constraint firstItem="zLz-Pq-7qD" firstAttribute="top" secondItem="hnT-Zf-y8V" secondAttribute="top" id="YrP-Pc-9LW"/>
+                            <constraint firstItem="hnT-Zf-y8V" firstAttribute="trailing" secondItem="zLz-Pq-7qD" secondAttribute="trailing" id="ZUR-rB-I9f"/>
                             <constraint firstItem="PLS-kG-3oZ" firstAttribute="leading" secondItem="hnT-Zf-y8V" secondAttribute="leading" constant="16" id="b9l-gx-w8A"/>
+                            <constraint firstItem="hnT-Zf-y8V" firstAttribute="bottom" secondItem="zLz-Pq-7qD" secondAttribute="bottom" id="e8K-g6-AfR"/>
                             <constraint firstItem="hnT-Zf-y8V" firstAttribute="trailing" secondItem="PLS-kG-3oZ" secondAttribute="trailing" constant="16" id="gpU-aZ-8dV"/>
+                            <constraint firstItem="zLz-Pq-7qD" firstAttribute="leading" secondItem="hnT-Zf-y8V" secondAttribute="leading" id="ieD-rM-bJX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hnT-Zf-y8V"/>
                     </view>
@@ -61,6 +79,7 @@
                         <outlet property="emptyView" destination="PLS-kG-3oZ" id="NYs-yE-uIC"/>
                         <outlet property="infoIcon" destination="UMS-56-YzZ" id="BZf-2E-ZhV"/>
                         <outlet property="infoLabel" destination="CRL-lR-b1S" id="h44-QE-xSZ"/>
+                        <outlet property="myTableView" destination="zLz-Pq-7qD" id="Xck-V7-yfo"/>
                         <segue destination="9CE-6I-Gaw" kind="show" identifier="showSet" id="8Rq-Uz-HFg"/>
                     </connections>
                 </viewController>

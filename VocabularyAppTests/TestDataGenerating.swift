@@ -30,4 +30,11 @@ extension TestDataGenerating {
         
         return [entity1, entity2, entity3]
     }
+    
+    func createTestSetLocalDataModels() -> [SetLocalDataModel] {
+        let set1 = SetLocalDataModel(id: "1", name: "Serbian")
+        let set2 = SetLocalDataModel(id: "2", name: "Spanish")
+        let set3 = SetLocalDataModel(id: "3", name: "Japanese")
+        return [set1, set2, set3]
+    }
 }
