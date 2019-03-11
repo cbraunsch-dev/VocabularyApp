@@ -45,6 +45,7 @@
 		661F6CB222106EC200B11FDE /* FBSnapshotTestCase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661F6CAF22106EC200B11FDE /* FBSnapshotTestCase+Extension.swift */; };
 		661F6CB322106EC200B11FDE /* TestDataGenerating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661F6CB022106EC200B11FDE /* TestDataGenerating.swift */; };
 		661F6CB522106F4500B11FDE /* StoryboardName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661F6CB422106F4500B11FDE /* StoryboardName.swift */; };
+		665326BA223617E300516DA3 /* SetsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665326B9223617E300516DA3 /* SetsViewModelTests.swift */; };
 		6690B4D0222CE32700B3CE14 /* RealmConfigurationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6690B4CF222CE32700B3CE14 /* RealmConfigurationProvider.swift */; };
 		6690B4DF222CE7E500B3CE14 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6690B4DE222CE7E500B3CE14 /* Mocks.swift */; };
 		6690B4E1222CE9DB00B3CE14 /* SetLocalDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6690B4E0222CE9DB00B3CE14 /* SetLocalDataModel.swift */; };
@@ -147,6 +148,7 @@
 		661F6CAF22106EC200B11FDE /* FBSnapshotTestCase+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FBSnapshotTestCase+Extension.swift"; sourceTree = "<group>"; };
 		661F6CB022106EC200B11FDE /* TestDataGenerating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDataGenerating.swift; sourceTree = "<group>"; };
 		661F6CB422106F4500B11FDE /* StoryboardName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardName.swift; sourceTree = "<group>"; };
+		665326B9223617E300516DA3 /* SetsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsViewModelTests.swift; sourceTree = "<group>"; };
 		6690B4CF222CE32700B3CE14 /* RealmConfigurationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmConfigurationProvider.swift; sourceTree = "<group>"; };
 		6690B4DE222CE7E500B3CE14 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		6690B4E0222CE9DB00B3CE14 /* SetLocalDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetLocalDataModel.swift; sourceTree = "<group>"; };
@@ -446,6 +448,7 @@
 			isa = PBXGroup;
 			children = (
 				66B910D22221A25900C5D0B5 /* AddSetViewModelTests.swift */,
+				665326B9223617E300516DA3 /* SetsViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -790,6 +793,7 @@
 				661F6CB222106EC200B11FDE /* FBSnapshotTestCase+Extension.swift in Sources */,
 				66B910BA222197CC00C5D0B5 /* TitleValueCellContentViewSnapshotTests.swift in Sources */,
 				66B910B22221964D00C5D0B5 /* AddSetViewControllerSnapshotTests.swift in Sources */,
+				665326BA223617E300516DA3 /* SetsViewModelTests.swift in Sources */,
 				66B910D32221A25900C5D0B5 /* AddSetViewModelTests.swift in Sources */,
 				661F6CAD22106E9D00B11FDE /* SetsViewControllerSnapshotTests.swift in Sources */,
 				6690B4DF222CE7E500B3CE14 /* Mocks.swift in Sources */,

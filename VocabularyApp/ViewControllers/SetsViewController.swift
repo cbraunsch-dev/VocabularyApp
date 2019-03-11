@@ -59,6 +59,11 @@ class SetsViewController: UIViewController, SegueHandlerType, TableDisplayCapabl
             .map { !$0 }
             .bind(to: self.tableView.rx.isHidden)
             .disposed(by: self.bag)
+        self.viewModel.outputs.openSet
+            .subscribe(onNext: { set in
+                self.setToShow = set
+                self.performSegueWithIdentifier(segueIdentifier: .showSet, sender: self)
+            }).disposed(by: self.bag)
         
         self.viewModel.inputs.viewDidLoad.onNext(())
     }
@@ -99,6 +104,7 @@ class SetsViewController: UIViewController, SegueHandlerType, TableDisplayCapabl
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        self.viewModel.inputs.selectItem.onNext(indexPath)
     }
 }
 
@@ -106,11 +112,6 @@ extension SetsViewController: AddSetViewControllerDelegate {
     func didSaveSet(set: SetLocalDataModel) {
         self.dismissableViewController?.dismiss(animated: true, completion: {
             self.viewModel.inputs.didAddSet.onNext(())
-            
-            //TODO: Instead of opening it directly here, pass the input along to the view model and the view model can then decide whether to open the set or not
-            //Open the set we just created
-            self.setToShow = set
-            self.performSegueWithIdentifier(segueIdentifier: .showSet, sender: self)
         })
     }
 }

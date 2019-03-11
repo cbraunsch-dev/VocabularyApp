@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SetLocalDataModel {
+struct SetLocalDataModel: Equatable {
     let id: String
     let name: String
     
@@ -20,5 +20,10 @@ struct SetLocalDataModel {
     init(id: String, name: String) {
         self.id = id
         self.name = name
+    }
+    
+    static func ==(lhs: SetLocalDataModel, rhs: SetLocalDataModel) -> Bool {
+        return lhs.id == rhs.id &&
+            lhs.name == rhs.name
     }
 }

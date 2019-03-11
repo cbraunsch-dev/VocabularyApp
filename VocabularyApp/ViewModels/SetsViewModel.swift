@@ -58,6 +58,24 @@ class SetsViewModel: SetsViewModelType, SetsViewModelInputs, SetsViewModelOutput
         self.inputs.didAddSet
             .bind(to: self.loadSets)
             .disposed(by: self.bag)
+        self.inputs.selectItem
+            .withLatestFrom(self.outputs.sections) { (selection: $0, sections: $1) }
+            .map { (input: (selection: IndexPath, sections: [GenericTableSection])) -> GenericTableItem in
+                let section = input.sections[input.selection.section]
+                let item = section.items[input.selection.row]
+                return item
+            }
+            .map { item -> SetLocalDataModel? in
+                switch item.action {
+                case SetsTableItemAction.selectSet(let set):
+                    return set
+                default:
+                    return nil
+                }
+            }.filter { $0 != nil }
+            .map { $0! }
+            .bind(to: self.outputs.openSet)
+            .disposed(by: self.bag)
         
         self.loadSets
             .flatMapLatest { _ -> Observable<OperationResult<[SetLocalDataModel]>> in
@@ -88,7 +106,7 @@ class SetsViewModel: SetsViewModelType, SetsViewModelInputs, SetsViewModelOutput
     
     private func createSections(sets: [SetLocalDataModel]) -> [GenericTableSection] {
         let items = sets.map { set -> GenericTableItem in
-            let item = GenericTableItem(title: set.name, action: SetsTableItemAction.selectSet)
+            let item = GenericTableItem(title: set.name, action: SetsTableItemAction.selectSet(set: set))
             return item
         }
         let section = GenericTableSection(items: items, title: nil, footer: nil)
@@ -96,6 +114,6 @@ class SetsViewModel: SetsViewModelType, SetsViewModelInputs, SetsViewModelOutput
     }
     
     enum SetsTableItemAction: TableItemAction {
-        case selectSet
+        case selectSet(set: SetLocalDataModel)
     }
 }
