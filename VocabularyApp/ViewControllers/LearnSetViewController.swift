@@ -7,14 +7,25 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-class LearnSetViewController: UIViewController, SetManageable {
+class LearnSetViewController: UIViewController, SetManageable, SegueHandlerType {
+    private let bag = DisposeBag()
+    
+    enum SegueIdentifier: String {
+        case addVocabulary
+    }
 
     var set: SetLocalDataModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.title = self.set?.name
+        self.navigationController?.title = L10n.Action.learn
+        self.tabBarController?.title = self.set?.name
+        
+        let addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: nil, action: nil)
+        self.tabBarController?.navigationItem.rightBarButtonItem = addButton
+        addButton.rx.tap.subscribe(onNext: { self.performSegueWithIdentifier(segueIdentifier: .addVocabulary, sender: self) }).disposed(by: self.bag)
     }
 }

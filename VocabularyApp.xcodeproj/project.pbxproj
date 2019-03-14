@@ -67,6 +67,7 @@
 		66B910CE22219B5D00C5D0B5 /* IoCContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910CD22219B5D00C5D0B5 /* IoCContainer.swift */; };
 		66B910D022219E6100C5D0B5 /* GenericItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910CF22219E6100C5D0B5 /* GenericItemType.swift */; };
 		66B910D32221A25900C5D0B5 /* AddSetViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910D22221A25900C5D0B5 /* AddSetViewModelTests.swift */; };
+		66C72BB4223A0F1800A9AFE3 /* LearnSet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66C72BB3223A0F1800A9AFE3 /* LearnSet.storyboard */; };
 		66CF6CF72230E6D5007CA838 /* GenericTableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CF6CF62230E6D5007CA838 /* GenericTableItem.swift */; };
 		66CF6CF92230E6F1007CA838 /* GenericTableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CF6CF82230E6F1007CA838 /* GenericTableSection.swift */; };
 		66FD81B02230DAA50035A034 /* LearnSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD81AF2230DAA50035A034 /* LearnSetViewController.swift */; };
@@ -74,7 +75,7 @@
 		66FD81B42230DE930035A034 /* AddVocabulary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66FD81B32230DE930035A034 /* AddVocabulary.storyboard */; };
 		66FD81B62230E0860035A034 /* SetManageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD81B52230E0860035A034 /* SetManageable.swift */; };
 		66FD81BA2230E2360035A034 /* SetTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD81B92230E2360035A034 /* SetTabBarController.swift */; };
-		66FD81BC2230E2BE0035A034 /* SetNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD81BB2230E2BE0035A034 /* SetNavigationController.swift */; };
+		66FD81BC2230E2BE0035A034 /* LearnSetNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD81BB2230E2BE0035A034 /* LearnSetNavigationController.swift */; };
 		66FD81BE2230E6070035A034 /* SetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD81BD2230E6070035A034 /* SetsViewModel.swift */; };
 		B63361A6BBB3E604D557E51A /* Pods_VocabularyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6781E710D61109875C62B361 /* Pods_VocabularyApp.framework */; };
 /* End PBXBuildFile section */
@@ -170,6 +171,7 @@
 		66B910CD22219B5D00C5D0B5 /* IoCContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IoCContainer.swift; sourceTree = "<group>"; };
 		66B910CF22219E6100C5D0B5 /* GenericItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericItemType.swift; sourceTree = "<group>"; };
 		66B910D22221A25900C5D0B5 /* AddSetViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSetViewModelTests.swift; sourceTree = "<group>"; };
+		66C72BB3223A0F1800A9AFE3 /* LearnSet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LearnSet.storyboard; sourceTree = "<group>"; };
 		66CF6CF62230E6D5007CA838 /* GenericTableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableItem.swift; sourceTree = "<group>"; };
 		66CF6CF82230E6F1007CA838 /* GenericTableSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableSection.swift; sourceTree = "<group>"; };
 		66FD81AF2230DAA50035A034 /* LearnSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnSetViewController.swift; sourceTree = "<group>"; };
@@ -177,7 +179,7 @@
 		66FD81B32230DE930035A034 /* AddVocabulary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddVocabulary.storyboard; sourceTree = "<group>"; };
 		66FD81B52230E0860035A034 /* SetManageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetManageable.swift; sourceTree = "<group>"; };
 		66FD81B92230E2360035A034 /* SetTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTabBarController.swift; sourceTree = "<group>"; };
-		66FD81BB2230E2BE0035A034 /* SetNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNavigationController.swift; sourceTree = "<group>"; };
+		66FD81BB2230E2BE0035A034 /* LearnSetNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnSetNavigationController.swift; sourceTree = "<group>"; };
 		66FD81BD2230E6070035A034 /* SetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsViewModel.swift; sourceTree = "<group>"; };
 		6781E710D61109875C62B361 /* Pods_VocabularyApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VocabularyApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		720555DC7B530DAEFBCE178E /* Pods-VocabularyAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VocabularyAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VocabularyAppTests/Pods-VocabularyAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 				661F6CB422106F4500B11FDE /* StoryboardName.swift */,
 				66FD81B12230DAD30035A034 /* Set.storyboard */,
 				66FD81B32230DE930035A034 /* AddVocabulary.storyboard */,
+				66C72BB3223A0F1800A9AFE3 /* LearnSet.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -464,7 +467,7 @@
 		66FD81B82230E21B0035A034 /* NavigationControllers */ = {
 			isa = PBXGroup;
 			children = (
-				66FD81BB2230E2BE0035A034 /* SetNavigationController.swift */,
+				66FD81BB2230E2BE0035A034 /* LearnSetNavigationController.swift */,
 			);
 			path = NavigationControllers;
 			sourceTree = "<group>";
@@ -569,6 +572,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66C72BB4223A0F1800A9AFE3 /* LearnSet.storyboard in Resources */,
 				661F6C9F22106B9B00B11FDE /* Sets.storyboard in Resources */,
 				661F6C4F221066B100B11FDE /* LaunchScreen.storyboard in Resources */,
 				66FD81B22230DAD30035A034 /* Set.storyboard in Resources */,
@@ -736,7 +740,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6601D9DB222E3AF3007ABC28 /* RealmLocalDataService.swift in Sources */,
-				66FD81BC2230E2BE0035A034 /* SetNavigationController.swift in Sources */,
+				66FD81BC2230E2BE0035A034 /* LearnSetNavigationController.swift in Sources */,
 				66B910C6222199E200C5D0B5 /* TableItemType.swift in Sources */,
 				66B910C02221998500C5D0B5 /* TableSection.swift in Sources */,
 				66CF6CF72230E6D5007CA838 /* GenericTableItem.swift in Sources */,
