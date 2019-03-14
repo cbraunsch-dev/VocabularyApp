@@ -14,6 +14,7 @@
 "action.addSet.hint" = "Press the + button to add a new vocabulary set.";
 "action.addSet.name" = "Set name";
 "action.learn" = "Learn";
+"action.addVocabulary.hint" = "Press the + button to add vocabulary to your set.";
 
 "viewController.addSet.hint" = "Tap on the item below to set or change the name of the set.";
 

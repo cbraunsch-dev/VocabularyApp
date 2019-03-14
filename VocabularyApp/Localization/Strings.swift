@@ -25,6 +25,10 @@ internal enum L10n {
       /// Set name
       internal static let name = L10n.tr("Localizable", "action.addSet.name")
     }
+    internal enum AddVocabulary {
+      /// Press the + button to add vocabulary to your set.
+      internal static let hint = L10n.tr("Localizable", "action.addVocabulary.hint")
+    }
   }
 
   internal enum Alert {

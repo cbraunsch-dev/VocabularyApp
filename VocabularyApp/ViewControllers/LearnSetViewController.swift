@@ -19,6 +19,10 @@ class LearnSetViewController: UIViewController, SetManageable, SegueHandlerType 
 
     var set: SetLocalDataModel?
     
+    @IBOutlet weak var emptyView: UIView!
+    @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var infoIcon: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.title = L10n.Action.learn
@@ -27,5 +31,7 @@ class LearnSetViewController: UIViewController, SetManageable, SegueHandlerType 
         let addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: nil, action: nil)
         self.tabBarController?.navigationItem.rightBarButtonItem = addButton
         addButton.rx.tap.subscribe(onNext: { self.performSegueWithIdentifier(segueIdentifier: .addVocabulary, sender: self) }).disposed(by: self.bag)
+        
+        self.infoLabel.text = L10n.Action.AddVocabulary.hint
     }
 }

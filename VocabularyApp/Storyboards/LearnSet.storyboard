@@ -17,11 +17,44 @@
                     <view key="view" contentMode="scaleToFill" id="RHN-fu-deg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8kc-EQ-QsY">
+                                <rect key="frame" x="16" y="306.5" width="343" height="54.5"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Info" translatesAutoresizingMaskIntoConstraints="NO" id="5fF-kd-Rp8">
+                                        <rect key="frame" x="162.5" y="0.0" width="18" height="18"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QmO-O2-fYg">
+                                        <rect key="frame" x="0.0" y="34" width="343" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="5fF-kd-Rp8" firstAttribute="centerX" secondItem="8kc-EQ-QsY" secondAttribute="centerX" id="4rT-YX-tJx"/>
+                                    <constraint firstAttribute="bottom" secondItem="QmO-O2-fYg" secondAttribute="bottom" id="9N3-7l-sKa"/>
+                                    <constraint firstItem="QmO-O2-fYg" firstAttribute="leading" secondItem="8kc-EQ-QsY" secondAttribute="leading" id="DQu-xj-XbR"/>
+                                    <constraint firstAttribute="trailing" secondItem="QmO-O2-fYg" secondAttribute="trailing" id="ZUR-rL-dfA"/>
+                                    <constraint firstItem="5fF-kd-Rp8" firstAttribute="top" secondItem="8kc-EQ-QsY" secondAttribute="top" id="bu0-vm-mJe"/>
+                                    <constraint firstItem="QmO-O2-fYg" firstAttribute="top" secondItem="5fF-kd-Rp8" secondAttribute="bottom" constant="16" id="wKS-7H-Gek"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Xf8-Qy-e1D" firstAttribute="trailing" secondItem="8kc-EQ-QsY" secondAttribute="trailing" constant="16" id="45G-UJ-eNA"/>
+                            <constraint firstItem="8kc-EQ-QsY" firstAttribute="leading" secondItem="Xf8-Qy-e1D" secondAttribute="leading" constant="16" id="QTh-JT-9AC"/>
+                            <constraint firstItem="8kc-EQ-QsY" firstAttribute="centerY" secondItem="RHN-fu-deg" secondAttribute="centerY" id="SAz-B3-XGb"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Xf8-Qy-e1D"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="1di-Rx-igj"/>
                     <connections>
+                        <outlet property="emptyView" destination="8kc-EQ-QsY" id="wsB-D9-pgq"/>
+                        <outlet property="infoIcon" destination="5fF-kd-Rp8" id="Zrr-Ej-9Zf"/>
+                        <outlet property="infoLabel" destination="QmO-O2-fYg" id="IYE-zg-BeN"/>
                         <segue destination="Ml9-EE-fa3" kind="presentation" identifier="addVocabulary" id="QXv-vA-JWp"/>
                     </connections>
                 </viewController>
@@ -56,4 +89,7 @@
             <point key="canvasLocation" x="0.80000000000000004" y="-57.121439280359823"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Info" width="18" height="18"/>
+    </resources>
 </document>
