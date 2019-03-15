@@ -67,3 +67,16 @@ class MockSetLocalDataService: SetLocalDataService {
         fatalError("Method not stubbed")
     }
 }
+
+class MockFileContentProvider: FileContentProvider {
+    var contentsOfFileStub: String?
+    var didCallContentsOfFile = false
+    
+    func contentsOfFile(at path: String, encoding: String.Encoding) throws -> String {
+        self.didCallContentsOfFile = true
+        if let stub = self.contentsOfFileStub {
+            return stub
+        }
+        return ""
+    }
+}

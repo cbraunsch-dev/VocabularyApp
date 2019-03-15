@@ -28,7 +28,7 @@ class LearnSetViewController: UIViewController, SetManageable, SegueHandlerType 
         self.navigationController?.title = L10n.Action.learn
         self.tabBarController?.title = self.set?.name
         
-        let addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: nil, action: nil)
+        let addButton = UIBarButtonItem(image: UIImage(named: "ImportExport"), style: UIBarButtonItem.Style.plain, target: nil, action: nil)
         self.tabBarController?.navigationItem.rightBarButtonItem = addButton
         addButton.rx.tap.subscribe(onNext: { self.performSegueWithIdentifier(segueIdentifier: .addVocabulary, sender: self) }).disposed(by: self.bag)
         

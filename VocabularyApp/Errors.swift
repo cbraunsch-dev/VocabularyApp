@@ -13,3 +13,8 @@ enum DataAccessorError: Error {
     case failedToAccessDatabase
     case itemToDeleteNotFound
 }
+
+enum CsvImportVocabularyError: Error {
+    case noData
+    case incorrectNumberOfColumns
+}

@@ -46,6 +46,12 @@
 		661F6CB322106EC200B11FDE /* TestDataGenerating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661F6CB022106EC200B11FDE /* TestDataGenerating.swift */; };
 		661F6CB522106F4500B11FDE /* StoryboardName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661F6CB422106F4500B11FDE /* StoryboardName.swift */; };
 		665326BA223617E300516DA3 /* SetsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665326B9223617E300516DA3 /* SetsViewModelTests.swift */; };
+		66852022223B61BE00BF631F /* ImportVocabularyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66852021223B61BE00BF631F /* ImportVocabularyService.swift */; };
+		66852024223B62D200BF631F /* VocabularyPairLocalDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66852023223B62D200BF631F /* VocabularyPairLocalDataModel.swift */; };
+		66852026223B641F00BF631F /* CsvImportVocabularyServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66852025223B641F00BF631F /* CsvImportVocabularyServiceTests.swift */; };
+		66852029223B66A700BF631F /* FileContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66852028223B66A700BF631F /* FileContentProvider.swift */; };
+		6685202B223B670300BF631F /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6685202A223B670300BF631F /* String+Extension.swift */; };
+		6685202D223B6CEF00BF631F /* AddVocabularyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6685202C223B6CEF00BF631F /* AddVocabularyViewModel.swift */; };
 		6690B4D0222CE32700B3CE14 /* RealmConfigurationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6690B4CF222CE32700B3CE14 /* RealmConfigurationProvider.swift */; };
 		6690B4DF222CE7E500B3CE14 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6690B4DE222CE7E500B3CE14 /* Mocks.swift */; };
 		6690B4E1222CE9DB00B3CE14 /* SetLocalDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6690B4E0222CE9DB00B3CE14 /* SetLocalDataModel.swift */; };
@@ -68,6 +74,7 @@
 		66B910D022219E6100C5D0B5 /* GenericItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910CF22219E6100C5D0B5 /* GenericItemType.swift */; };
 		66B910D32221A25900C5D0B5 /* AddSetViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910D22221A25900C5D0B5 /* AddSetViewModelTests.swift */; };
 		66C72BB4223A0F1800A9AFE3 /* LearnSet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66C72BB3223A0F1800A9AFE3 /* LearnSet.storyboard */; };
+		66C72BB6223A1EEC00A9AFE3 /* AddVocabularyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C72BB5223A1EEC00A9AFE3 /* AddVocabularyViewController.swift */; };
 		66CF6CF72230E6D5007CA838 /* GenericTableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CF6CF62230E6D5007CA838 /* GenericTableItem.swift */; };
 		66CF6CF92230E6F1007CA838 /* GenericTableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CF6CF82230E6F1007CA838 /* GenericTableSection.swift */; };
 		66FD81B02230DAA50035A034 /* LearnSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD81AF2230DAA50035A034 /* LearnSetViewController.swift */; };
@@ -150,6 +157,12 @@
 		661F6CB022106EC200B11FDE /* TestDataGenerating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDataGenerating.swift; sourceTree = "<group>"; };
 		661F6CB422106F4500B11FDE /* StoryboardName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardName.swift; sourceTree = "<group>"; };
 		665326B9223617E300516DA3 /* SetsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsViewModelTests.swift; sourceTree = "<group>"; };
+		66852021223B61BE00BF631F /* ImportVocabularyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportVocabularyService.swift; sourceTree = "<group>"; };
+		66852023223B62D200BF631F /* VocabularyPairLocalDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyPairLocalDataModel.swift; sourceTree = "<group>"; };
+		66852025223B641F00BF631F /* CsvImportVocabularyServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CsvImportVocabularyServiceTests.swift; sourceTree = "<group>"; };
+		66852028223B66A700BF631F /* FileContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileContentProvider.swift; sourceTree = "<group>"; };
+		6685202A223B670300BF631F /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		6685202C223B6CEF00BF631F /* AddVocabularyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVocabularyViewModel.swift; sourceTree = "<group>"; };
 		6690B4CF222CE32700B3CE14 /* RealmConfigurationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmConfigurationProvider.swift; sourceTree = "<group>"; };
 		6690B4DE222CE7E500B3CE14 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		6690B4E0222CE9DB00B3CE14 /* SetLocalDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetLocalDataModel.swift; sourceTree = "<group>"; };
@@ -172,6 +185,7 @@
 		66B910CF22219E6100C5D0B5 /* GenericItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericItemType.swift; sourceTree = "<group>"; };
 		66B910D22221A25900C5D0B5 /* AddSetViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSetViewModelTests.swift; sourceTree = "<group>"; };
 		66C72BB3223A0F1800A9AFE3 /* LearnSet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LearnSet.storyboard; sourceTree = "<group>"; };
+		66C72BB5223A1EEC00A9AFE3 /* AddVocabularyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVocabularyViewController.swift; sourceTree = "<group>"; };
 		66CF6CF62230E6D5007CA838 /* GenericTableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableItem.swift; sourceTree = "<group>"; };
 		66CF6CF82230E6F1007CA838 /* GenericTableSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableSection.swift; sourceTree = "<group>"; };
 		66FD81AF2230DAA50035A034 /* LearnSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnSetViewController.swift; sourceTree = "<group>"; };
@@ -223,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				6601D9DF222E3B88007ABC28 /* RealmSetLocalDataServiceTests.swift */,
+				66852025223B641F00BF631F /* CsvImportVocabularyServiceTests.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -250,6 +265,7 @@
 		661F6C43221066B000B11FDE /* VocabularyApp */ = {
 			isa = PBXGroup;
 			children = (
+				66852027223B669300BF631F /* Providers */,
 				66FD81B82230E21B0035A034 /* NavigationControllers */,
 				66FD81B72230E2100035A034 /* TabBarControllers */,
 				66B910B42221971100C5D0B5 /* TableViewCells */,
@@ -284,7 +300,6 @@
 				661F6C50221066B100B11FDE /* Info.plist */,
 				66B910B7222197A300C5D0B5 /* AppConstants.swift */,
 				66B910CD22219B5D00C5D0B5 /* IoCContainer.swift */,
-				6690B4CF222CE32700B3CE14 /* RealmConfigurationProvider.swift */,
 				66FD81B52230E0860035A034 /* SetManageable.swift */,
 			);
 			path = VocabularyApp;
@@ -320,6 +335,7 @@
 				661F6CA022106BE000B11FDE /* SetsViewController.swift */,
 				66B910AF2221950F00C5D0B5 /* AddSetViewController.swift */,
 				66FD81AF2230DAA50035A034 /* LearnSetViewController.swift */,
+				66C72BB5223A1EEC00A9AFE3 /* AddVocabularyViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -329,6 +345,7 @@
 			children = (
 				66B910BD222198AD00C5D0B5 /* AddSetViewModel.swift */,
 				66FD81BD2230E6070035A034 /* SetsViewModel.swift */,
+				6685202C223B6CEF00BF631F /* AddVocabularyViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -340,6 +357,7 @@
 				6601D9D8222E3AC8007ABC28 /* SetLocalDataService.swift */,
 				6601D9DA222E3AF3007ABC28 /* RealmLocalDataService.swift */,
 				6601D9DC222E3B1C007ABC28 /* RealmSetLocalDataService.swift */,
+				66852021223B61BE00BF631F /* ImportVocabularyService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -363,6 +381,7 @@
 				661F6C9222106A8200B11FDE /* UITableView+Extension.swift */,
 				661F6C9322106A8200B11FDE /* UITableViewCell+Extension.swift */,
 				6601D9D6222E338B007ABC28 /* Realm+Extension.swift */,
+				6685202A223B670300BF631F /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -417,6 +436,7 @@
 			isa = PBXGroup;
 			children = (
 				6690B4E0222CE9DB00B3CE14 /* SetLocalDataModel.swift */,
+				66852023223B62D200BF631F /* VocabularyPairLocalDataModel.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -429,6 +449,15 @@
 				66B910B9222197CC00C5D0B5 /* TitleValueCellContentViewSnapshotTests.swift */,
 			);
 			path = SnapshotTestCases;
+			sourceTree = "<group>";
+		};
+		66852027223B669300BF631F /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				6690B4CF222CE32700B3CE14 /* RealmConfigurationProvider.swift */,
+				66852028223B66A700BF631F /* FileContentProvider.swift */,
+			);
+			path = Providers;
 			sourceTree = "<group>";
 		};
 		66B910B32221970800C5D0B5 /* Views */ = {
@@ -762,14 +791,20 @@
 				6690B4E1222CE9DB00B3CE14 /* SetLocalDataModel.swift in Sources */,
 				661F6C9522106A8300B11FDE /* UITableView+Extension.swift in Sources */,
 				66B910BE222198AD00C5D0B5 /* AddSetViewModel.swift in Sources */,
+				6685202B223B670300BF631F /* String+Extension.swift in Sources */,
 				661F6C9022106A3800B11FDE /* TableDisplayCapable.swift in Sources */,
 				66B910C4222199C300C5D0B5 /* TableItemAction.swift in Sources */,
+				66852024223B62D200BF631F /* VocabularyPairLocalDataModel.swift in Sources */,
 				66B910BC2221986000C5D0B5 /* TitleValueTableViewCell.swift in Sources */,
 				661F6C8E22106A3800B11FDE /* SegueHandlerType.swift in Sources */,
+				66C72BB6223A1EEC00A9AFE3 /* AddVocabularyViewController.swift in Sources */,
 				661F6C8D22106A3800B11FDE /* ErrorBindable.swift in Sources */,
 				66FD81B02230DAA50035A034 /* LearnSetViewController.swift in Sources */,
 				6601D9D9222E3AC8007ABC28 /* SetLocalDataService.swift in Sources */,
+				66852022223B61BE00BF631F /* ImportVocabularyService.swift in Sources */,
+				6685202D223B6CEF00BF631F /* AddVocabularyViewModel.swift in Sources */,
 				66FD81B62230E0860035A034 /* SetManageable.swift in Sources */,
+				66852029223B66A700BF631F /* FileContentProvider.swift in Sources */,
 				66FD81BA2230E2360035A034 /* SetTabBarController.swift in Sources */,
 				661F6C9422106A8300B11FDE /* SwinjectStoryboard+Extension.swift in Sources */,
 				66B910D022219E6100C5D0B5 /* GenericItemType.swift in Sources */,
@@ -796,6 +831,7 @@
 			files = (
 				661F6CB222106EC200B11FDE /* FBSnapshotTestCase+Extension.swift in Sources */,
 				66B910BA222197CC00C5D0B5 /* TitleValueCellContentViewSnapshotTests.swift in Sources */,
+				66852026223B641F00BF631F /* CsvImportVocabularyServiceTests.swift in Sources */,
 				66B910B22221964D00C5D0B5 /* AddSetViewControllerSnapshotTests.swift in Sources */,
 				665326BA223617E300516DA3 /* SetsViewModelTests.swift in Sources */,
 				66B910D32221A25900C5D0B5 /* AddSetViewModelTests.swift in Sources */,
