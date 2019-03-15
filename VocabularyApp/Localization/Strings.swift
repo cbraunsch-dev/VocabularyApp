@@ -29,6 +29,10 @@ internal enum L10n {
       /// Press the + button to add vocabulary to your set.
       internal static let hint = L10n.tr("Localizable", "action.addVocabulary.hint")
     }
+    internal enum ImportVocabulary {
+      /// Import from CSV file
+      internal static let csv = L10n.tr("Localizable", "action.importVocabulary.csv")
+    }
   }
 
   internal enum Alert {
@@ -45,6 +49,8 @@ internal enum L10n {
   internal enum Title {
     /// Add Set
     internal static let addSet = L10n.tr("Localizable", "title.addSet")
+    /// Add Vocabulary
+    internal static let addVocabulary = L10n.tr("Localizable", "title.addVocabulary")
     /// Your Sets
     internal static let sets = L10n.tr("Localizable", "title.sets")
   }

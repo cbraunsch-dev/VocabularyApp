@@ -80,3 +80,18 @@ class MockFileContentProvider: FileContentProvider {
         return ""
     }
 }
+
+class MockImportVocabularyService: ImportVocabularyService {
+    var filePathUsedForImport: String?
+    var didImportVocabulary = false
+    var importVocabularyStub: [VocabularyPairLocalDataModel]?
+    
+    func importVocabulary(at filePath: String) throws -> [VocabularyPairLocalDataModel] {
+        self.didImportVocabulary = true
+        self.filePathUsedForImport = filePath
+        if let stub = self.importVocabularyStub {
+            return stub
+        }
+        return [VocabularyPairLocalDataModel]()
+    }
+}

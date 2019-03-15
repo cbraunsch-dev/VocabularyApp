@@ -15,6 +15,9 @@ let appContainer: Container = {
     container.register(RealmConfigurationProvider.self) { _ in
         VocabularyAppRealmConfigurationProvider()
     }
+    container.register(FileContentProvider.self) { _ in
+        return String()
+    }
     
     container.register(ResultConverter.self) { r in
         VocabularyAppResultConverter(
@@ -30,6 +33,11 @@ let appContainer: Container = {
             configurationProvider: r.resolve(RealmConfigurationProvider.self)!
         )
     }
+    container.register(ImportVocabularyService.self) { r in
+        CsvImportVocabularyService(
+            fileContentProvider: r.resolve(FileContentProvider.self)!
+        )
+    }
     
     container.register(SetsViewModelType.self) { r in
         SetsViewModel(
@@ -40,6 +48,12 @@ let appContainer: Container = {
     container.register(AddSetViewModelType.self) { r in
         AddSetViewModel(
             setLocalDataService: r.resolve(SetLocalDataService.self)!,
+            resultConverter: r.resolve(ResultConverter.self)!
+        )
+    }
+    container.register(AddVocabularyViewModelType.self) { r in
+        AddVocabularyViewModel(
+            importVocabularyService: r.resolve(ImportVocabularyService.self)!,
             resultConverter: r.resolve(ResultConverter.self)!
         )
     }

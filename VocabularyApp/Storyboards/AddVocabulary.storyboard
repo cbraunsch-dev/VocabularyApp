@@ -13,26 +13,46 @@
         <!--Add Vocabulary View Controller-->
         <scene sceneID="wBE-mA-sfE">
             <objects>
-                <viewController id="ObY-V3-xJn" customClass="AddVocabularyViewController" customModule="VocabularyApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddVocabularyViewController" id="ObY-V3-xJn" customClass="AddVocabularyViewController" customModule="VocabularyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DMg-Sz-bIO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5AO-6r-dBt">
-                                <rect key="frame" x="164.5" y="318.5" width="46" height="30"/>
-                                <state key="normal" title="Import"/>
-                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="zCU-uw-rHo">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TitleValueTableViewCell" id="uei-4C-0AE" customClass="TitleValueTableViewCell" customModule="VocabularyApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uei-4C-0AE" id="5Eg-8F-dv4">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UITableViewCell" id="jdg-Ku-daL">
+                                        <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jdg-Ku-daL" id="waW-ip-twx">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="5AO-6r-dBt" firstAttribute="centerX" secondItem="DMg-Sz-bIO" secondAttribute="centerX" id="nxu-og-qJc"/>
-                            <constraint firstItem="5AO-6r-dBt" firstAttribute="centerY" secondItem="DMg-Sz-bIO" secondAttribute="centerY" id="q36-1E-wFQ"/>
+                            <constraint firstItem="tgm-nz-4q3" firstAttribute="bottom" secondItem="zCU-uw-rHo" secondAttribute="bottom" id="hzf-sx-OSA"/>
+                            <constraint firstItem="zCU-uw-rHo" firstAttribute="top" secondItem="tgm-nz-4q3" secondAttribute="top" id="iOa-sf-6uF"/>
+                            <constraint firstItem="tgm-nz-4q3" firstAttribute="trailing" secondItem="zCU-uw-rHo" secondAttribute="trailing" id="jxg-pG-2Qt"/>
+                            <constraint firstItem="zCU-uw-rHo" firstAttribute="leading" secondItem="tgm-nz-4q3" secondAttribute="leading" id="zLi-5u-Kxq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tgm-nz-4q3"/>
                     </view>
                     <navigationItem key="navigationItem" id="yXT-jI-GbP"/>
                     <connections>
-                        <outlet property="importButton" destination="5AO-6r-dBt" id="vRy-4q-9Wm"/>
+                        <outlet property="myTableView" destination="zCU-uw-rHo" id="znc-Iy-slj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x4U-zN-Ir4" userLabel="First Responder" sceneMemberID="firstResponder"/>

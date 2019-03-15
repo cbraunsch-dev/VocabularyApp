@@ -8,6 +8,7 @@
 
 "title.sets" = "Your Sets";
 "title.addSet" = "Add Set";
+"title.addVocabulary" = "Add Vocabulary";
 
 "action.ok" = "Ok";
 "action.cancel" = "Cancel";
@@ -15,6 +16,7 @@
 "action.addSet.name" = "Set name";
 "action.learn" = "Learn";
 "action.addVocabulary.hint" = "Press the + button to add vocabulary to your set.";
+"action.importVocabulary.csv" = "Import from CSV file";
 
 "viewController.addSet.hint" = "Tap on the item below to set or change the name of the set.";
 
