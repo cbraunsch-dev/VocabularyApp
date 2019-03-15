@@ -31,6 +31,7 @@ class AddVocabularyViewModel: AddVocabularyViewModelType, AddVocabularyViewModel
     private let bag = DisposeBag()
     private let importVocabularyService: ImportVocabularyService
     private let resultConverter: ResultConverter
+    private let importVocabularyResult = PublishSubject<OperationResult<[VocabularyPairLocalDataModel]>>()
     
     let viewDidLoad = PublishSubject<Void>()
     let selectItem = PublishSubject<IndexPath>()
@@ -62,14 +63,43 @@ class AddVocabularyViewModel: AddVocabularyViewModelType, AddVocabularyViewModel
             .bind(to: self.outputs.openFileBrowser)
             .disposed(by: self.bag)
         self.inputs.importFromFile
-            .subscribe(onNext: { print("Import CSV data from: \($0)") })
+            .flatMapLatest { file -> Observable<OperationResult<[VocabularyPairLocalDataModel]>> in
+                let operation = self.importVocabulary(file: file)
+                    .subscribeOn(self.worker)
+                    .observeOn(self.main)
+                return self.resultConverter.convert(result: operation)
+            }.bind(to: self.importVocabularyResult)
             .disposed(by: self.bag)
+        
+        self.importVocabularyResult
+            .filter { $0.resultValue != nil }
+            .map { self.createSections(vocabularyPairs: $0.resultValue!) }
+            .bind(to: self.outputs.sections)
+            .disposed(by: self.bag)
+    }
+    
+    private func importVocabulary(file: String) -> Observable<[VocabularyPairLocalDataModel]> {
+        return Observable<[VocabularyPairLocalDataModel]>.create { observer in
+            do {
+                let importedPairs = try self.importVocabularyService.importVocabulary(at: file)
+                observer.onNext(importedPairs)
+            } catch {
+                observer.onError(error)
+            }
+            return Disposables.create()
+        }
     }
     
     private func createSections(vocabularyPairs: [VocabularyPairLocalDataModel]) -> [TitleValueTableSection] {
         let importItem = TitleValueTableItem(title: L10n.Action.ImportVocabulary.csv, action: AddVocabularyItemAction.importFromCsv, value: "", hint: "", type: AddVocabularyItemType.actionItem)
         let importSection = TitleValueTableSection(items: [importItem], title: nil, footer: nil)
-        return [importSection]
+        
+        let vocabularyItems = vocabularyPairs.map { pair -> TitleValueTableItem in
+            return TitleValueTableItem(title: pair.wordOrPhrase, action: GenericTableItemAction.none, value: pair.definition, hint: "", type: AddVocabularyItemType.vocabularyPair)
+        }
+        let vocabularySection = TitleValueTableSection(items: vocabularyItems, title: nil, footer: nil)
+        
+        return [importSection, vocabularySection]
     }
 }
 

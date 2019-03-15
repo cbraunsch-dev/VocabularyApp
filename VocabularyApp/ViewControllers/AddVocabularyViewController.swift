@@ -46,6 +46,10 @@ class AddVocabularyViewController: UIViewController, TableDisplayCapable {
         self.present(documentPicker, animated: true, completion: nil)
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.sections.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard self.sections.count > 0 else {
             return 0
@@ -67,7 +71,7 @@ class AddVocabularyViewController: UIViewController, TableDisplayCapable {
             let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as TitleValueTableViewCell
             cell.titleValueContent.title.text = item.title
             cell.titleValueContent.value.text = item.value
-            cell.accessoryView = cell.customAccessoryView(image: UIImage(named: "Edit"))
+            cell.accessoryType = .none
             return cell
         }
     }

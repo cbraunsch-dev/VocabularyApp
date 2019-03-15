@@ -13,7 +13,7 @@ import RxCocoa
 import RxTest
 @testable import VocabularyApp
 
-class AddVocabularyViewControllerSnapshotTests: FBSnapshotTestCase {
+class AddVocabularyViewControllerSnapshotTests: FBSnapshotTestCase, TestDataGenerating {
     private let bag = DisposeBag()
     private var scheduler: TestScheduler!
     private var mockImportService: MockImportVocabularyService!
@@ -49,6 +49,25 @@ class AddVocabularyViewControllerSnapshotTests: FBSnapshotTestCase {
         //Act
         self.scheduler.createColdObservable([next(100, ())]).asObservable().bind(to: self.viewModel.inputs.viewDidLoad).disposed(by: self.bag)
         self.scheduler.start()
+        
+        //Assert
+        verifyViewController(viewController: self.navigationViewController)
+    }
+    
+    func testImportFromFile_then_displayImportedVocabularyPairs() {
+        //Arrange
+        let scheduler1 = TestScheduler(initialClock: 0)
+        let scheduler2 = TestScheduler(initialClock: 0)
+        self.viewModel.worker = scheduler2
+        self.viewModel.main = scheduler2
+        self.loadView(of: self.viewController)
+        scheduler1.createColdObservable([next(100, ())]).asObservable().bind(to: self.viewModel.inputs.viewDidLoad).disposed(by: self.bag)
+        scheduler1.start()
+        self.mockImportService.importVocabularyStub = self.createTestVocabularyPairs()
+        
+        //Act
+        scheduler2.createColdObservable([next(100, "File")]).asObservable().bind(to: self.viewModel.inputs.importFromFile).disposed(by: self.bag)
+        scheduler2.start()
         
         //Assert
         verifyViewController(viewController: self.navigationViewController)

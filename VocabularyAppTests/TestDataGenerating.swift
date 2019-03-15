@@ -37,4 +37,13 @@ extension TestDataGenerating {
         let set3 = SetLocalDataModel(id: "3", name: "Japanese")
         return [set1, set2, set3]
     }
+    
+    func createTestVocabularyPairs() -> [VocabularyPairLocalDataModel] {
+        let pair1 = VocabularyPairLocalDataModel(wordOrPhrase: "Word 1", definition: "Definition 1")
+        let pair2 = VocabularyPairLocalDataModel(wordOrPhrase: "Word 2", definition: "Definition 2")
+        let pair3 = VocabularyPairLocalDataModel(wordOrPhrase: "Word 3", definition: "Definition 3")
+        let pair4 = VocabularyPairLocalDataModel(wordOrPhrase: "Word 4", definition: "Definition 4")
+        let pair5 = VocabularyPairLocalDataModel(wordOrPhrase: "Word 5", definition: "Definition 5")
+        return [pair1, pair2, pair3, pair4, pair5]
+    }
 }
