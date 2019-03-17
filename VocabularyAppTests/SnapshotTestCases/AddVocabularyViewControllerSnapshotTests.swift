@@ -54,6 +54,8 @@ class AddVocabularyViewControllerSnapshotTests: FBSnapshotTestCase, TestDataGene
         verifyViewController(viewController: self.navigationViewController)
     }
     
+    //TODO: testViewDidLoad_when_vocabularyStored_then_displayAlreadyImportedVocabularyPairs
+    
     func testImportFromFile_then_displayImportedVocabularyPairs() {
         //Arrange
         let scheduler1 = TestScheduler(initialClock: 0)
@@ -63,7 +65,26 @@ class AddVocabularyViewControllerSnapshotTests: FBSnapshotTestCase, TestDataGene
         self.loadView(of: self.viewController)
         scheduler1.createColdObservable([next(100, ())]).asObservable().bind(to: self.viewModel.inputs.viewDidLoad).disposed(by: self.bag)
         scheduler1.start()
-        self.mockImportService.importVocabularyStub = self.createTestVocabularyPairs()
+        self.mockImportService.importVocabularyStub = scheduler2.createColdObservable([next(100, self.createTestVocabularyPairs())]).asObservable()
+        
+        //Act
+        scheduler2.createColdObservable([next(100, "File")]).asObservable().bind(to: self.viewModel.inputs.importFromFile).disposed(by: self.bag)
+        scheduler2.start()
+        
+        //Assert
+        verifyViewController(viewController: self.navigationViewController)
+    }
+    
+    func testImportFromFile_when_importNotFinishedYet_then_showSpinner() {
+        //Arrange
+        let scheduler1 = TestScheduler(initialClock: 0)
+        let scheduler2 = TestScheduler(initialClock: 0)
+        self.viewModel.worker = scheduler2
+        self.viewModel.main = scheduler2
+        self.loadView(of: self.viewController)
+        scheduler1.createColdObservable([next(100, ())]).asObservable().bind(to: self.viewModel.inputs.viewDidLoad).disposed(by: self.bag)
+        scheduler1.start()
+        self.mockImportService.importVocabularyStub = Observable<[VocabularyPairLocalDataModel]>.empty()
         
         //Act
         scheduler2.createColdObservable([next(100, "File")]).asObservable().bind(to: self.viewModel.inputs.importFromFile).disposed(by: self.bag)

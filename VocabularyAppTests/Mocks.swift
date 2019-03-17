@@ -84,14 +84,14 @@ class MockFileContentProvider: FileContentProvider {
 class MockImportVocabularyService: ImportVocabularyService {
     var filePathUsedForImport: String?
     var didImportVocabulary = false
-    var importVocabularyStub: [VocabularyPairLocalDataModel]?
+    var importVocabularyStub: Observable<[VocabularyPairLocalDataModel]>?
     
-    func importVocabulary(at filePath: String) throws -> [VocabularyPairLocalDataModel] {
+    func importVocabulary(at filePath: String) -> Observable<[VocabularyPairLocalDataModel]> {
         self.didImportVocabulary = true
         self.filePathUsedForImport = filePath
         if let stub = self.importVocabularyStub {
             return stub
         }
-        return [VocabularyPairLocalDataModel]()
+        fatalError("Method not stubbed")
     }
 }

@@ -40,12 +40,20 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4eb-sn-xbZ" customClass="ModalSpinnerView" customModule="VocabularyApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="tgm-nz-4q3" firstAttribute="bottom" secondItem="4eb-sn-xbZ" secondAttribute="bottom" id="0Yy-Zl-3Ur"/>
+                            <constraint firstItem="4eb-sn-xbZ" firstAttribute="leading" secondItem="tgm-nz-4q3" secondAttribute="leading" id="2qG-fl-LQc"/>
+                            <constraint firstItem="4eb-sn-xbZ" firstAttribute="top" secondItem="tgm-nz-4q3" secondAttribute="top" id="dqg-IU-sEk"/>
                             <constraint firstItem="tgm-nz-4q3" firstAttribute="bottom" secondItem="zCU-uw-rHo" secondAttribute="bottom" id="hzf-sx-OSA"/>
                             <constraint firstItem="zCU-uw-rHo" firstAttribute="top" secondItem="tgm-nz-4q3" secondAttribute="top" id="iOa-sf-6uF"/>
                             <constraint firstItem="tgm-nz-4q3" firstAttribute="trailing" secondItem="zCU-uw-rHo" secondAttribute="trailing" id="jxg-pG-2Qt"/>
+                            <constraint firstItem="tgm-nz-4q3" firstAttribute="trailing" secondItem="4eb-sn-xbZ" secondAttribute="trailing" id="vyl-Vv-GQI"/>
                             <constraint firstItem="zCU-uw-rHo" firstAttribute="leading" secondItem="tgm-nz-4q3" secondAttribute="leading" id="zLi-5u-Kxq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tgm-nz-4q3"/>
@@ -53,6 +61,7 @@
                     <navigationItem key="navigationItem" id="yXT-jI-GbP"/>
                     <connections>
                         <outlet property="myTableView" destination="zCU-uw-rHo" id="znc-Iy-slj"/>
+                        <outlet property="spinner" destination="4eb-sn-xbZ" id="b9K-5H-naQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x4U-zN-Ir4" userLabel="First Responder" sceneMemberID="firstResponder"/>

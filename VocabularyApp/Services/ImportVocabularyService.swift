@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol ImportVocabularyService {
-    func importVocabulary(at filePath: String) throws -> [VocabularyPairLocalDataModel]
+    func importVocabulary(at filePath: String) -> Observable<[VocabularyPairLocalDataModel]>
 }
 
 class CsvImportVocabularyService: ImportVocabularyService {
@@ -19,23 +20,32 @@ class CsvImportVocabularyService: ImportVocabularyService {
         self.fileContentProvider = fileContentProvider
     }
     
-    func importVocabulary(at filePath: String) throws -> [VocabularyPairLocalDataModel] {
-        let csv = try self.fileContentProvider.contentsOfFile(at: filePath, encoding: .utf8)
-        var pairs = [VocabularyPairLocalDataModel]()
-        let rows = csv.components(separatedBy: "\n")
-        guard rows.count > 0 else {
-            throw CsvImportVocabularyError.noData
-        }
-        for row in rows {
-            let columns = row.components(separatedBy: ",")
-            guard columns.count == 2 else {
-                throw CsvImportVocabularyError.incorrectNumberOfColumns
+    func importVocabulary(at filePath: String) -> Observable<[VocabularyPairLocalDataModel]> {
+        return Observable<[VocabularyPairLocalDataModel]>.create { observer in
+            do {
+                let csv = try self.fileContentProvider.contentsOfFile(at: filePath, encoding: .utf8)
+                var pairs = [VocabularyPairLocalDataModel]()
+                let rows = csv.components(separatedBy: "\n")
+                guard rows.count > 0 else {
+                    observer.onError(CsvImportVocabularyError.noData)
+                    return Disposables.create()
+                }
+                for row in rows {
+                    let columns = row.components(separatedBy: ",")
+                    guard columns.count == 2 else {
+                        observer.onError(CsvImportVocabularyError.incorrectNumberOfColumns)
+                        return Disposables.create()
+                    }
+                    let wordOrPhrase = columns[0]
+                    let definition = columns[1]
+                    let pair = VocabularyPairLocalDataModel(wordOrPhrase: wordOrPhrase, definition: definition)
+                    pairs.append(pair)
+                }
+                observer.onNext(pairs)
+            } catch {
+                observer.onError(error)
             }
-            let wordOrPhrase = columns[0]
-            let definition = columns[1]
-            let pair = VocabularyPairLocalDataModel(wordOrPhrase: wordOrPhrase, definition: definition)
-            pairs.append(pair)
+            return Disposables.create()
         }
-        return pairs
     }
 }

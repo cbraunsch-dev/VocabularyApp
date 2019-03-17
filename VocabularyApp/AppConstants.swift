@@ -30,3 +30,9 @@ struct LayoutConstants {
     static let buX9: CGFloat = 72
     static let buX10: CGFloat = 80
 }
+
+struct AnimationConstants {
+    static let appearanceDuration = 0.2
+    static let scaleXInitial = CGFloat(0.95)
+    static let scaleYInitial = CGFloat(0.95)
+}

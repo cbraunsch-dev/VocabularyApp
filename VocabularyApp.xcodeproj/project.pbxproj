@@ -46,6 +46,8 @@
 		661F6CB222106EC200B11FDE /* FBSnapshotTestCase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661F6CAF22106EC200B11FDE /* FBSnapshotTestCase+Extension.swift */; };
 		661F6CB322106EC200B11FDE /* TestDataGenerating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661F6CB022106EC200B11FDE /* TestDataGenerating.swift */; };
 		661F6CB522106F4500B11FDE /* StoryboardName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661F6CB422106F4500B11FDE /* StoryboardName.swift */; };
+		662A39C1223EA48C00EEA98B /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662A39C0223EA48C00EEA98B /* SpinnerView.swift */; };
+		662A39C3223EA5BE00EEA98B /* ModalSpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662A39C2223EA5BE00EEA98B /* ModalSpinnerView.swift */; };
 		665326BA223617E300516DA3 /* SetsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665326B9223617E300516DA3 /* SetsViewModelTests.swift */; };
 		66852022223B61BE00BF631F /* ImportVocabularyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66852021223B61BE00BF631F /* ImportVocabularyService.swift */; };
 		66852024223B62D200BF631F /* VocabularyPairLocalDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66852023223B62D200BF631F /* VocabularyPairLocalDataModel.swift */; };
@@ -160,6 +162,8 @@
 		661F6CAF22106EC200B11FDE /* FBSnapshotTestCase+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FBSnapshotTestCase+Extension.swift"; sourceTree = "<group>"; };
 		661F6CB022106EC200B11FDE /* TestDataGenerating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDataGenerating.swift; sourceTree = "<group>"; };
 		661F6CB422106F4500B11FDE /* StoryboardName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardName.swift; sourceTree = "<group>"; };
+		662A39C0223EA48C00EEA98B /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
+		662A39C2223EA5BE00EEA98B /* ModalSpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalSpinnerView.swift; sourceTree = "<group>"; };
 		665326B9223617E300516DA3 /* SetsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsViewModelTests.swift; sourceTree = "<group>"; };
 		66852021223B61BE00BF631F /* ImportVocabularyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportVocabularyService.swift; sourceTree = "<group>"; };
 		66852023223B62D200BF631F /* VocabularyPairLocalDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyPairLocalDataModel.swift; sourceTree = "<group>"; };
@@ -472,6 +476,8 @@
 			isa = PBXGroup;
 			children = (
 				66B910B52221973100C5D0B5 /* TitleValueCellContentView.swift */,
+				662A39C0223EA48C00EEA98B /* SpinnerView.swift */,
+				662A39C2223EA5BE00EEA98B /* ModalSpinnerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -783,6 +789,7 @@
 				66B910C02221998500C5D0B5 /* TableSection.swift in Sources */,
 				66CF6CF72230E6D5007CA838 /* GenericTableItem.swift in Sources */,
 				6601D9D7222E338B007ABC28 /* Realm+Extension.swift in Sources */,
+				662A39C1223EA48C00EEA98B /* SpinnerView.swift in Sources */,
 				661F6C8F22106A3800B11FDE /* ResultType.swift in Sources */,
 				66B910B62221973100C5D0B5 /* TitleValueCellContentView.swift in Sources */,
 				66B910CE22219B5D00C5D0B5 /* IoCContainer.swift in Sources */,
@@ -822,6 +829,7 @@
 				66FD81BE2230E6070035A034 /* SetsViewModel.swift in Sources */,
 				661F6C8C22106A3800B11FDE /* ErrorEmissionCapable.swift in Sources */,
 				66B910B02221950F00C5D0B5 /* AddSetViewController.swift in Sources */,
+				662A39C3223EA5BE00EEA98B /* ModalSpinnerView.swift in Sources */,
 				6690B4E3222CE9FB00B3CE14 /* SetEntity.swift in Sources */,
 				661F6CA322106C4A00B11FDE /* ErrorMessageService.swift in Sources */,
 				661F6C9622106A8300B11FDE /* UITableViewCell+Extension.swift in Sources */,

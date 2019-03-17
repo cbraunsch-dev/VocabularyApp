@@ -63,8 +63,12 @@ class AddVocabularyViewModel: AddVocabularyViewModelType, AddVocabularyViewModel
             .bind(to: self.outputs.openFileBrowser)
             .disposed(by: self.bag)
         self.inputs.importFromFile
+            .map { _ in true }
+            .bind(to: self.outputs.spinnerAnimating)
+            .disposed(by: self.bag)
+        self.inputs.importFromFile
             .flatMapLatest { file -> Observable<OperationResult<[VocabularyPairLocalDataModel]>> in
-                let operation = self.importVocabulary(file: file)
+                let operation = self.importVocabularyService.importVocabulary(at: file)
                     .subscribeOn(self.worker)
                     .observeOn(self.main)
                 return self.resultConverter.convert(result: operation)
@@ -72,22 +76,14 @@ class AddVocabularyViewModel: AddVocabularyViewModelType, AddVocabularyViewModel
             .disposed(by: self.bag)
         
         self.importVocabularyResult
+            .map { _ in false }
+            .bind(to: self.outputs.spinnerAnimating)
+            .disposed(by: self.bag)
+        self.importVocabularyResult
             .filter { $0.resultValue != nil }
             .map { self.createSections(vocabularyPairs: $0.resultValue!) }
             .bind(to: self.outputs.sections)
             .disposed(by: self.bag)
-    }
-    
-    private func importVocabulary(file: String) -> Observable<[VocabularyPairLocalDataModel]> {
-        return Observable<[VocabularyPairLocalDataModel]>.create { observer in
-            do {
-                let importedPairs = try self.importVocabularyService.importVocabulary(at: file)
-                observer.onNext(importedPairs)
-            } catch {
-                observer.onError(error)
-            }
-            return Disposables.create()
-        }
     }
     
     private func createSections(vocabularyPairs: [VocabularyPairLocalDataModel]) -> [TitleValueTableSection] {

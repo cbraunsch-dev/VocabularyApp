@@ -15,6 +15,7 @@ class AddVocabularyViewController: UIViewController, TableDisplayCapable {
     private var sections = [TitleValueTableSection]()
     
     @IBOutlet weak var myTableView: UITableView!
+    @IBOutlet weak var spinner: ModalSpinnerView!
     
     var viewModel: AddVocabularyViewModelType!
     var tableView: UITableView { get { return self.myTableView } }
@@ -35,6 +36,9 @@ class AddVocabularyViewController: UIViewController, TableDisplayCapable {
             .subscribe(onNext: {
                 self.launchPickerToImportCSV()
             }).disposed(by: self.bag)
+        self.viewModel.outputs.spinnerAnimating
+            .bind(to: self.spinner.animating)
+            .disposed(by: self.bag)
         
         self.viewModel.inputs.viewDidLoad.onNext(())
     }
