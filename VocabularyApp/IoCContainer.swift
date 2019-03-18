@@ -54,6 +54,7 @@ let appContainer: Container = {
     container.register(AddVocabularyViewModelType.self) { r in
         AddVocabularyViewModel(
             importVocabularyService: r.resolve(ImportVocabularyService.self)!,
+            setLocalDataService: r.resolve(SetLocalDataService.self)!,
             resultConverter: r.resolve(ResultConverter.self)!
         )
     }

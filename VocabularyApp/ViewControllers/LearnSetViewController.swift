@@ -34,4 +34,16 @@ class LearnSetViewController: UIViewController, SetManageable, SegueHandlerType 
         
         self.infoLabel.text = L10n.Action.AddVocabulary.hint
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = self.segueIdentifierForSegue(segue: segue) else {
+            return
+        }
+        switch identifier {
+        case .addVocabulary:
+            var destination = segue.destination as! SetManageable
+            destination.set = self.set
+            break
+        }
+    }
 }

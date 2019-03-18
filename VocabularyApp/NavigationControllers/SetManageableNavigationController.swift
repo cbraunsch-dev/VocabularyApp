@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class LearnSetNavigationController: UINavigationController, SetManageable {
+class SetManageableNavigationController: UINavigationController, SetManageable {
     var set: SetLocalDataModel? {
         didSet {
             if let topVC = self.topViewController {

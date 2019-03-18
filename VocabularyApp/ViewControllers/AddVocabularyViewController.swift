@@ -10,12 +10,16 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class AddVocabularyViewController: UIViewController, TableDisplayCapable {
+class AddVocabularyViewController: UIViewController, TableDisplayCapable, SetManageable, AlertDisplayable {
     private let bag = DisposeBag()
     private var sections = [TitleValueTableSection]()
     
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var spinner: ModalSpinnerView!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
+    var set: SetLocalDataModel?
     
     var viewModel: AddVocabularyViewModelType!
     var tableView: UITableView { get { return self.myTableView } }
@@ -26,6 +30,9 @@ class AddVocabularyViewController: UIViewController, TableDisplayCapable {
         self.title = L10n.Title.addVocabulary
         self.setupTable()
         
+        self.saveButton.rx.tap
+            .bind(to: self.viewModel.inputs.saveButtonTaps)
+            .disposed(by: self.bag)
         self.viewModel.outputs.sections
             .subscribe(onNext: { sections in
                 self.sections.removeAll()
@@ -39,7 +46,19 @@ class AddVocabularyViewController: UIViewController, TableDisplayCapable {
         self.viewModel.outputs.spinnerAnimating
             .bind(to: self.spinner.animating)
             .disposed(by: self.bag)
+        self.viewModel.outputs.saveButtonEnabled
+            .bind(to: self.saveButton.rx.isEnabled)
+            .disposed(by: self.bag)
+        self.viewModel.outputs.setSaved
+            .subscribe(onNext: {
+                self.dismiss(animated: true, completion: nil)
+            }).disposed(by: self.bag)
+        self.viewModel.outputs.error
+            .subscribe(onNext: { error in
+                self.showMessageAlert(title: error.title, message: error.message)
+            }).disposed(by: self.bag)
         
+        self.viewModel.inputs.set.onNext(self.set!)
         self.viewModel.inputs.viewDidLoad.onNext(())
     }
     

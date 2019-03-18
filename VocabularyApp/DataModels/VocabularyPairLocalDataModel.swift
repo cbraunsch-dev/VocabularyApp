@@ -9,11 +9,19 @@
 import Foundation
 
 struct VocabularyPairLocalDataModel: Equatable {
+    let id: String
     let wordOrPhrase: String
     let definition: String
     
+    init(wordOrPhrase: String, definition: String) {
+        self.id = UUID().uuidString
+        self.wordOrPhrase = wordOrPhrase
+        self.definition = definition
+    }
+    
     static func ==(lhs: VocabularyPairLocalDataModel, rhs: VocabularyPairLocalDataModel) -> Bool {
-        return lhs.wordOrPhrase == rhs.wordOrPhrase &&
+        return   lhs.id == rhs.id &&
+            lhs.wordOrPhrase == rhs.wordOrPhrase &&
             lhs.definition == rhs.definition
     }
 }

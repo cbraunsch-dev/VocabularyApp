@@ -12,6 +12,7 @@ import RealmSwift
 class SetEntity: Object {
     @objc public dynamic var setID = ""
     @objc public dynamic var name = ""
+    let vocabularyPairs = List<VocabularyPairEntity>()
     
     override public static func primaryKey() -> String? {
         return "setID"

@@ -17,6 +17,7 @@ class AddVocabularyViewControllerSnapshotTests: FBSnapshotTestCase, TestDataGene
     private let bag = DisposeBag()
     private var scheduler: TestScheduler!
     private var mockImportService: MockImportVocabularyService!
+    private var mockLocalSetService: MockSetLocalDataService!
     private var viewModel: AddVocabularyViewModel!
     private var viewController: AddVocabularyViewController!
     private var navigationViewController: UINavigationController!
@@ -27,7 +28,8 @@ class AddVocabularyViewControllerSnapshotTests: FBSnapshotTestCase, TestDataGene
         self.recordMode = false
         self.scheduler = TestScheduler(initialClock: 0)
         self.mockImportService = MockImportVocabularyService()
-        self.viewModel = AddVocabularyViewModel(importVocabularyService: self.mockImportService, resultConverter: VocabularyAppResultConverter(errorMessageService: LocalizedErrorMessageService()))
+        self.mockLocalSetService = MockSetLocalDataService()
+        self.viewModel = AddVocabularyViewModel(importVocabularyService: self.mockImportService, setLocalDataService: self.mockLocalSetService, resultConverter: VocabularyAppResultConverter(errorMessageService: LocalizedErrorMessageService()))
         self.viewController = (UIStoryboard(name: StoryboardName.addVocabulary.rawValue, bundle: Bundle.main).instantiateViewController(withIdentifier: "AddVocabularyViewController") as! AddVocabularyViewController)
         self.viewController.viewModel = self.viewModel
         self.navigationViewController = UINavigationController()
@@ -37,6 +39,7 @@ class AddVocabularyViewControllerSnapshotTests: FBSnapshotTestCase, TestDataGene
     override func tearDown() {
         self.scheduler = nil
         self.mockImportService = nil
+        self.mockLocalSetService = nil
         self.viewModel = nil
         self.viewController = nil
         self.navigationViewController = nil
@@ -44,32 +47,57 @@ class AddVocabularyViewControllerSnapshotTests: FBSnapshotTestCase, TestDataGene
     
     func testViewDidLoad_when_noVocabularyStored_then_onlyShowEntryToImportVocabulary() {
         //Arrange
+        let scheduler1 = TestScheduler(initialClock: 0)
+        let scheduler2 = TestScheduler(initialClock: 0)
         self.loadView(of: self.viewController)
+        scheduler1.createColdObservable([next(100, SetLocalDataModel(id: "1", name: "My Set"))]).asObservable().bind(to: self.viewModel.inputs.set).disposed(by: self.bag)
+        scheduler1.start()
         
         //Act
-        self.scheduler.createColdObservable([next(100, ())]).asObservable().bind(to: self.viewModel.inputs.viewDidLoad).disposed(by: self.bag)
-        self.scheduler.start()
+        scheduler2.createColdObservable([next(100, ())]).asObservable().bind(to: self.viewModel.inputs.viewDidLoad).disposed(by: self.bag)
+        scheduler2.start()
         
         //Assert
         verifyViewController(viewController: self.navigationViewController)
     }
     
-    //TODO: testViewDidLoad_when_vocabularyStored_then_displayAlreadyImportedVocabularyPairs
+    func testViewDidLoad_when_vocabularyStored_then_displayAlreadyImportedVocabularyPairs() {
+        //Arrange
+        let alreadyExistingVocabulary = self.createTestVocabularyPairs()
+        let set = SetLocalDataModel(id: "1", name: "My Set", vocabularyPairs: alreadyExistingVocabulary)
+        let scheduler1 = TestScheduler(initialClock: 0)
+        let scheduler2 = TestScheduler(initialClock: 0)
+        self.loadView(of: self.viewController)
+        
+        scheduler1.createColdObservable([next(100, set)]).asObservable().bind(to: self.viewModel.inputs.set).disposed(by: self.bag)
+        scheduler1.start()
+        
+        //Act
+        scheduler2.createColdObservable([next(100, ())]).asObservable().bind(to: self.viewModel.inputs.viewDidLoad).disposed(by: self.bag)
+        scheduler2.start()
+        
+        //Assert
+        verifyViewController(viewController: self.navigationViewController)
+    }
     
     func testImportFromFile_then_displayImportedVocabularyPairs() {
         //Arrange
         let scheduler1 = TestScheduler(initialClock: 0)
         let scheduler2 = TestScheduler(initialClock: 0)
-        self.viewModel.worker = scheduler2
-        self.viewModel.main = scheduler2
+        let scheduler3 = TestScheduler(initialClock: 0)
+        self.viewModel.worker = scheduler3
+        self.viewModel.main = scheduler3
         self.loadView(of: self.viewController)
-        scheduler1.createColdObservable([next(100, ())]).asObservable().bind(to: self.viewModel.inputs.viewDidLoad).disposed(by: self.bag)
+        scheduler1.createColdObservable([next(100, SetLocalDataModel(id: "1", name: "My Set"))]).asObservable().bind(to: self.viewModel.inputs.set).disposed(by: self.bag)
         scheduler1.start()
-        self.mockImportService.importVocabularyStub = scheduler2.createColdObservable([next(100, self.createTestVocabularyPairs())]).asObservable()
+        
+        scheduler2.createColdObservable([next(100, ())]).asObservable().bind(to: self.viewModel.inputs.viewDidLoad).disposed(by: self.bag)
+        scheduler2.start()
+        self.mockImportService.importVocabularyStub = scheduler3.createColdObservable([next(100, self.createTestVocabularyPairs())]).asObservable()
         
         //Act
-        scheduler2.createColdObservable([next(100, "File")]).asObservable().bind(to: self.viewModel.inputs.importFromFile).disposed(by: self.bag)
-        scheduler2.start()
+        scheduler3.createColdObservable([next(100, "File")]).asObservable().bind(to: self.viewModel.inputs.importFromFile).disposed(by: self.bag)
+        scheduler3.start()
         
         //Assert
         verifyViewController(viewController: self.navigationViewController)
@@ -79,16 +107,19 @@ class AddVocabularyViewControllerSnapshotTests: FBSnapshotTestCase, TestDataGene
         //Arrange
         let scheduler1 = TestScheduler(initialClock: 0)
         let scheduler2 = TestScheduler(initialClock: 0)
-        self.viewModel.worker = scheduler2
-        self.viewModel.main = scheduler2
+        let scheduler3 = TestScheduler(initialClock: 0)
+        self.viewModel.worker = scheduler3
+        self.viewModel.main = scheduler3
         self.loadView(of: self.viewController)
-        scheduler1.createColdObservable([next(100, ())]).asObservable().bind(to: self.viewModel.inputs.viewDidLoad).disposed(by: self.bag)
+        scheduler1.createColdObservable([next(100, SetLocalDataModel(id: "1", name: "My Set"))]).asObservable().bind(to: self.viewModel.inputs.set).disposed(by: self.bag)
         scheduler1.start()
+        scheduler2.createColdObservable([next(100, ())]).asObservable().bind(to: self.viewModel.inputs.viewDidLoad).disposed(by: self.bag)
+        scheduler2.start()
         self.mockImportService.importVocabularyStub = Observable<[VocabularyPairLocalDataModel]>.empty()
         
         //Act
-        scheduler2.createColdObservable([next(100, "File")]).asObservable().bind(to: self.viewModel.inputs.importFromFile).disposed(by: self.bag)
-        scheduler2.start()
+        scheduler3.createColdObservable([next(100, "File")]).asObservable().bind(to: self.viewModel.inputs.importFromFile).disposed(by: self.bag)
+        scheduler3.start()
         
         //Assert
         verifyViewController(viewController: self.navigationViewController)

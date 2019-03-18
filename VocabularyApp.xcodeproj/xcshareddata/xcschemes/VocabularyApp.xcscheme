@@ -63,11 +63,10 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "2">
-      <RemoteRunnable
-         runnableDebuggingMode = "1"
-         BundleIdentifier = "com.braunsch.VocabularyApp"
-         RemotePath = "/var/containers/Bundle/Application/DFE6721A-6D34-41A7-A064-FFEFB1A04DA4/VocabularyApp.app">
-      </RemoteRunnable>
+      <PathRunnable
+         runnableDebuggingMode = "0"
+         FilePath = "/&lt;placeholder&gt;">
+      </PathRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
