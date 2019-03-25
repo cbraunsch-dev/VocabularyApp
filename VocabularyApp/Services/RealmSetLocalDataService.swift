@@ -61,6 +61,13 @@ class RealmSetLocalDataService: RealmLocalDataService, SetLocalDataService {
                 let set = SetEntity()
                 set.setID = item.id
                 set.name = item.name
+                item.vocabularyPairs.forEach { pair in
+                    let pairEntity = VocabularyPairEntity()
+                    pairEntity.pairID = pair.id
+                    pairEntity.definition = pair.definition
+                    pairEntity.wordOrPhrase = pair.wordOrPhrase
+                    set.vocabularyPairs.append(pairEntity)
+                }
                 try realm.write(transaction: {
                     realm.add(set, update: true)
                 }, completion:  {
