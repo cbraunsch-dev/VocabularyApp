@@ -83,6 +83,41 @@ class RealmSetLocalDataServiceTests: XCTestCase, AssertionDataExtractionCapable,
         }
     }
     
+    func testReadAll_when_existingItemsWithVocabularyPairs_then_returnItemsWithPairs() {
+        //Arrange
+        let observer = self.scheduler.createObserver([SetLocalDataModel].self)
+        let existingData = self.createTestSetEntitiesWithVocabularyPairs()
+        let testRealm = try! Realm()
+        try! testRealm.write {
+            existingData.forEach {
+                testRealm.add($0)
+            }
+        }
+        
+        //Act
+        self.testee.readAll().subscribe(observer).disposed(by: self.bag)
+        
+        //Assert
+        guard let result = self.extractValue(from: observer) else {
+            XCTFail("Failed to return a result")
+            return
+        }
+        XCTAssertEqual(existingData.count, result.count, "Returned incorrect number of items")
+        existingData.forEach { existingItem in
+            let itemExists = result.contains(where: { item in
+                item.id == existingItem.setID && item.name == existingItem.name
+            })
+            XCTAssertTrue(itemExists, "Failed to find already existing item")
+            existingItem.vocabularyPairs.forEach { existingPair in
+                let pairExists = result.contains(where: { item in
+                    return item.vocabularyPairs.contains(where: { resultPair in
+                        return resultPair.wordOrPhrase == existingPair.wordOrPhrase && resultPair.definition == existingPair.definition && resultPair.id == existingPair.pairID })
+                })
+                XCTAssertTrue(pairExists, "Failed to read out stored vocabulary pairs")
+            }
+        }
+    }
+    
     func testGetItemById_when_itemDoesNotExist_then_returnNil() {
         //Arrange
         let observer = self.scheduler.createObserver(SetLocalDataModel?.self)
@@ -116,6 +151,38 @@ class RealmSetLocalDataServiceTests: XCTestCase, AssertionDataExtractionCapable,
         }
         XCTAssertEqual(existingItem.setID, result?.id)
         XCTAssertEqual(existingItem.name, result?.name)
+    }
+    
+    func testGetItemById_when_existingItemWithVocabularyPairs_then_returnItemWithPairs() {
+        //Arrange
+        let idToSearchFor = "123"
+        let observer = self.scheduler.createObserver(SetLocalDataModel?.self)
+        let existingItem = self.createTestSetEntityWithVocabularyPairs()
+        existingItem.setID = idToSearchFor
+        let testRealm = try! Realm()
+        try! testRealm.write {
+            testRealm.add(existingItem)
+        }
+        
+        //Act
+        self.testee.getItemById(with: idToSearchFor).subscribe(observer).disposed(by: self.bag)
+        
+        //Assert
+        guard let result = self.extractValue(from: observer) else {
+            XCTFail("Failed to return a result")
+            return
+        }
+        XCTAssertEqual(existingItem.setID, result?.id)
+        XCTAssertEqual(existingItem.name, result?.name)
+        existingItem.vocabularyPairs.forEach { existingPair in
+            guard let pairExists = result?.vocabularyPairs.contains(where: { item in
+                return item.wordOrPhrase == existingPair.wordOrPhrase && item.definition == existingPair.definition && item.id == existingPair.pairID }
+                ) else {
+                    XCTFail("Failed to find vocabulary pair")
+                    return
+            }
+            XCTAssertTrue(pairExists, "Failed to read out stored vocabulary pairs")
+        }
     }
     
     func testSaveItem_when_itemNotAlreadyExists_then_saveNewItem() {
@@ -165,6 +232,8 @@ class RealmSetLocalDataServiceTests: XCTestCase, AssertionDataExtractionCapable,
             XCTFail("Saved incorrect number of items")
         }
     }
+    
+    //TODO: testSaveItem_when_itemContainsVocabularyPairs_then_savePairs
     
     func testRemoveItem_when_itemDoesNotExist_then_doNothing() {
         //Arrange

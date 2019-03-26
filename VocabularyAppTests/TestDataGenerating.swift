@@ -31,6 +31,64 @@ extension TestDataGenerating {
         return [entity1, entity2, entity3]
     }
     
+    func createTestSetEntitiesWithVocabularyPairs() -> [SetEntity] {
+        let entity1 = SetEntity()
+        entity1.setID = "1"
+        entity1.name = "Serbian"
+        
+        let vocabPair1_1 = VocabularyPairEntity()
+        vocabPair1_1.pairID = "1_1"
+        vocabPair1_1.definition = "Thank you"
+        vocabPair1_1.wordOrPhrase = "Hvala"
+        
+        let vocabPair1_2 = VocabularyPairEntity()
+        vocabPair1_2.pairID = "1_2"
+        vocabPair1_2.definition = "Tomorrow"
+        vocabPair1_2.wordOrPhrase = "Sutra"
+        
+        entity1.vocabularyPairs.append(vocabPair1_1)
+        entity1.vocabularyPairs.append(vocabPair1_2)
+        
+        let entity2 = SetEntity()
+        entity2.setID = "2"
+        entity2.name = "Spanish"
+        
+        let vocabPair2_1 = VocabularyPairEntity()
+        vocabPair2_1.pairID = "2_1"
+        vocabPair2_1.definition = "Thank you"
+        vocabPair2_1.wordOrPhrase = "Gracias"
+        
+        let vocabPair2_2 = VocabularyPairEntity()
+        vocabPair2_2.pairID = "2_2"
+        vocabPair2_2.definition = "Tomorrow"
+        vocabPair2_2.wordOrPhrase = "Mañana"
+        
+        entity2.vocabularyPairs.append(vocabPair2_1)
+        entity2.vocabularyPairs.append(vocabPair2_2)
+        
+        return [entity1, entity2]
+    }
+    
+    func createTestSetEntityWithVocabularyPairs() -> SetEntity {
+        let vocabPair1_1 = VocabularyPairEntity()
+        vocabPair1_1.pairID = "1_1"
+        vocabPair1_1.definition = "Thank you"
+        vocabPair1_1.wordOrPhrase = "Hvala"
+        
+        let vocabPair1_2 = VocabularyPairEntity()
+        vocabPair1_2.pairID = "1_2"
+        vocabPair1_2.definition = "Tomorrow"
+        vocabPair1_2.wordOrPhrase = "Sutra"
+        
+        let entity1 = SetEntity()
+        entity1.setID = "1"
+        entity1.name = "Serbian"
+        entity1.vocabularyPairs.append(vocabPair1_1)
+        entity1.vocabularyPairs.append(vocabPair1_2)
+        
+        return entity1
+    }
+    
     func createTestSetLocalDataModels() -> [SetLocalDataModel] {
         let set1 = SetLocalDataModel(id: "1", name: "Serbian")
         let set2 = SetLocalDataModel(id: "2", name: "Spanish")

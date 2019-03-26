@@ -13,14 +13,17 @@ import RealmSwift
 class RealmSetLocalDataService: RealmLocalDataService, SetLocalDataService {
     private let bag = DisposeBag()
     
+    //TODO: Read out vocab pairs
     func readAll() -> Observable<[SetLocalDataModel]> {
         return Observable<[SetLocalDataModel]>.create { observer in
             do {
                 let realm = try self.obtainRealm()
                 let data = realm.objects(SetEntity.self)
                 let sets = Array(data)
-                let emittableData = sets.map { entity in
-                    return SetLocalDataModel(id: entity.setID, name: entity.name)
+                let emittableData = sets.map { entity -> SetLocalDataModel in
+                    let vocabPairCollection = entity.vocabularyPairs.map { VocabularyPairLocalDataModel(id: $0.pairID, wordOrPhrase: $0.wordOrPhrase, definition: $0.definition) }
+                    let pairs = [VocabularyPairLocalDataModel](vocabPairCollection)
+                    return SetLocalDataModel(id: entity.setID, name: entity.name, vocabularyPairs: pairs)
                 }
                 observer.onNext(emittableData)
             } catch {
@@ -38,7 +41,9 @@ class RealmSetLocalDataService: RealmLocalDataService, SetLocalDataService {
                     observer.onNext(nil)
                     return Disposables.create()
                 }
-                let emittableData = SetLocalDataModel(id: set.setID, name: set.name)
+                let vocabPairCollection = set.vocabularyPairs.map { VocabularyPairLocalDataModel(id: $0.pairID, wordOrPhrase: $0.wordOrPhrase, definition: $0.definition) }
+                let pairs = [VocabularyPairLocalDataModel](vocabPairCollection)
+                let emittableData = SetLocalDataModel(id: set.setID, name: set.name, vocabularyPairs: pairs)
                 observer.onNext(emittableData)
             } catch {
                 observer.onError(error)

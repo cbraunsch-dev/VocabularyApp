@@ -19,6 +19,12 @@ struct VocabularyPairLocalDataModel: Equatable {
         self.definition = definition
     }
     
+    init(id: String, wordOrPhrase: String, definition: String) {
+        self.id = id
+        self.wordOrPhrase = wordOrPhrase
+        self.definition = definition
+    }
+    
     static func ==(lhs: VocabularyPairLocalDataModel, rhs: VocabularyPairLocalDataModel) -> Bool {
         return   lhs.id == rhs.id &&
             lhs.wordOrPhrase == rhs.wordOrPhrase &&
