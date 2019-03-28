@@ -49,6 +49,7 @@ class AddVocabularyViewControllerSnapshotTests: FBSnapshotTestCase, TestDataGene
         //Arrange
         let scheduler1 = TestScheduler(initialClock: 0)
         let scheduler2 = TestScheduler(initialClock: 0)
+        self.viewController.set = SetLocalDataModel(id: "1", name: "Set")
         self.loadView(of: self.viewController)
         scheduler1.createColdObservable([next(100, SetLocalDataModel(id: "1", name: "My Set"))]).asObservable().bind(to: self.viewModel.inputs.set).disposed(by: self.bag)
         scheduler1.start()
@@ -67,6 +68,7 @@ class AddVocabularyViewControllerSnapshotTests: FBSnapshotTestCase, TestDataGene
         let set = SetLocalDataModel(id: "1", name: "My Set", vocabularyPairs: alreadyExistingVocabulary)
         let scheduler1 = TestScheduler(initialClock: 0)
         let scheduler2 = TestScheduler(initialClock: 0)
+        self.viewController.set = set
         self.loadView(of: self.viewController)
         
         scheduler1.createColdObservable([next(100, set)]).asObservable().bind(to: self.viewModel.inputs.set).disposed(by: self.bag)
@@ -87,6 +89,7 @@ class AddVocabularyViewControllerSnapshotTests: FBSnapshotTestCase, TestDataGene
         let scheduler3 = TestScheduler(initialClock: 0)
         self.viewModel.worker = scheduler3
         self.viewModel.main = scheduler3
+        self.viewController.set = SetLocalDataModel(id: "1", name: "Set")
         self.loadView(of: self.viewController)
         scheduler1.createColdObservable([next(100, SetLocalDataModel(id: "1", name: "My Set"))]).asObservable().bind(to: self.viewModel.inputs.set).disposed(by: self.bag)
         scheduler1.start()
@@ -110,6 +113,7 @@ class AddVocabularyViewControllerSnapshotTests: FBSnapshotTestCase, TestDataGene
         let scheduler3 = TestScheduler(initialClock: 0)
         self.viewModel.worker = scheduler3
         self.viewModel.main = scheduler3
+        self.viewController.set = SetLocalDataModel(id: "1", name: "Set")
         self.loadView(of: self.viewController)
         scheduler1.createColdObservable([next(100, SetLocalDataModel(id: "1", name: "My Set"))]).asObservable().bind(to: self.viewModel.inputs.set).disposed(by: self.bag)
         scheduler1.start()

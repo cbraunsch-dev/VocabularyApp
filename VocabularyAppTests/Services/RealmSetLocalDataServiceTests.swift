@@ -233,7 +233,35 @@ class RealmSetLocalDataServiceTests: XCTestCase, AssertionDataExtractionCapable,
         }
     }
     
-    //TODO: testSaveItem_when_itemContainsVocabularyPairs_then_savePairs
+    func testSaveItem_when_itemContainsVocabularyPairs_then_savePairs() {
+        //Arrange
+        let idThatWasSaved = "1"
+        let nameThatWasSaved = "Spanish"
+        let pairs = self.createTestVocabularyPairs()
+        let observer = self.scheduler.createObserver(Void.self)
+        let newItem = SetLocalDataModel(id: idThatWasSaved, name: nameThatWasSaved, vocabularyPairs: pairs)
+        
+        //Act
+        self.testee.save(item: newItem).subscribe(observer).disposed(by: self.bag)
+        
+        //Assert
+        let testRealm = try! Realm()
+        let results = testRealm.objects(SetEntity.self)
+        guard results.count == 1 else {
+            XCTFail("Saved incorrect number of items")
+            return
+        }
+        guard results[0].vocabularyPairs.count == pairs.count else {
+            XCTFail("Failed to store vocabulary pairs")
+            return
+        }
+        pairs.forEach { pair in
+            let pairStored = results[0].vocabularyPairs.contains { storedPair in
+                storedPair.pairID == pair.id && storedPair.wordOrPhrase == pair.wordOrPhrase && storedPair.definition == pair.definition
+            }
+            XCTAssertTrue(pairStored)
+        }
+    }
     
     func testRemoveItem_when_itemDoesNotExist_then_doNothing() {
         //Arrange
