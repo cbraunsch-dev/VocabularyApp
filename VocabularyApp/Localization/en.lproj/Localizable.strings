@@ -22,3 +22,6 @@
 
 "alert.addSet.message" = "Enter a name for the set.";
 "alert.addSet.textField.placeholder" = "Set name";
+
+"error.error" = "Error";
+"error.setNotFound" = "The set could not be found";

@@ -23,6 +23,7 @@ class AddVocabularyViewController: UIViewController, TableDisplayCapable, SetMan
     
     var viewModel: AddVocabularyViewModelType!
     var tableView: UITableView { get { return self.myTableView } }
+    var delegate: AddVocabularyViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +55,7 @@ class AddVocabularyViewController: UIViewController, TableDisplayCapable, SetMan
             .disposed(by: self.bag)
         self.viewModel.outputs.setSaved
             .subscribe(onNext: {
-                self.dismiss(animated: true, completion: nil)
+                self.dismiss(animated: true, completion: { self.delegate?.didAddVocabulary() })
             }).disposed(by: self.bag)
         self.viewModel.outputs.error
             .subscribe(onNext: { error in
@@ -114,4 +115,8 @@ extension AddVocabularyViewController: UIDocumentPickerDelegate {
             self.viewModel.inputs.importFromFile.onNext(urls.first!.path)
         }
     }
+}
+
+protocol AddVocabularyViewControllerDelegate {
+    func didAddVocabulary()
 }

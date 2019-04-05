@@ -46,6 +46,13 @@ internal enum L10n {
     }
   }
 
+  internal enum Error {
+    /// Error
+    internal static let error = L10n.tr("Localizable", "error.error")
+    /// The set could not be found
+    internal static let setNotFound = L10n.tr("Localizable", "error.setNotFound")
+  }
+
   internal enum Title {
     /// Add Set
     internal static let addSet = L10n.tr("Localizable", "title.addSet")

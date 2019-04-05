@@ -21,5 +21,8 @@ extension SwinjectStoryboard {
         defaultContainer.storyboardInitCompleted(AddVocabularyViewController.self) { r, c in
             c.viewModel = appContainer.resolve(AddVocabularyViewModelType.self)!
         }
+        defaultContainer.storyboardInitCompleted(LearnSetViewController.self) { r, c in
+            c.viewModel = appContainer.resolve(LearnSetViewModelType.self)!
+        }
     }
 }

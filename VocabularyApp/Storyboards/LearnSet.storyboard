@@ -13,11 +13,25 @@
         <!--Title-->
         <scene sceneID="o5p-iM-wB3">
             <objects>
-                <viewController id="Hbf-nJ-uTX" customClass="LearnSetViewController" customModule="VocabularyApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LearnSetViewController" automaticallyAdjustsScrollViewInsets="NO" id="Hbf-nJ-uTX" customClass="LearnSetViewController" customModule="VocabularyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RHN-fu-deg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="IGS-0J-dep">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TitleValueTableViewCell" id="5Io-0r-iAt" customClass="TitleValueTableViewCell" customModule="VocabularyApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Io-0r-iAt" id="Dgg-dG-8TX">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8kc-EQ-QsY">
                                 <rect key="frame" x="16" y="306.5" width="343" height="54.5"/>
                                 <subviews>
@@ -47,6 +61,10 @@
                             <constraint firstItem="Xf8-Qy-e1D" firstAttribute="trailing" secondItem="8kc-EQ-QsY" secondAttribute="trailing" constant="16" id="45G-UJ-eNA"/>
                             <constraint firstItem="8kc-EQ-QsY" firstAttribute="leading" secondItem="Xf8-Qy-e1D" secondAttribute="leading" constant="16" id="QTh-JT-9AC"/>
                             <constraint firstItem="8kc-EQ-QsY" firstAttribute="centerY" secondItem="RHN-fu-deg" secondAttribute="centerY" id="SAz-B3-XGb"/>
+                            <constraint firstItem="Xf8-Qy-e1D" firstAttribute="trailing" secondItem="IGS-0J-dep" secondAttribute="trailing" id="UXF-YS-KVi"/>
+                            <constraint firstItem="IGS-0J-dep" firstAttribute="top" secondItem="Xf8-Qy-e1D" secondAttribute="top" id="fWb-yZ-xlo"/>
+                            <constraint firstItem="IGS-0J-dep" firstAttribute="leading" secondItem="Xf8-Qy-e1D" secondAttribute="leading" id="fvg-Bp-3pJ"/>
+                            <constraint firstItem="Xf8-Qy-e1D" firstAttribute="bottom" secondItem="IGS-0J-dep" secondAttribute="bottom" id="rsc-3d-Ptd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xf8-Qy-e1D"/>
                     </view>
@@ -55,6 +73,7 @@
                         <outlet property="emptyView" destination="8kc-EQ-QsY" id="wsB-D9-pgq"/>
                         <outlet property="infoIcon" destination="5fF-kd-Rp8" id="Zrr-Ej-9Zf"/>
                         <outlet property="infoLabel" destination="QmO-O2-fYg" id="IYE-zg-BeN"/>
+                        <outlet property="myTableView" destination="IGS-0J-dep" id="hah-30-t7u"/>
                         <segue destination="Ml9-EE-fa3" kind="presentation" identifier="addVocabulary" id="QXv-vA-JWp"/>
                     </connections>
                 </viewController>

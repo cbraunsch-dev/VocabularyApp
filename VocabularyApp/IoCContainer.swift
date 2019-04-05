@@ -58,6 +58,12 @@ let appContainer: Container = {
             resultConverter: r.resolve(ResultConverter.self)!
         )
     }
+    container.register(LearnSetViewModelType.self) { r in
+        LearnSetViewModel(
+            setLocalDataService: r.resolve(SetLocalDataService.self)!,
+            resultConverter: r.resolve(ResultConverter.self)!
+        )
+    }
     
     return container
 }()
