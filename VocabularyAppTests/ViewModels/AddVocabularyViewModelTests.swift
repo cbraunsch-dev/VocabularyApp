@@ -57,6 +57,28 @@ class AddVocabularyViewModelTests: XCTestCase, AssertionDataExtractionCapable, T
         XCTAssertNotNil(self.extractValue(from: observer))
     }
     
+    func testSelectitem_when_selectedItemInSecondSection_then_dontOpenFileBrowser() {
+        //Arrange
+        let scheduler1 = TestScheduler(initialClock: 0)
+        let scheduler2 = TestScheduler(initialClock: 0)
+        let scheduler3 = TestScheduler(initialClock: 0)
+        let observer = scheduler2.createObserver(Void.self)
+        self.testee.outputs.openFileBrowser.subscribe(observer).disposed(by: self.bag)
+        let alreadyExistingVocabulary = self.createTestVocabularyPairs()
+        let set = SetLocalDataModel(id: "1", name: "My Set", vocabularyPairs: alreadyExistingVocabulary)
+        scheduler1.createColdObservable([next(100, set)]).asObservable().bind(to: self.testee.inputs.set).disposed(by: self.bag)
+        scheduler1.start()
+        scheduler2.createColdObservable([next(100, ())]).asObservable().bind(to: self.testee.inputs.viewDidLoad).disposed(by: self.bag)
+        scheduler2.start()
+        
+        //Act
+        scheduler3.createColdObservable([next(100, IndexPath(row: 0, section: 1))]).asObservable().bind(to: self.testee.inputs.selectItem).disposed(by: self.bag)
+        scheduler3.start()
+        
+        //Assert
+        XCTAssertNil(self.extractValue(from: observer))
+    }
+    
     func testSaveButtonTaps_then_saveSet() {
         //Arrange
         let scheduler1 = TestScheduler(initialClock: 0)

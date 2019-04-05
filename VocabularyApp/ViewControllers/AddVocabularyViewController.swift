@@ -33,6 +33,9 @@ class AddVocabularyViewController: UIViewController, TableDisplayCapable, SetMan
         self.saveButton.rx.tap
             .bind(to: self.viewModel.inputs.saveButtonTaps)
             .disposed(by: self.bag)
+        self.cancelButton.rx.tap
+            .subscribe(onNext: { self.dismiss(animated: true, completion: nil) })
+            .disposed(by: self.bag)
         self.viewModel.outputs.sections
             .subscribe(onNext: { sections in
                 self.sections.removeAll()

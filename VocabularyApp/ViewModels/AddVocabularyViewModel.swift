@@ -39,6 +39,7 @@ class AddVocabularyViewModel: AddVocabularyViewModelType, AddVocabularyViewModel
     private let importVocabularyResult = PublishSubject<OperationResult<[VocabularyPairLocalDataModel]>>()
     private let saveSetResult = PublishSubject<OperationResult<Void>>()
     private let snapshot = PublishSubject<SetLocalDataModel>()
+    private let selectedTableItemAction = PublishSubject<TableItemAction>()
     
     let viewDidLoad = PublishSubject<Void>()
     let set = PublishSubject<SetLocalDataModel>()
@@ -73,10 +74,8 @@ class AddVocabularyViewModel: AddVocabularyViewModelType, AddVocabularyViewModel
             .disposed(by: self.bag)
         self.inputs.selectItem
             .withLatestFrom(self.outputs.sections) { (selection: $0, sections: $1) }
-            .map { $0.sections[$0.selection.section].items[$0.selection.row].action as! AddVocabularyItemAction }
-            .filter { $0 == AddVocabularyItemAction.importFromCsv }
-            .map { _ in return }
-            .bind(to: self.outputs.openFileBrowser)
+            .map { $0.sections[$0.selection.section].items[$0.selection.row].action }
+            .bind(to: self.selectedTableItemAction)
             .disposed(by: self.bag)
         self.inputs.importFromFile
             .map { _ in true }
@@ -98,6 +97,12 @@ class AddVocabularyViewModel: AddVocabularyViewModelType, AddVocabularyViewModel
             }.bind(to: self.saveSetResult)
             .disposed(by: self.bag)
         
+        self.selectedTableItemAction
+            .filter { $0 is AddVocabularyItemAction }.map { $0 as! AddVocabularyItemAction }
+            .filter { $0 == AddVocabularyItemAction.importFromCsv }
+            .map { _ in return }
+            .bind(to: self.outputs.openFileBrowser)
+            .disposed(by: self.bag)
         self.importVocabularyResult
             .map { _ in false }
             .bind(to: self.outputs.spinnerAnimating)
