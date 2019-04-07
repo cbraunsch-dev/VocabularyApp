@@ -14,17 +14,16 @@ protocol ErrorMessageService {
 
 class LocalizedErrorMessageService: ErrorMessageService {
     func getMessage(for error: Error) -> String {
-        /*if let dataAccessorError = error as? DataAccessorError {
+        if let dataAccessorError = error as? DataAccessorError {
             switch dataAccessorError {
             case .failedToAccessDatabase:
-                    return L10n.Error.DataAccessor.failedToAccessDatabase
+                    return L10n.Error.DataAccess.failedToAccessDb
             case .itemToDeleteNotFound:
-                return L10n.Error.DataAccessor.itemToDeleteNotFound
+                return L10n.Error.DataAccess.itemToDeleteNotFound
             case .outOfDiskSpace:
-                return L10n.Error.DataAccessor.outOfDiskSpace
+                return L10n.Error.DataAccess.outOfDiskSpace
             }
         }
-        return L10n.Error.generic*/
-        return "Hello"
+        return L10n.Error.generic
     }
 }

@@ -24,4 +24,8 @@
 "alert.addSet.textField.placeholder" = "Set name";
 
 "error.error" = "Error";
+"error.generic" = "An error occurred";
 "error.setNotFound" = "The set could not be found";
+"error.dataAccess.failedToAccessDb" = "Failed to access local database";
+"error.dataAccess.itemToDeleteNotFound" = "The item to delete was not found";
+"error.dataAccess.outOfDiskSpace" = "Out of disk space";

@@ -49,8 +49,18 @@ internal enum L10n {
   internal enum Error {
     /// Error
     internal static let error = L10n.tr("Localizable", "error.error")
+    /// An error occurred
+    internal static let generic = L10n.tr("Localizable", "error.generic")
     /// The set could not be found
     internal static let setNotFound = L10n.tr("Localizable", "error.setNotFound")
+    internal enum DataAccess {
+      /// Failed to access local database
+      internal static let failedToAccessDb = L10n.tr("Localizable", "error.dataAccess.failedToAccessDb")
+      /// The item to delete was not found
+      internal static let itemToDeleteNotFound = L10n.tr("Localizable", "error.dataAccess.itemToDeleteNotFound")
+      /// Out of disk space
+      internal static let outOfDiskSpace = L10n.tr("Localizable", "error.dataAccess.outOfDiskSpace")
+    }
   }
 
   internal enum Title {
