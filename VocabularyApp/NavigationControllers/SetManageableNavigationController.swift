@@ -9,7 +9,19 @@
 import Foundation
 import UIKit
 
-class SetManageableNavigationController: UINavigationController, SetManageable {
+class SetManageableNavigationController: UINavigationController, SetManageable, WorkflowCapable, WorkflowInterested {
+    var workflowDelegate: WorkflowInterested? {
+        didSet {
+            guard let topVC = self.topViewController else {
+                return
+            }
+            guard var workflowCapable = topVC as? WorkflowCapable else {
+                return
+            }
+            workflowCapable.workflowDelegate = self.workflowDelegate
+        }
+    }
+    
     var set: SetLocalDataModel? {
         didSet {
             if let topVC = self.topViewController {
@@ -17,5 +29,9 @@ class SetManageableNavigationController: UINavigationController, SetManageable {
                 vcThatManagesSets.set = self.set
             }
         }
+    }
+    
+    func didFinishWorkflow(actionToPerform: WorkflowCompletionAction) {
+        self.workflowDelegate?.didFinishWorkflow(actionToPerform: actionToPerform)
     }
 }

@@ -65,9 +65,10 @@ class LearnSetViewController: UIViewController, TableDisplayCapable, AlertDispla
         }
         switch identifier {
         case .addVocabulary:
-            let destination = segue.destination as! AddVocabularyViewController
-            destination.set = self.set
-            destination.delegate = self
+            var setManageableVc = segue.destination as! SetManageable
+            setManageableVc.set = self.set
+            var workflowVc = segue.destination as! WorkflowCapable
+            workflowVc.workflowDelegate = self
             break
         }
     }
@@ -98,8 +99,8 @@ class LearnSetViewController: UIViewController, TableDisplayCapable, AlertDispla
     }
 }
 
-extension LearnSetViewController: AddVocabularyViewControllerDelegate {
-    func didAddVocabulary() {
+extension LearnSetViewController: WorkflowInterested {
+    func didFinishWorkflow(actionToPerform: WorkflowCompletionAction) {
         self.viewModel.inputs.didAddVocabulary.onNext(())
     }
 }

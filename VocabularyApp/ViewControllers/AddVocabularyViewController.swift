@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class AddVocabularyViewController: UIViewController, TableDisplayCapable, SetManageable, AlertDisplayable {
+class AddVocabularyViewController: UIViewController, TableDisplayCapable, SetManageable, AlertDisplayable, WorkflowCapable {
     private let bag = DisposeBag()
     private var sections = [TitleValueTableSection]()
     
@@ -20,10 +20,10 @@ class AddVocabularyViewController: UIViewController, TableDisplayCapable, SetMan
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     var set: SetLocalDataModel?
+    var workflowDelegate: WorkflowInterested?
     
     var viewModel: AddVocabularyViewModelType!
     var tableView: UITableView { get { return self.myTableView } }
-    var delegate: AddVocabularyViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +55,7 @@ class AddVocabularyViewController: UIViewController, TableDisplayCapable, SetMan
             .disposed(by: self.bag)
         self.viewModel.outputs.setSaved
             .subscribe(onNext: {
-                self.dismiss(animated: true, completion: { self.delegate?.didAddVocabulary() })
+                self.dismiss(animated: true, completion: { self.workflowDelegate?.didFinishWorkflow(actionToPerform: GenericWorkflowCompletionAction.nothing) })
             }).disposed(by: self.bag)
         self.viewModel.outputs.error
             .subscribe(onNext: { error in
@@ -115,8 +115,4 @@ extension AddVocabularyViewController: UIDocumentPickerDelegate {
             self.viewModel.inputs.importFromFile.onNext(urls.first!.path)
         }
     }
-}
-
-protocol AddVocabularyViewControllerDelegate {
-    func didAddVocabulary()
 }
