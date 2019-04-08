@@ -85,11 +85,9 @@ class AddVocabularyViewModelTests: XCTestCase, AssertionDataExtractionCapable, T
         let scheduler2 = TestScheduler(initialClock: 0)
         let scheduler3 = TestScheduler(initialClock: 0)
         let scheduler4 = TestScheduler(initialClock: 0)
-        let observer = scheduler2.createObserver(Void.self)
         let importedVocabularyPairs = self.createTestVocabularyPairs()
         let expectedSetToBeSaved = SetLocalDataModel(id: "123", name: "My Set", vocabularyPairs: importedVocabularyPairs)
-        self.mockLocalSetService.saveItemStub = scheduler3.createColdObservable([next(100, ())]).asObservable()
-        self.testee.outputs.openFileBrowser.subscribe(observer).disposed(by: self.bag)
+        self.mockLocalSetService.saveItemStub = Observable<Void>.empty()
         scheduler1.createColdObservable([next(100, SetLocalDataModel(id: expectedSetToBeSaved.id, name: expectedSetToBeSaved.name))]).asObservable().bind(to: self.testee.inputs.set).disposed(by: self.bag)
         scheduler1.start()
         scheduler2.createColdObservable([next(100, ())]).asObservable().bind(to: self.testee.inputs.viewDidLoad).disposed(by: self.bag)
@@ -107,5 +105,35 @@ class AddVocabularyViewModelTests: XCTestCase, AssertionDataExtractionCapable, T
         
         //Assert
         XCTAssertEqual(expectedSetToBeSaved, self.mockLocalSetService.savedItem)
+    }
+    
+    func testSaveButtonTaps_when_savedSet_then_emitSetSaved() {
+        //Arrange
+        let scheduler1 = TestScheduler(initialClock: 0)
+        let scheduler2 = TestScheduler(initialClock: 0)
+        let scheduler3 = TestScheduler(initialClock: 0)
+        let scheduler4 = TestScheduler(initialClock: 0)
+        let observer = scheduler4.createObserver(Void.self)
+        let importedVocabularyPairs = self.createTestVocabularyPairs()
+        let expectedSetToBeSaved = SetLocalDataModel(id: "123", name: "My Set", vocabularyPairs: importedVocabularyPairs)
+        self.mockLocalSetService.saveItemStub = scheduler4.createColdObservable([next(100, ())]).asObservable()
+        self.testee.outputs.setSaved.subscribe(observer).disposed(by: self.bag)
+        scheduler1.createColdObservable([next(100, SetLocalDataModel(id: expectedSetToBeSaved.id, name: expectedSetToBeSaved.name))]).asObservable().bind(to: self.testee.inputs.set).disposed(by: self.bag)
+        scheduler1.start()
+        scheduler2.createColdObservable([next(100, ())]).asObservable().bind(to: self.testee.inputs.viewDidLoad).disposed(by: self.bag)
+        scheduler2.start()
+        
+        self.mockImportService.importVocabularyStub = scheduler3.createColdObservable([next(100, importedVocabularyPairs)]).asObservable()
+        self.testee.worker = scheduler3
+        self.testee.main = scheduler3
+        scheduler3.createColdObservable([next(100, "SomeFile")]).asObservable().bind(to: self.testee.inputs.importFromFile).disposed(by: self.bag)
+        scheduler3.start()
+        
+        //Act
+        scheduler4.createColdObservable([next(100, ())]).asObservable().bind(to: self.testee.inputs.saveButtonTaps).disposed(by: self.bag)
+        scheduler4.start()
+        
+        //Assert
+        XCTAssertNotNil(self.extractValue(from: observer))
     }
 }

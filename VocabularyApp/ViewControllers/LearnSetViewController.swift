@@ -27,16 +27,17 @@ class LearnSetViewController: UIViewController, TableDisplayCapable, AlertDispla
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var infoIcon: UIImageView!
     @IBOutlet weak var myTableView: UITableView!
+    @IBOutlet weak var addButton: UIBarButtonItem!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.title = L10n.Action.learn
+        self.title = L10n.Action.learn
         self.tabBarController?.title = self.set?.name
         self.setupTable()
         
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
-        self.tabBarController?.navigationItem.rightBarButtonItem = addButton
-        addButton.rx.tap.subscribe(onNext: { self.performSegueWithIdentifier(segueIdentifier: .addVocabulary, sender: self) }).disposed(by: self.bag)
+        self.addButton.rx.tap.subscribe(onNext: { self.performSegueWithIdentifier(segueIdentifier: .addVocabulary, sender: self) }).disposed(by: self.bag)
+        self.cancelButton.rx.tap.subscribe(onNext: { self.dismiss(animated: true, completion: nil) }).disposed(by: self.bag)
         
         self.infoLabel.text = L10n.Action.AddVocabulary.hint
         

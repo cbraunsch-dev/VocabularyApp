@@ -80,7 +80,7 @@
                         <outlet property="infoIcon" destination="UMS-56-YzZ" id="BZf-2E-ZhV"/>
                         <outlet property="infoLabel" destination="CRL-lR-b1S" id="h44-QE-xSZ"/>
                         <outlet property="myTableView" destination="zLz-Pq-7qD" id="Xck-V7-yfo"/>
-                        <segue destination="9CE-6I-Gaw" kind="show" identifier="showSet" id="8Rq-Uz-HFg"/>
+                        <segue destination="9CE-6I-Gaw" kind="presentation" identifier="showSet" id="8Rq-Uz-HFg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a63-KG-bfD" userLabel="First Responder" sceneMemberID="firstResponder"/>

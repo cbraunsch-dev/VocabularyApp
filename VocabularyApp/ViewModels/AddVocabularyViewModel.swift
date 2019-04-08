@@ -117,6 +117,11 @@ class AddVocabularyViewModel: AddVocabularyViewModelType, AddVocabularyViewModel
             .map { $0.snapshot |> SetLocalDataModel.vocabularyPairsLens *~ $0.vocabPairs }
             .bind(to: self.snapshot)
             .disposed(by: self.bag)
+        self.saveSetResult
+            .filter { $0.resultValue != nil }
+            .map { _ in return }
+            .bind(to: self.outputs.setSaved)
+            .disposed(by: self.bag)
         self.snapshot
             .map { self.createSections(set: $0) }
             .bind(to: self.outputs.sections)

@@ -68,8 +68,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xf8-Qy-e1D"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="1di-Rx-igj"/>
+                    <navigationItem key="navigationItem" title="Title" id="1di-Rx-igj">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="xhp-O1-jgr"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="1Wh-Om-tc1"/>
+                    </navigationItem>
                     <connections>
+                        <outlet property="addButton" destination="1Wh-Om-tc1" id="Xgs-WB-pJ1"/>
+                        <outlet property="cancelButton" destination="xhp-O1-jgr" id="eta-ab-198"/>
                         <outlet property="emptyView" destination="8kc-EQ-QsY" id="wsB-D9-pgq"/>
                         <outlet property="infoIcon" destination="5fF-kd-Rp8" id="Zrr-Ej-9Zf"/>
                         <outlet property="infoLabel" destination="QmO-O2-fYg" id="IYE-zg-BeN"/>
