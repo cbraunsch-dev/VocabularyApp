@@ -18,4 +18,10 @@ class SetTabBarController: UITabBarController, SetManageable {
             })
         }
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.children[0].tabBarItem.title = L10n.Action.learn
+        self.children[1].tabBarItem.title = L10n.Action.train
+    }
 }

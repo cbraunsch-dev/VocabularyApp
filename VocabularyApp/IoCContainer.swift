@@ -64,6 +64,9 @@ let appContainer: Container = {
             resultConverter: r.resolve(ResultConverter.self)!
         )
     }
+    container.register(TrainSetViewModelType.self) { _ in
+        TrainSetViewModel()
+    }
     
     return container
 }()

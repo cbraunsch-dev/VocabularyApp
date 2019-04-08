@@ -33,7 +33,6 @@ class LearnSetViewController: UIViewController, TableDisplayCapable, AlertDispla
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = L10n.Action.learn
-        self.tabBarController?.title = self.set?.name
         self.setupTable()
         
         self.addButton.rx.tap.subscribe(onNext: { self.performSegueWithIdentifier(segueIdentifier: .addVocabulary, sender: self) }).disposed(by: self.bag)

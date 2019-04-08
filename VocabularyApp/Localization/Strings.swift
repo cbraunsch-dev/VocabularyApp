@@ -19,6 +19,10 @@ internal enum L10n {
     internal static let learn = L10n.tr("Localizable", "action.learn")
     /// Ok
     internal static let ok = L10n.tr("Localizable", "action.ok")
+    /// Practice
+    internal static let practice = L10n.tr("Localizable", "action.practice")
+    /// Train
+    internal static let train = L10n.tr("Localizable", "action.train")
     internal enum AddSet {
       /// Press the + button to add a new vocabulary set.
       internal static let hint = L10n.tr("Localizable", "action.addSet.hint")

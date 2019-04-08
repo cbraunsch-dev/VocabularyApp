@@ -17,6 +17,8 @@
 "action.learn" = "Learn";
 "action.addVocabulary.hint" = "Press the + button to add vocabulary to your set.";
 "action.importVocabulary.csv" = "Import from CSV file";
+"action.train" = "Train";
+"action.practice" = "Practice";
 
 "viewController.addSet.hint" = "Tap on the item below to set or change the name of the set.";
 
