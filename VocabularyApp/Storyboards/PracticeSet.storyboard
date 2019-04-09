@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vcx-Vq-Tiq">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Practice Set View Controller-->
+        <scene sceneID="rko-zs-FfI">
+            <objects>
+                <viewController storyboardIdentifier="PracticeSetViewController" id="zNN-3E-RQh" customClass="PracticeSetViewController" customModule="VocabularyApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f4G-oH-fi0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4WO-3O-MdY" customClass="FlashCardView" customModule="VocabularyApp" customModuleProvider="target">
+                                <rect key="frame" x="25" y="213" width="325" height="241"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="4WO-3O-MdY" secondAttribute="height" multiplier="330:245" id="9ID-Kl-Fum"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4WO-3O-MdY" firstAttribute="centerY" secondItem="f4G-oH-fi0" secondAttribute="centerY" id="fjx-DY-P9Z"/>
+                            <constraint firstItem="Qfr-El-iFl" firstAttribute="trailing" secondItem="4WO-3O-MdY" secondAttribute="trailing" constant="25" id="iVq-8D-LTS"/>
+                            <constraint firstItem="4WO-3O-MdY" firstAttribute="leading" secondItem="Qfr-El-iFl" secondAttribute="leading" constant="25" id="oTT-O2-Uc1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Qfr-El-iFl"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7og-Ak-8VL">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Q9V-N3-2Sf"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="doneButton" destination="Q9V-N3-2Sf" id="vH4-sD-5yt"/>
+                        <outlet property="flashCardView" destination="4WO-3O-MdY" id="Erf-UE-cCp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wvI-bg-u5A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1000.8" y="163.26836581709148"/>
+        </scene>
+        <!--Set Manageable Navigation Controller-->
+        <scene sceneID="gcn-gn-Sjy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vcx-Vq-Tiq" customClass="SetManageableNavigationController" customModule="VocabularyApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Kya-Wj-FNb">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="zNN-3E-RQh" kind="relationship" relationship="rootViewController" id="h6i-7K-wAf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FI2-zM-H1U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="61.600000000000001" y="163.26836581709148"/>
+        </scene>
+    </scenes>
+</document>

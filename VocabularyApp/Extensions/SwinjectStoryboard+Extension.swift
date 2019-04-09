@@ -27,5 +27,8 @@ extension SwinjectStoryboard {
         defaultContainer.storyboardInitCompleted(TrainSetViewController.self) { r, c in
             c.viewModel = appContainer.resolve(TrainSetViewModelType.self)!
         }
+        defaultContainer.storyboardInitCompleted(PracticeSetViewController.self) { r, c in
+            c.viewModel = appContainer.resolve(PracticeSetViewModelType.self)!
+        }
     }
 }

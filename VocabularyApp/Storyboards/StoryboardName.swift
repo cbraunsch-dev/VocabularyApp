@@ -14,4 +14,5 @@ enum StoryboardName: String {
     case addVocabulary = "AddVocabulary"
     case learnSet = "LearnSet"
     case trainSet = "TrainSet"
+    case practiceSet = "PracticeSet"
 }

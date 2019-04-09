@@ -21,6 +21,8 @@
 "action.practice" = "Practice";
 
 "viewController.addSet.hint" = "Tap on the item below to set or change the name of the set.";
+"viewController.practiceSet.hint1" = "Welcome to the practice mode. Swipe up to learn more.";
+"viewController.practiceSet.hint2" = "Swipe left to see the first word and swipe up to reveal that word's definition.";
 
 "alert.addSet.message" = "Enter a name for the set.";
 "alert.addSet.textField.placeholder" = "Set name";

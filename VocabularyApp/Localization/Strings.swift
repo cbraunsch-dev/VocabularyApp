@@ -81,6 +81,12 @@ internal enum L10n {
       /// Tap on the item below to set or change the name of the set.
       internal static let hint = L10n.tr("Localizable", "viewController.addSet.hint")
     }
+    internal enum PracticeSet {
+      /// Welcome to the practice mode. Swipe up to learn more.
+      internal static let hint1 = L10n.tr("Localizable", "viewController.practiceSet.hint1")
+      /// Swipe left to see the first word and swipe up to reveal that word's definition.
+      internal static let hint2 = L10n.tr("Localizable", "viewController.practiceSet.hint2")
+    }
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length

@@ -67,6 +67,9 @@ let appContainer: Container = {
     container.register(TrainSetViewModelType.self) { _ in
         TrainSetViewModel()
     }
+    container.register(PracticeSetViewModelType.self) { _ in
+        PracticeSetViewModel()
+    }
     
     return container
 }()
