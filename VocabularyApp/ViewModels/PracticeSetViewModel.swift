@@ -28,6 +28,7 @@ protocol PracticeSetViewModelType {
 
 class PracticeSetViewModel: PracticeSetViewModelType, PracticeSetViewModelInputs, PracticeSetViewModelOutputs {
     private let bag = DisposeBag()
+    private let numberOfCards = 10
     private let snapshot = PublishSubject<PracticeSetSnapshot>()
     
     var inputs: PracticeSetViewModelInputs { return self }
@@ -41,7 +42,18 @@ class PracticeSetViewModel: PracticeSetViewModelType, PracticeSetViewModelInputs
     
     init() {
         self.inputs.viewDidLoad
-            .map { self.createInitialSnapshot() }
+            .withLatestFrom(self.inputs.set)
+            .map { self.createInitialSnapshot(set: $0) }
+            .bind(to: self.snapshot)
+            .disposed(by: self.bag)
+        self.inputs.showNextPair
+            .withLatestFrom(self.snapshot)
+            .map { self.createSnapshotWithNextWordOrPhrase(snapshot: $0) }
+            .bind(to: self.snapshot)
+            .disposed(by: self.bag)
+        self.inputs.showValue
+            .withLatestFrom(self.snapshot)
+            .map { self.createSnapshotWithDefinition(snapshot: $0) }
             .bind(to: self.snapshot)
             .disposed(by: self.bag)
         
@@ -51,23 +63,51 @@ class PracticeSetViewModel: PracticeSetViewModelType, PracticeSetViewModelInputs
             .disposed(by: self.bag)
     }
     
-    private func createInitialSnapshot() -> PracticeSetSnapshot {
+    private func createInitialSnapshot(set: SetLocalDataModel) -> PracticeSetSnapshot {
         let vocabPair = VocabularyPairLocalDataModel(wordOrPhrase: L10n.ViewController.PracticeSet.hint1, definition: L10n.ViewController.PracticeSet.hint2)
-        return PracticeSetSnapshot(currentVocabPair: vocabPair, showingDefinition: false)
+        let vocabPairs = self.grabRandomVocabPairs(from: set)
+        return PracticeSetSnapshot(index: 0, currentVocabPair: vocabPair, showingDefinition: false, vocabPairs: vocabPairs)
+    }
+    
+    private func grabRandomVocabPairs(from set: SetLocalDataModel) -> [VocabularyPairLocalDataModel] {
+        var pairs = [VocabularyPairLocalDataModel]()
+        for _ in 0..<self.numberOfCards {
+            let randomIndex = Int.random(in: 0..<set.vocabularyPairs.count)
+            let pair = set.vocabularyPairs[randomIndex]
+            pairs.append(pair)
+        }
+        return pairs
+    }
+    
+    private func createSnapshotWithNextWordOrPhrase(snapshot: PracticeSetSnapshot) -> PracticeSetSnapshot {
+        let updatedIndex = snapshot |> PracticeSetSnapshot.indexLens *~ (snapshot.index + 1)
+        let updatedVocabPair = updatedIndex |> PracticeSetSnapshot.currentVocabPairLens *~ (updatedIndex.vocabPairs[updatedIndex.index])
+        return updatedVocabPair
+    }
+    
+    private func createSnapshotWithDefinition(snapshot: PracticeSetSnapshot) -> PracticeSetSnapshot {
+        return snapshot |> PracticeSetSnapshot.showingDefinitionLens *~ true
     }
 }
 
 struct PracticeSetSnapshot {
+    let index: Int
     let currentVocabPair: VocabularyPairLocalDataModel
     let showingDefinition: Bool
+    let vocabPairs: [VocabularyPairLocalDataModel]
+    
+    static let indexLens = Lens<PracticeSetSnapshot, Int>(
+        get: { $0.index },
+        set: { index, snapshot in PracticeSetSnapshot(index: index, currentVocabPair: snapshot.currentVocabPair, showingDefinition: snapshot.showingDefinition, vocabPairs: snapshot.vocabPairs) }
+    )
     
     static let currentVocabPairLens = Lens<PracticeSetSnapshot, VocabularyPairLocalDataModel>(
         get: { $0.currentVocabPair },
-        set: { currentVocabPair, snapshot in PracticeSetSnapshot(currentVocabPair: currentVocabPair, showingDefinition: snapshot.showingDefinition) }
+        set: { currentVocabPair, snapshot in PracticeSetSnapshot(index: snapshot.index, currentVocabPair: currentVocabPair, showingDefinition: snapshot.showingDefinition, vocabPairs: snapshot.vocabPairs) }
     )
     
     static let showingDefinitionLens = Lens<PracticeSetSnapshot, Bool>(
         get: { $0.showingDefinition },
-        set: { showingDefinition, snapshot in PracticeSetSnapshot(currentVocabPair: snapshot.currentVocabPair, showingDefinition: showingDefinition) }
+        set: { showingDefinition, snapshot in PracticeSetSnapshot(index: snapshot.index, currentVocabPair: snapshot.currentVocabPair, showingDefinition: showingDefinition, vocabPairs: snapshot.vocabPairs) }
     )
 }
