@@ -73,6 +73,7 @@
 		6694FBFD225C4DD1003669E6 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6694FBFC225C4DD1003669E6 /* UIView+Extension.swift */; };
 		6694FBFF225C5045003669E6 /* PracticeSet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6694FBFE225C5045003669E6 /* PracticeSet.storyboard */; };
 		6694FC01225C524C003669E6 /* PracticeSetViewControllerSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6694FC00225C524C003669E6 /* PracticeSetViewControllerSnapshotTests.swift */; };
+		66AECAB1225E6B840029BB13 /* RandomNumberService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AECAB0225E6B840029BB13 /* RandomNumberService.swift */; };
 		66B910B02221950F00C5D0B5 /* AddSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910AF2221950F00C5D0B5 /* AddSetViewController.swift */; };
 		66B910B22221964D00C5D0B5 /* AddSetViewControllerSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910B12221964D00C5D0B5 /* AddSetViewControllerSnapshotTests.swift */; };
 		66B910B62221973100C5D0B5 /* TitleValueCellContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910B52221973100C5D0B5 /* TitleValueCellContentView.swift */; };
@@ -206,6 +207,7 @@
 		6694FBFC225C4DD1003669E6 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		6694FBFE225C5045003669E6 /* PracticeSet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PracticeSet.storyboard; sourceTree = "<group>"; };
 		6694FC00225C524C003669E6 /* PracticeSetViewControllerSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeSetViewControllerSnapshotTests.swift; sourceTree = "<group>"; };
+		66AECAB0225E6B840029BB13 /* RandomNumberService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumberService.swift; sourceTree = "<group>"; };
 		66B910AF2221950F00C5D0B5 /* AddSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSetViewController.swift; sourceTree = "<group>"; };
 		66B910B12221964D00C5D0B5 /* AddSetViewControllerSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSetViewControllerSnapshotTests.swift; sourceTree = "<group>"; };
 		66B910B52221973100C5D0B5 /* TitleValueCellContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleValueCellContentView.swift; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 				6601D9DA222E3AF3007ABC28 /* RealmLocalDataService.swift */,
 				6601D9DC222E3B1C007ABC28 /* RealmSetLocalDataService.swift */,
 				66852021223B61BE00BF631F /* ImportVocabularyService.swift */,
+				66AECAB0225E6B840029BB13 /* RandomNumberService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -855,6 +858,7 @@
 				6694FBF5225C487A003669E6 /* PracticeSetViewController.swift in Sources */,
 				66CF6CF92230E6F1007CA838 /* GenericTableSection.swift in Sources */,
 				66B910CA22219A1B00C5D0B5 /* TitleValueTableItem.swift in Sources */,
+				66AECAB1225E6B840029BB13 /* RandomNumberService.swift in Sources */,
 				66B910CC22219A4400C5D0B5 /* GenericTableItemAction.swift in Sources */,
 				66B910C2222199A900C5D0B5 /* TableItem.swift in Sources */,
 				661F6C8922106A3800B11FDE /* Lenses.swift in Sources */,

@@ -10,11 +10,28 @@ import Foundation
 import RealmSwift
 import RxSwift
 import RxCocoa
+import RxTest
 @testable import VocabularyApp
 
 protocol TestDataGenerating {}
 
 extension TestDataGenerating {
+    func createListOfOrderedNumbers(numberOfItems: Int) -> [Int] {
+        var nrs = [Int]()
+        for i in 0..<numberOfItems {
+            nrs.append(i)
+        }
+        return nrs
+    }
+    
+    func createEvents<E>(nrOfEvents: Int, event: E) -> [Recorded<Event<E>>] {
+        var events = [Recorded<Event<E>>]()
+        for _ in 0..<nrOfEvents {
+            events.append(next(100, event))
+        }
+        return events
+    }
+    
     func createTestSetEntities() -> [SetEntity] {
         let entity1 = SetEntity()
         entity1.setID = "1"

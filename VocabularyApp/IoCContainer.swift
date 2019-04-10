@@ -38,6 +38,9 @@ let appContainer: Container = {
             fileContentProvider: r.resolve(FileContentProvider.self)!
         )
     }
+    container.register(RandomNumberService.self) { _ in
+        VocabularyAppRandomNumberService()
+    }
     
     container.register(SetsViewModelType.self) { r in
         SetsViewModel(
@@ -67,8 +70,10 @@ let appContainer: Container = {
     container.register(TrainSetViewModelType.self) { _ in
         TrainSetViewModel()
     }
-    container.register(PracticeSetViewModelType.self) { _ in
-        PracticeSetViewModel()
+    container.register(PracticeSetViewModelType.self) { r in
+        PracticeSetViewModel(
+            randomNumberService: r.resolve(RandomNumberService.self)!
+        )
     }
     
     return container

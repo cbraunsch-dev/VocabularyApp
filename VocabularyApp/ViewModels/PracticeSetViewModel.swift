@@ -29,6 +29,7 @@ protocol PracticeSetViewModelType {
 class PracticeSetViewModel: PracticeSetViewModelType, PracticeSetViewModelInputs, PracticeSetViewModelOutputs {
     private let bag = DisposeBag()
     private let numberOfCards = 10
+    private let randomNumberService: RandomNumberService
     private let snapshot = PublishSubject<PracticeSetSnapshot>()
     
     var inputs: PracticeSetViewModelInputs { return self }
@@ -40,7 +41,8 @@ class PracticeSetViewModel: PracticeSetViewModelType, PracticeSetViewModelInputs
     let showNextPair = PublishSubject<Void>()
     let text = PublishSubject<String>()
     
-    init() {
+    init(randomNumberService: RandomNumberService) {
+        self.randomNumberService = randomNumberService
         self.inputs.viewDidLoad
             .withLatestFrom(self.inputs.set)
             .map { self.createInitialSnapshot(set: $0) }
@@ -66,13 +68,14 @@ class PracticeSetViewModel: PracticeSetViewModelType, PracticeSetViewModelInputs
     private func createInitialSnapshot(set: SetLocalDataModel) -> PracticeSetSnapshot {
         let vocabPair = VocabularyPairLocalDataModel(wordOrPhrase: L10n.ViewController.PracticeSet.hint1, definition: L10n.ViewController.PracticeSet.hint2)
         let vocabPairs = self.grabRandomVocabPairs(from: set)
-        return PracticeSetSnapshot(index: 0, currentVocabPair: vocabPair, showingDefinition: false, vocabPairs: vocabPairs)
+        return PracticeSetSnapshot(index: 0, currentVocabPair: vocabPair, showingDefinition: false, vocabPairs: vocabPairs, maxNumberOfCardsToShow: self.numberOfCards)
     }
     
     private func grabRandomVocabPairs(from set: SetLocalDataModel) -> [VocabularyPairLocalDataModel] {
         var pairs = [VocabularyPairLocalDataModel]()
-        for _ in 0..<self.numberOfCards {
-            let randomIndex = Int.random(in: 0..<set.vocabularyPairs.count)
+        let maxNumberOfCards = set.vocabularyPairs.count < self.numberOfCards ? set.vocabularyPairs.count : self.numberOfCards
+        for _ in 0..<maxNumberOfCards {
+            let randomIndex = self.randomNumberService.generateRandomNumber(topLimit: set.vocabularyPairs.count)
             let pair = set.vocabularyPairs[randomIndex]
             pairs.append(pair)
         }
@@ -80,7 +83,7 @@ class PracticeSetViewModel: PracticeSetViewModelType, PracticeSetViewModelInputs
     }
     
     private func createSnapshotWithNextWordOrPhrase(snapshot: PracticeSetSnapshot) -> PracticeSetSnapshot {
-        let updatedIndex = snapshot |> PracticeSetSnapshot.indexLens *~ (snapshot.index + 1)
+        let updatedIndex = snapshot |> PracticeSetSnapshot.indexLens *~ snapshot.nextIndex
         let updatedVocabPair = updatedIndex |> PracticeSetSnapshot.currentVocabPairLens *~ (updatedIndex.vocabPairs[updatedIndex.index])
         return updatedVocabPair
     }
@@ -95,19 +98,27 @@ struct PracticeSetSnapshot {
     let currentVocabPair: VocabularyPairLocalDataModel
     let showingDefinition: Bool
     let vocabPairs: [VocabularyPairLocalDataModel]
+    let maxNumberOfCardsToShow: Int
+    
+    var nextIndex: Int {
+        get {
+            let maxNrOfCards = maxNumberOfCardsToShow < vocabPairs.count ? maxNumberOfCardsToShow : vocabPairs.count
+            return index == maxNrOfCards - 1 ? 0 : (index + 1)
+        }
+    }
     
     static let indexLens = Lens<PracticeSetSnapshot, Int>(
         get: { $0.index },
-        set: { index, snapshot in PracticeSetSnapshot(index: index, currentVocabPair: snapshot.currentVocabPair, showingDefinition: snapshot.showingDefinition, vocabPairs: snapshot.vocabPairs) }
+        set: { index, snapshot in PracticeSetSnapshot(index: index, currentVocabPair: snapshot.currentVocabPair, showingDefinition: snapshot.showingDefinition, vocabPairs: snapshot.vocabPairs, maxNumberOfCardsToShow: snapshot.maxNumberOfCardsToShow) }
     )
     
     static let currentVocabPairLens = Lens<PracticeSetSnapshot, VocabularyPairLocalDataModel>(
         get: { $0.currentVocabPair },
-        set: { currentVocabPair, snapshot in PracticeSetSnapshot(index: snapshot.index, currentVocabPair: currentVocabPair, showingDefinition: snapshot.showingDefinition, vocabPairs: snapshot.vocabPairs) }
+        set: { currentVocabPair, snapshot in PracticeSetSnapshot(index: snapshot.index, currentVocabPair: currentVocabPair, showingDefinition: snapshot.showingDefinition, vocabPairs: snapshot.vocabPairs, maxNumberOfCardsToShow: snapshot.maxNumberOfCardsToShow) }
     )
     
     static let showingDefinitionLens = Lens<PracticeSetSnapshot, Bool>(
         get: { $0.showingDefinition },
-        set: { showingDefinition, snapshot in PracticeSetSnapshot(index: snapshot.index, currentVocabPair: snapshot.currentVocabPair, showingDefinition: showingDefinition, vocabPairs: snapshot.vocabPairs) }
+        set: { showingDefinition, snapshot in PracticeSetSnapshot(index: snapshot.index, currentVocabPair: snapshot.currentVocabPair, showingDefinition: showingDefinition, vocabPairs: snapshot.vocabPairs, maxNumberOfCardsToShow: snapshot.maxNumberOfCardsToShow) }
     )
 }

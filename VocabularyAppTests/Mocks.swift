@@ -95,3 +95,24 @@ class MockImportVocabularyService: ImportVocabularyService {
         fatalError("Method not stubbed")
     }
 }
+
+class MockRandomNumberService: RandomNumberService {
+    var generateRandomNumberStub: Int?
+    var generateRandomNumberStubs: [Int]?
+    var indexOfCurrentInvocation = 0
+    
+    func generateRandomNumber(topLimit: Int) -> Int {
+        if let stubs = generateRandomNumberStubs {
+            guard indexOfCurrentInvocation < stubs.count else {
+                fatalError("Invoked the mock too many times. Either invoke it fewer times or provide more stubs")
+            }
+            let stub = stubs[self.indexOfCurrentInvocation]
+            self.indexOfCurrentInvocation = indexOfCurrentInvocation + 1
+            return stub
+        }
+        guard let stub = self.generateRandomNumberStub else {
+            return 0
+        }
+        return stub
+    }
+}
