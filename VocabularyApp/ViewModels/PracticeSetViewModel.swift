@@ -83,7 +83,8 @@ class PracticeSetViewModel: PracticeSetViewModelType, PracticeSetViewModelInputs
     }
     
     private func createSnapshotWithNextWordOrPhrase(snapshot: PracticeSetSnapshot) -> PracticeSetSnapshot {
-        let updatedIndex = snapshot |> PracticeSetSnapshot.indexLens *~ snapshot.nextIndex
+        let noLongerViewingDefinition = snapshot |> PracticeSetSnapshot.showingDefinitionLens *~ false
+        let updatedIndex = noLongerViewingDefinition |> PracticeSetSnapshot.indexLens *~ snapshot.nextIndex
         let updatedVocabPair = updatedIndex |> PracticeSetSnapshot.currentVocabPairLens *~ (updatedIndex.vocabPairs[updatedIndex.index])
         return updatedVocabPair
     }

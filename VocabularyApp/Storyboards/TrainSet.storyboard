@@ -48,11 +48,20 @@
                     <connections>
                         <outlet property="cancelButton" destination="ykv-IT-r0Z" id="oHa-5k-bQy"/>
                         <outlet property="myTableView" destination="kZ6-d4-xqO" id="Pzg-pE-foM"/>
+                        <segue destination="3hP-59-STD" kind="presentation" identifier="practiceSet" id="HxE-Ed-w0k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qib-JR-IgW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="984.79999999999995" y="178.56071964017991"/>
+        </scene>
+        <!--PracticeSet-->
+        <scene sceneID="VgJ-ju-eIM">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PracticeSet" id="3hP-59-STD" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RgZ-51-XG7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1802" y="40"/>
         </scene>
         <!--Set Manageable Navigation Controller-->
         <scene sceneID="ZEn-sb-FMh">

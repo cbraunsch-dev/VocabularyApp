@@ -38,4 +38,11 @@ class PracticeSetViewController: UIViewController, SetManageable {
         self.viewModel.inputs.set.onNext(self.set!)
         self.viewModel.inputs.viewDidLoad.onNext(())
     }
+    @IBAction func didSwipeLeft(_ sender: Any) {
+        self.viewModel.inputs.showNextPair.onNext(())
+    }
+    
+    @IBAction func didSwipeUp(_ sender: Any) {
+        self.viewModel.inputs.showValue.onNext(())
+    }
 }

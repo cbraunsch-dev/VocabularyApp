@@ -27,12 +27,17 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="4WO-3O-MdY" firstAttribute="centerY" secondItem="f4G-oH-fi0" secondAttribute="centerY" id="fjx-DY-P9Z"/>
                             <constraint firstItem="Qfr-El-iFl" firstAttribute="trailing" secondItem="4WO-3O-MdY" secondAttribute="trailing" constant="25" id="iVq-8D-LTS"/>
                             <constraint firstItem="4WO-3O-MdY" firstAttribute="leading" secondItem="Qfr-El-iFl" secondAttribute="leading" constant="25" id="oTT-O2-Uc1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qfr-El-iFl"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="8Vv-I1-ySw" appends="YES" id="Hhc-Ru-Xn6"/>
+                            <outletCollection property="gestureRecognizers" destination="1w3-my-AzR" appends="YES" id="FEE-XR-Ma9"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="7og-Ak-8VL">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="Q9V-N3-2Sf"/>
@@ -43,6 +48,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wvI-bg-u5A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="8Vv-I1-ySw">
+                    <connections>
+                        <action selector="didSwipeLeft:" destination="zNN-3E-RQh" id="8oc-g7-Yh7"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="up" id="1w3-my-AzR">
+                    <connections>
+                        <action selector="didSwipeUp:" destination="zNN-3E-RQh" id="voY-cI-QXL"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1000.8" y="163.26836581709148"/>
         </scene>

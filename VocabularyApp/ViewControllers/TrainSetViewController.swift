@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class TrainSetViewController: UIViewController, TableDisplayCapable, SetManageable {
+class TrainSetViewController: UIViewController, TableDisplayCapable, SetManageable, SegueHandlerType {
     private let bag = DisposeBag()
     
     @IBOutlet weak var cancelButton: UIBarButtonItem!
@@ -24,6 +24,10 @@ class TrainSetViewController: UIViewController, TableDisplayCapable, SetManageab
         get {
             return self.myTableView
         }
+    }
+    
+    enum SegueIdentifier: String {
+        case practiceSet
     }
     
     override func viewDidLoad() {
@@ -42,10 +46,22 @@ class TrainSetViewController: UIViewController, TableDisplayCapable, SetManageab
             }).disposed(by: self.bag)
         self.viewModel.outputs.practice
             .subscribe(onNext: {
-                //TODO: show the PracticeSetViewController
+                self.performSegueWithIdentifier(segueIdentifier: .practiceSet, sender: self)
             }).disposed(by: self.bag)
         
         self.viewModel.inputs.viewDidLoad.onNext(())
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = self.segueIdentifierForSegue(segue: segue) else {
+            return
+        }
+        switch identifier {
+        case .practiceSet:
+            var setManageableVc = segue.destination as! SetManageable
+            setManageableVc.set = self.set
+            break
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

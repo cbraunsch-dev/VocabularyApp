@@ -107,6 +107,32 @@ class PracticeSetViewControllerSnapshotTests: FBSnapshotTestCase, TestDataGenera
         verifyViewController(viewController: self.navigationViewController)
     }
     
+    func testShowNextPair_when_justViewedDefinition_then_showWordOrPhraseOfNextVocabularyPair() {
+        //Arrange
+        let scheduler1 = TestScheduler(initialClock: 0)
+        let scheduler2 = TestScheduler(initialClock: 0)
+        let scheduler3 = TestScheduler(initialClock: 0)
+        let scheduler4 = TestScheduler(initialClock: 0)
+        let vocabPairs = self.createTestVocabularyPairs()
+        let set = SetLocalDataModel(id: "1", name: "Serbian", vocabularyPairs: vocabPairs)
+        self.viewController.set = set
+        self.loadView(of: self.viewController)
+        self.mockRandomNumberService.generateRandomNumberStubs = self.createListOfOrderedNumbers(numberOfItems: vocabPairs.count)
+        scheduler1.createColdObservable([next(100, set)]).asObservable().bind(to: self.viewModel.inputs.set).disposed(by: self.bag)
+        scheduler1.start()
+        scheduler2.createColdObservable([next(100, ())]).asObservable().bind(to: self.viewModel.inputs.viewDidLoad).disposed(by: self.bag)
+        scheduler2.start()
+        scheduler3.createColdObservable([next(100, ())]).asObservable().bind(to: self.viewModel.inputs.showValue).disposed(by: self.bag)
+        scheduler3.start()
+        
+        //Act
+        scheduler4.createColdObservable([next(100, ())]).asObservable().bind(to: self.viewModel.inputs.showNextPair).disposed(by: self.bag)
+        scheduler4.start()
+        
+        //Assert
+        verifyViewController(viewController: self.navigationViewController)
+    }
+    
     //TODO: testShowNextPair_when_wordOrPhraseVeryLong
     
     func testShowValue_then_showDefinitionOfCurrentVocabularyPair() {
