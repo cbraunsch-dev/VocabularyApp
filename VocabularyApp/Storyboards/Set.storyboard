@@ -40,7 +40,7 @@
         <scene sceneID="u2D-Be-fOg">
             <objects>
                 <viewControllerPlaceholder storyboardName="LearnSet" id="ijz-9h-F5u" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="7uQ-Az-7zK"/>
+                    <tabBarItem key="tabBarItem" id="7uQ-Az-7zK"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i2B-wP-0Ig" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

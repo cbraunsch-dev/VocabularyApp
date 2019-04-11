@@ -21,7 +21,7 @@ class SetTabBarController: UITabBarController, SetManageable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.children[0].tabBarItem.title = L10n.Action.learn
-        self.children[1].tabBarItem.title = L10n.Action.train
+        self.children[0].tabBarItem = UITabBarItem(title: L10n.Action.learn, image: UIImage(named: "List"), tag: 0)
+        self.children[1].tabBarItem = UITabBarItem(title: L10n.Action.train, image: UIImage(named: "Work"), tag: 1)
     }
 }
