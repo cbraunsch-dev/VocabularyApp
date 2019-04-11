@@ -133,8 +133,6 @@ class PracticeSetViewControllerSnapshotTests: FBSnapshotTestCase, TestDataGenera
         verifyViewController(viewController: self.navigationViewController)
     }
     
-    //TODO: testShowNextPair_when_wordOrPhraseVeryLong
-    
     func testShowValue_then_showDefinitionOfCurrentVocabularyPair() {
         //Arrange
         let scheduler1 = TestScheduler(initialClock: 0)

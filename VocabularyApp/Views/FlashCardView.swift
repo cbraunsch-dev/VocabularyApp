@@ -35,10 +35,10 @@ class FlashCardView: UIView {
         self.addSubview(self.text)
         
         self.text.snp.makeConstraints { make in
-            make.left.equalTo(self)
-            make.top.equalTo(self)
-            make.bottom.equalTo(self)
-            make.right.equalTo(self)
+            make.left.equalTo(self).offset(LayoutConstants.buX2)
+            make.top.equalTo(self).offset(LayoutConstants.buX2)
+            make.bottom.equalTo(self).offset(-LayoutConstants.buX2)
+            make.right.equalTo(self).offset(-LayoutConstants.buX2)
         }
     }
 }

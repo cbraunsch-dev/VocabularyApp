@@ -18,20 +18,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4WO-3O-MdY" customClass="FlashCardView" customModule="VocabularyApp" customModuleProvider="target">
-                                <rect key="frame" x="25" y="213" width="325" height="241"/>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="325" placeholderIntrinsicHeight="340" translatesAutoresizingMaskIntoConstraints="NO" id="4WO-3O-MdY" customClass="FlashCardView" customModule="VocabularyApp" customModuleProvider="target">
+                                <rect key="frame" x="25" y="163.5" width="325" height="340"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="4WO-3O-MdY" secondAttribute="height" multiplier="330:245" id="9ID-Kl-Fum"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="4WO-3O-MdY" firstAttribute="centerY" secondItem="f4G-oH-fi0" secondAttribute="centerY" id="fjx-DY-P9Z"/>
-                            <constraint firstItem="Qfr-El-iFl" firstAttribute="trailing" secondItem="4WO-3O-MdY" secondAttribute="trailing" constant="25" id="iVq-8D-LTS"/>
-                            <constraint firstItem="4WO-3O-MdY" firstAttribute="leading" secondItem="Qfr-El-iFl" secondAttribute="leading" constant="25" id="oTT-O2-Uc1"/>
+                            <constraint firstItem="Qfr-El-iFl" firstAttribute="trailing" secondItem="4WO-3O-MdY" secondAttribute="trailing" constant="25" id="52E-3y-UiL"/>
+                            <constraint firstItem="4WO-3O-MdY" firstAttribute="centerY" secondItem="f4G-oH-fi0" secondAttribute="centerY" id="pD4-JE-Dab"/>
+                            <constraint firstItem="4WO-3O-MdY" firstAttribute="leading" secondItem="Qfr-El-iFl" secondAttribute="leading" constant="25" id="zhZ-Th-LYo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qfr-El-iFl"/>
                         <connections>
