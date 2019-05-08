@@ -24,6 +24,14 @@ class LocalizedErrorMessageService: ErrorMessageService {
                 return L10n.Error.DataAccess.outOfDiskSpace
             }
         }
+        if let csvImportError = error as? CsvImportVocabularyError {
+            switch csvImportError {
+            case .incorrectNumberOfColumns(let message):
+                return "\(L10n.Error.CsvImportVocabularyError.incorrectNumberOfColumns) \(message)"
+            case .noData:
+                return L10n.Error.CsvImportVocabularyError.noData
+            }
+        }
         return L10n.Error.generic
     }
 }

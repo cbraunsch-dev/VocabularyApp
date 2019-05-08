@@ -115,7 +115,14 @@ class CsvImportVocabularyServiceTests: XCTestCase, AssertionDataExtractionCapabl
             XCTFail("Incorrect type of error")
             return
         }
-        XCTAssertEqual(CsvImportVocabularyError.incorrectNumberOfColumns, importError)
+        switch importError {
+        case .incorrectNumberOfColumns(_):
+            //Test passes
+            break
+        default:
+            XCTFail("Incorrect import error")
+            break
+        }
     }
     
     func testImportVocabulary_when_csvContainsIncorrectNumberOfColumns_then_emitError() {
@@ -136,6 +143,13 @@ class CsvImportVocabularyServiceTests: XCTestCase, AssertionDataExtractionCapabl
             XCTFail("Incorrect type of error")
             return
         }
-        XCTAssertEqual(CsvImportVocabularyError.incorrectNumberOfColumns, importError)
+        switch importError {
+        case .incorrectNumberOfColumns(_):
+            //Test passes
+            break
+        default:
+            XCTFail("Incorrect import error")
+            break
+        }
     }
 }

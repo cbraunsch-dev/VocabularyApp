@@ -1,41 +1,40 @@
 PODS:
-  - iOSSnapshotTestCase (5.0.2):
-    - iOSSnapshotTestCase/SwiftSupport (= 5.0.2)
-  - iOSSnapshotTestCase/Core (5.0.2)
-  - iOSSnapshotTestCase/SwiftSupport (5.0.2):
+  - iOSSnapshotTestCase (6.0.3):
+    - iOSSnapshotTestCase/SwiftSupport (= 6.0.3)
+  - iOSSnapshotTestCase/Core (6.0.3)
+  - iOSSnapshotTestCase/SwiftSupport (6.0.3):
     - iOSSnapshotTestCase/Core
-  - RxAtomic (4.4.0)
-  - RxBlocking (4.4.0):
-    - RxAtomic (~> 4.4)
-    - RxSwift (~> 4.0)
-  - RxCocoa (4.4.0):
-    - RxSwift (~> 4.0)
-  - RxSwift (4.4.0):
-    - RxAtomic (~> 4.4)
-  - RxTest (4.4.0):
-    - RxAtomic (~> 4.4)
-    - RxSwift (~> 4.0)
-  - SnapKit (4.0.1)
-  - Swinject (2.5.0)
-  - SwinjectStoryboard (2.1.0):
-    - Swinject (~> 2.5)
+  - RxBlocking (5.0.0):
+    - RxSwift (~> 5)
+  - RxCocoa (5.0.0):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.0.0):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.0)
+  - RxTest (5.0.0):
+    - RxSwift (~> 5)
+  - SnapKit (5.0.0)
+  - Swinject (2.6.0)
+  - SwinjectStoryboard (2.2.0):
+    - Swinject (~> 2.6)
 
 DEPENDENCIES:
   - iOSSnapshotTestCase
-  - RxBlocking (= 4.4.0)
-  - RxCocoa (= 4.4.0)
-  - RxSwift (= 4.4.0)
-  - RxTest (= 4.4.0)
-  - SnapKit (~> 4.0.0)
+  - RxBlocking (= 5.0.0)
+  - RxCocoa (= 5.0.0)
+  - RxSwift (= 5.0.0)
+  - RxTest (= 5.0.0)
+  - SnapKit (~> 5.0.0)
   - Swinject
   - SwinjectStoryboard
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - iOSSnapshotTestCase
-    - RxAtomic
     - RxBlocking
     - RxCocoa
+    - RxRelay
     - RxSwift
     - RxTest
     - SnapKit
@@ -43,16 +42,16 @@ SPEC REPOS:
     - SwinjectStoryboard
 
 SPEC CHECKSUMS:
-  iOSSnapshotTestCase: 2d51aa06775e95cecb0a1fb9c5c159ccd1dd4596
-  RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
-  RxBlocking: 138ad53217434444d6eeeb4fb406a45431d92e31
-  RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
-  RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
-  RxTest: 19d03286bdc0a3aaea5d61d4cde31fdf4bb8a5ba
-  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
-  Swinject: 82cdb851f63f91bba974e3eca1d69780f2f7677e
-  SwinjectStoryboard: 688f096033103e66ffcf6ca678211acd7d7be505
+  iOSSnapshotTestCase: 944a73f6d9676302811a86c0cf35f0e6ef5ab2a0
+  RxBlocking: c67185d26498ea3cbe3e121917c3c16739e43123
+  RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
+  RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
+  RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
+  RxTest: 4349afe98f564e0a9bc19063368904622d17d49a
+  SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
+  Swinject: 48a96cda93633cf2860697b4ce76ab5db9ebaca2
+  SwinjectStoryboard: 32512ef16c2b0ff5b8f823b23539c4a50f6d3383
 
-PODFILE CHECKSUM: d3249a1a35e0e390440e2caf04e4531be36de8ef
+PODFILE CHECKSUM: 3d01e374c3e6fc6e1b8ed98f265104b5b5636f82
 
 COCOAPODS: 1.5.3

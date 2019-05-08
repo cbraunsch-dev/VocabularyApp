@@ -6,16 +6,16 @@ target 'VocabularyApp' do
   use_frameworks!
 
   # Pods for VocabularyApp
-  pod 'RxSwift',    '= 4.4.0'
-  pod 'RxCocoa',    '= 4.4.0'
+  pod 'RxSwift',    '= 5.0.0'
+  pod 'RxCocoa',    '= 5.0.0'
   pod 'Swinject'
   pod 'SwinjectStoryboard'
-  pod 'SnapKit', '~> 4.0.0'
+  pod 'SnapKit', '~> 5.0.0'
 
   target 'VocabularyAppTests' do
     inherit! :search_paths
-    pod 'RxBlocking', '= 4.4.0'
-    pod 'RxTest',     '= 4.4.0'
+    pod 'RxBlocking', '= 5.0.0'
+    pod 'RxTest',     '= 5.0.0'
     pod 'iOSSnapshotTestCase'
   end
 

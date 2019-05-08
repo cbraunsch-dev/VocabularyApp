@@ -16,5 +16,5 @@ enum DataAccessorError: Error {
 
 enum CsvImportVocabularyError: Error {
     case noData
-    case incorrectNumberOfColumns
+    case incorrectNumberOfColumns(message: String)
 }

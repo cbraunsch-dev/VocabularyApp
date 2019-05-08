@@ -11,7 +11,7 @@ import FBSnapshotTestCase
 
 extension FBSnapshotTestCase {
     func setupSnapshotTest() {
-        self.agnosticOptions = [FBSnapshotTestCaseAgnosticOption.device, FBSnapshotTestCaseAgnosticOption.screenSize]
+        self.fileNameOptions = [FBSnapshotTestCaseFileNameIncludeOption.device, FBSnapshotTestCaseFileNameIncludeOption.screenSize]
         self.removeAllViewsFromWindow()
     }
     

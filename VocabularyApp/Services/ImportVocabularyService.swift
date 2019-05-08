@@ -33,7 +33,7 @@ class CsvImportVocabularyService: ImportVocabularyService {
                 for row in rows {
                     let columns = row.components(separatedBy: ",")
                     guard columns.count == 2 else {
-                        observer.onError(CsvImportVocabularyError.incorrectNumberOfColumns)
+                        observer.onError(CsvImportVocabularyError.incorrectNumberOfColumns(message: "At row with content '\(row)'"))
                         return Disposables.create()
                     }
                     let wordOrPhrase = columns[0]

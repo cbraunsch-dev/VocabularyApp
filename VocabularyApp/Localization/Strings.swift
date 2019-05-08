@@ -57,6 +57,12 @@ internal enum L10n {
     internal static let generic = L10n.tr("Localizable", "error.generic")
     /// The set could not be found
     internal static let setNotFound = L10n.tr("Localizable", "error.setNotFound")
+    internal enum CsvImportVocabularyError {
+      /// An error occurred while importing the vocabulary from a CSV file. The CSV file contains a row with incorrect number of columns. Make sure not to use commas in your vocabulary list since commas are used to separate the different columns.
+      internal static let incorrectNumberOfColumns = L10n.tr("Localizable", "error.csvImportVocabularyError.incorrectNumberOfColumns")
+      /// No CSV data could be found. Make sure your file is in the CSV file format.
+      internal static let noData = L10n.tr("Localizable", "error.csvImportVocabularyError.noData")
+    }
     internal enum DataAccess {
       /// Failed to access local database
       internal static let failedToAccessDb = L10n.tr("Localizable", "error.dataAccess.failedToAccessDb")

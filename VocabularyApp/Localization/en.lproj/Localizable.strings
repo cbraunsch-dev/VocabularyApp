@@ -33,3 +33,5 @@
 "error.dataAccess.failedToAccessDb" = "Failed to access local database";
 "error.dataAccess.itemToDeleteNotFound" = "The item to delete was not found";
 "error.dataAccess.outOfDiskSpace" = "Out of disk space";
+"error.csvImportVocabularyError.incorrectNumberOfColumns" = "An error occurred while importing the vocabulary from a CSV file. The CSV file contains a row with incorrect number of columns. Make sure not to use commas in your vocabulary list since commas are used to separate the different columns.";
+"error.csvImportVocabularyError.noData" = "No CSV data could be found. Make sure your file is in the CSV file format.";
