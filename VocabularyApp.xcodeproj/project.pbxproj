@@ -605,9 +605,9 @@
 				661F6C3E221066B000B11FDE /* Frameworks */,
 				661F6C3F221066B000B11FDE /* Resources */,
 				78BA94E7309BAE513DD09E35 /* [CP] Embed Pods Frameworks */,
+				66E291042282146500B7E555 /* Embed Frameworks */,
 				661F6C64221067DE00B11FDE /* ShellScript */,
 				661F6C9B22106B4400B11FDE /* ShellScript */,
-				66E291042282146500B7E555 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -808,7 +808,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"\n";
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"\n";
 		};
 		78BA94E7309BAE513DD09E35 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1100,7 +1100,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 546GN65GPA;
+				DEVELOPMENT_TEAM = 8ZBL7398UU;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1110,7 +1110,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.braunsch.VocabularyApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.braunschweiler.VocabularyApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1123,7 +1123,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 546GN65GPA;
+				DEVELOPMENT_TEAM = 8ZBL7398UU;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1133,7 +1133,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.braunsch.VocabularyApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.braunschweiler.VocabularyApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
