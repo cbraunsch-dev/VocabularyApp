@@ -74,7 +74,7 @@ class RealmSetLocalDataService: RealmLocalDataService, SetLocalDataService {
                     set.vocabularyPairs.append(pairEntity)
                 }
                 try realm.write(transaction: {
-                    realm.add(set, update: true)
+                    realm.add(set, update: .modified)
                 }, completion:  {
                     observer.onNext(())
                 })

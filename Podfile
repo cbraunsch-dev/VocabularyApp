@@ -11,6 +11,7 @@ target 'VocabularyApp' do
   pod 'Swinject'
   pod 'SwinjectStoryboard'
   pod 'SnapKit', '~> 5.0.0'
+  pod 'RealmSwift'
 
   target 'VocabularyAppTests' do
     inherit! :search_paths

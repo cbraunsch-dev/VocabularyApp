@@ -4,6 +4,11 @@ PODS:
   - iOSSnapshotTestCase/Core (6.0.3)
   - iOSSnapshotTestCase/SwiftSupport (6.0.3):
     - iOSSnapshotTestCase/Core
+  - Realm (5.4.4):
+    - Realm/Headers (= 5.4.4)
+  - Realm/Headers (5.4.4)
+  - RealmSwift (5.4.4):
+    - Realm (= 5.4.4)
   - RxBlocking (5.0.0):
     - RxSwift (~> 5)
   - RxCocoa (5.0.0):
@@ -21,6 +26,7 @@ PODS:
 
 DEPENDENCIES:
   - iOSSnapshotTestCase
+  - RealmSwift
   - RxBlocking (= 5.0.0)
   - RxCocoa (= 5.0.0)
   - RxSwift (= 5.0.0)
@@ -30,7 +36,7 @@ DEPENDENCIES:
   - SwinjectStoryboard
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - iOSSnapshotTestCase
     - RxBlocking
     - RxCocoa
@@ -40,9 +46,14 @@ SPEC REPOS:
     - SnapKit
     - Swinject
     - SwinjectStoryboard
+  trunk:
+    - Realm
+    - RealmSwift
 
 SPEC CHECKSUMS:
   iOSSnapshotTestCase: 944a73f6d9676302811a86c0cf35f0e6ef5ab2a0
+  Realm: b845bf406e03b9c52a53e0de2394480288aa532a
+  RealmSwift: b524ff07e4e92a34f4aecbe6ed1a613979a08bb9
   RxBlocking: c67185d26498ea3cbe3e121917c3c16739e43123
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
@@ -52,6 +63,6 @@ SPEC CHECKSUMS:
   Swinject: 48a96cda93633cf2860697b4ce76ab5db9ebaca2
   SwinjectStoryboard: 32512ef16c2b0ff5b8f823b23539c4a50f6d3383
 
-PODFILE CHECKSUM: 3d01e374c3e6fc6e1b8ed98f265104b5b5636f82
+PODFILE CHECKSUM: 5306a8abe93a7a819f9c91b782665c885a8ae169
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.9.3

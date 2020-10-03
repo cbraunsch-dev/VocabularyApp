@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -91,10 +91,6 @@
 		66C72BB6223A1EEC00A9AFE3 /* AddVocabularyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C72BB5223A1EEC00A9AFE3 /* AddVocabularyViewController.swift */; };
 		66CF6CF72230E6D5007CA838 /* GenericTableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CF6CF62230E6D5007CA838 /* GenericTableItem.swift */; };
 		66CF6CF92230E6F1007CA838 /* GenericTableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CF6CF82230E6F1007CA838 /* GenericTableSection.swift */; };
-		66E291002282146500B7E555 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E290FE2282146100B7E555 /* RealmSwift.framework */; };
-		66E291012282146500B7E555 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 66E290FE2282146100B7E555 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		66E291022282146500B7E555 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E290FF2282146500B7E555 /* Realm.framework */; };
-		66E291032282146500B7E555 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 66E290FF2282146500B7E555 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		66E8FF6F225AFE8500CEC1A2 /* TrainSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E8FF6E225AFE8500CEC1A2 /* TrainSetViewController.swift */; };
 		66E8FF71225AFF6400CEC1A2 /* TrainSetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E8FF70225AFF6400CEC1A2 /* TrainSetViewModel.swift */; };
 		66E8FF73225B013300CEC1A2 /* TrainSetViewControllerSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E8FF72225B013300CEC1A2 /* TrainSetViewControllerSnapshotTests.swift */; };
@@ -119,21 +115,6 @@
 			remoteInfo = VocabularyApp;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		66E291042282146500B7E555 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				66E291032282146500B7E555 /* Realm.framework in Embed Frameworks */,
-				66E291012282146500B7E555 /* RealmSwift.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		111EDDD06967510BBC343452 /* Pods-VocabularyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VocabularyApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-VocabularyApp/Pods-VocabularyApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -225,16 +206,12 @@
 		66B910CD22219B5D00C5D0B5 /* IoCContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IoCContainer.swift; sourceTree = "<group>"; };
 		66B910CF22219E6100C5D0B5 /* GenericItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericItemType.swift; sourceTree = "<group>"; };
 		66B910D22221A25900C5D0B5 /* AddSetViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSetViewModelTests.swift; sourceTree = "<group>"; };
+		66BD2FE72528D26900AD0C19 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "../../../../Downloads/realm-swift-5.4.7/ios/swift-12.0/Realm.framework"; sourceTree = "<group>"; };
+		66BD2FE82528D26900AD0C19 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "../../../../Downloads/realm-swift-5.4.7/ios/swift-12.0/RealmSwift.framework"; sourceTree = "<group>"; };
 		66C72BB3223A0F1800A9AFE3 /* LearnSet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LearnSet.storyboard; sourceTree = "<group>"; };
 		66C72BB5223A1EEC00A9AFE3 /* AddVocabularyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVocabularyViewController.swift; sourceTree = "<group>"; };
 		66CF6CF62230E6D5007CA838 /* GenericTableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableItem.swift; sourceTree = "<group>"; };
 		66CF6CF82230E6F1007CA838 /* GenericTableSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableSection.swift; sourceTree = "<group>"; };
-		66E290F0228213E500B7E555 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "../../../../Downloads/realm-swift-3.15.0/ios/swift-10.2.1/RealmSwift.framework"; sourceTree = "<group>"; };
-		66E290F1228213E500B7E555 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "../../../../Downloads/realm-swift-3.15.0/ios/swift-10.2.1/Realm.framework"; sourceTree = "<group>"; };
-		66E290F72282141D00B7E555 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "../../../../Downloads/realm-swift-3.15.0/ios/swift-10.2.1/Realm.framework"; sourceTree = "<group>"; };
-		66E290F82282141D00B7E555 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "../../../../Downloads/realm-swift-3.15.0/ios/swift-10.2.1/RealmSwift.framework"; sourceTree = "<group>"; };
-		66E290FE2282146100B7E555 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
-		66E290FF2282146500B7E555 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		66E8FF6E225AFE8500CEC1A2 /* TrainSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainSetViewController.swift; sourceTree = "<group>"; };
 		66E8FF70225AFF6400CEC1A2 /* TrainSetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainSetViewModel.swift; sourceTree = "<group>"; };
 		66E8FF72225B013300CEC1A2 /* TrainSetViewControllerSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainSetViewControllerSnapshotTests.swift; sourceTree = "<group>"; };
@@ -257,8 +234,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66E291022282146500B7E555 /* Realm.framework in Frameworks */,
-				66E291002282146500B7E555 /* RealmSwift.framework in Frameworks */,
 				B63361A6BBB3E604D557E51A /* Pods_VocabularyApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,12 +272,6 @@
 		661F6C38221066B000B11FDE = {
 			isa = PBXGroup;
 			children = (
-				66E290F1228213E500B7E555 /* Realm.framework */,
-				66E290FF2282146500B7E555 /* Realm.framework */,
-				66E290F0228213E500B7E555 /* RealmSwift.framework */,
-				66E290F72282141D00B7E555 /* Realm.framework */,
-				66E290F82282141D00B7E555 /* RealmSwift.framework */,
-				66E290FE2282146100B7E555 /* RealmSwift.framework */,
 				661F6C43221066B000B11FDE /* VocabularyApp */,
 				661F6C58221066B100B11FDE /* VocabularyAppTests */,
 				661F6C42221066B000B11FDE /* Products */,
@@ -587,6 +556,8 @@
 			children = (
 				661F6CA522106D5900B11FDE /* Realm.framework */,
 				661F6CA422106D5800B11FDE /* RealmSwift.framework */,
+				66BD2FE72528D26900AD0C19 /* Realm.framework */,
+				66BD2FE82528D26900AD0C19 /* RealmSwift.framework */,
 				6781E710D61109875C62B361 /* Pods_VocabularyApp.framework */,
 				1CF350501C9A7B32312DD74E /* Pods_VocabularyAppTests.framework */,
 			);
@@ -605,9 +576,7 @@
 				661F6C3E221066B000B11FDE /* Frameworks */,
 				661F6C3F221066B000B11FDE /* Resources */,
 				78BA94E7309BAE513DD09E35 /* [CP] Embed Pods Frameworks */,
-				66E291042282146500B7E555 /* Embed Frameworks */,
 				661F6C64221067DE00B11FDE /* ShellScript */,
-				661F6C9B22106B4400B11FDE /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -710,26 +679,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-VocabularyAppTests/Pods-VocabularyAppTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
-				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
-				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-VocabularyAppTests/Pods-VocabularyAppTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-VocabularyAppTests/Pods-VocabularyAppTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VocabularyAppTests/Pods-VocabularyAppTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VocabularyAppTests/Pods-VocabularyAppTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		1BD39144DEB40F644EF8F275 /* [CP] Check Pods Manifest.lock */ = {
@@ -793,53 +751,21 @@
 			shellPath = /bin/sh;
 			shellScript = "if which \"$PROJECT_DIR\"/swiftgen/bin/swiftgen >/dev/null; then\n\"$PROJECT_DIR\"/swiftgen/bin/swiftgen strings \"$PROJECT_DIR/VocabularyApp/Localization/en.lproj/Localizable.Strings\" --output \"$PROJECT_DIR/VocabularyApp/Localization/Strings.swift\" -template structured-swift4\nelse\necho \"warning: SwiftGen not installed. Unable to generate Strings.swift file from Localizable Strings. Download SwiftGen from https://github.com/AliSoftware/SwiftGen\"\nfi\n";
 		};
-		661F6C9B22106B4400B11FDE /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"\n";
-		};
 		78BA94E7309BAE513DD09E35 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-VocabularyApp/Pods-VocabularyApp-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
-				"${BUILT_PRODUCTS_DIR}/SwinjectStoryboard/SwinjectStoryboard.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-VocabularyApp/Pods-VocabularyApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwinjectStoryboard.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-VocabularyApp/Pods-VocabularyApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VocabularyApp/Pods-VocabularyApp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VocabularyApp/Pods-VocabularyApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1100,6 +1026,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 8ZBL7398UU;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1123,6 +1050,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 8ZBL7398UU;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
