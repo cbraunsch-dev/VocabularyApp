@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vcx-Vq-Tiq">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vcx-Vq-Tiq">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,6 +21,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Qfr-El-iFl"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
@@ -30,7 +29,6 @@
                             <constraint firstItem="4WO-3O-MdY" firstAttribute="centerY" secondItem="f4G-oH-fi0" secondAttribute="centerY" id="pD4-JE-Dab"/>
                             <constraint firstItem="4WO-3O-MdY" firstAttribute="leading" secondItem="Qfr-El-iFl" secondAttribute="leading" constant="25" id="zhZ-Th-LYo"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Qfr-El-iFl"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="8Vv-I1-ySw" appends="YES" id="Hhc-Ru-Xn6"/>
                             <outletCollection property="gestureRecognizers" destination="1w3-my-AzR" appends="YES" id="FEE-XR-Ma9"/>
@@ -64,7 +62,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vcx-Vq-Tiq" customClass="SetManageableNavigationController" customModule="VocabularyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Kya-Wj-FNb">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -74,7 +72,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FI2-zM-H1U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="61.600000000000001" y="163.26836581709148"/>
+            <point key="canvasLocation" x="50" y="163"/>
         </scene>
     </scenes>
 </document>

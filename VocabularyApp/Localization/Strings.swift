@@ -19,6 +19,8 @@ internal enum L10n {
     internal static let learn = L10n.tr("Localizable", "action.learn")
     /// Ok
     internal static let ok = L10n.tr("Localizable", "action.ok")
+    /// Play
+    internal static let play = L10n.tr("Localizable", "action.play")
     /// Practice
     internal static let practice = L10n.tr("Localizable", "action.practice")
     /// Train

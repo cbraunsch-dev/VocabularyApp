@@ -19,6 +19,7 @@
 "action.importVocabulary.csv" = "Import from CSV file";
 "action.train" = "Train";
 "action.practice" = "Practice";
+"action.play" = "Play";
 
 "viewController.addSet.hint" = "Tap on the item below to set or change the name of the set.";
 "viewController.practiceSet.hint1" = "Welcome to the practice mode. Swipe up to learn more.";

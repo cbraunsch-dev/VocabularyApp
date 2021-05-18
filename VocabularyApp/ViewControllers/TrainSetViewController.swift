@@ -28,6 +28,7 @@ class TrainSetViewController: UIViewController, TableDisplayCapable, SetManageab
     
     enum SegueIdentifier: String {
         case practiceSet
+        case play
     }
     
     override func viewDidLoad() {
@@ -48,6 +49,10 @@ class TrainSetViewController: UIViewController, TableDisplayCapable, SetManageab
             .subscribe(onNext: {
                 self.performSegueWithIdentifier(segueIdentifier: .practiceSet, sender: self)
             }).disposed(by: self.bag)
+        self.viewModel.outputs.play
+            .subscribe(onNext: {
+                self.performSegueWithIdentifier(segueIdentifier: .play, sender: self)
+            }).disposed(by: self.bag)
         
         self.viewModel.inputs.viewDidLoad.onNext(())
     }
@@ -60,6 +65,8 @@ class TrainSetViewController: UIViewController, TableDisplayCapable, SetManageab
         case .practiceSet:
             var setManageableVc = segue.destination as! SetManageable
             setManageableVc.set = self.set
+            break
+        case .play:
             break
         }
     }

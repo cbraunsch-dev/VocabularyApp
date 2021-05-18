@@ -18,6 +18,7 @@ protocol TrainSetViewModelInputs {
 protocol TrainSetViewModelOutputs {
     var sections: PublishSubject<[GenericTableSection]> { get }
     var practice: PublishSubject<Void> { get }
+    var play: PublishSubject<Void> { get }
 }
 
 protocol TrainSetViewModelType {
@@ -36,6 +37,7 @@ class TrainSetViewModel: TrainSetViewModelType, TrainSetViewModelInputs, TrainSe
     let selectItem = PublishSubject<IndexPath>()
     let sections = PublishSubject<[GenericTableSection]>()
     let practice = PublishSubject<Void>()
+    let play = PublishSubject<Void>()
     
     init() {
         self.inputs.viewDidLoad
@@ -54,15 +56,23 @@ class TrainSetViewModel: TrainSetViewModelType, TrainSetViewModelInputs, TrainSe
             .map { _ in return }
             .bind(to: self.outputs.practice)
             .disposed(by: self.bag)
+        self.selectedTableItemAction
+            .filter { $0 is TrainSetItemAction }.map { $0 as! TrainSetItemAction }
+            .filter { $0 == TrainSetItemAction.play }
+            .map { _ in return }
+            .bind(to: self.outputs.play)
+            .disposed(by: self.bag)
     }
     
     private func createSections() -> [GenericTableSection] {
         let practiceItem = GenericTableItem(title: L10n.Action.practice, action: TrainSetItemAction.practice)
-        let section = GenericTableSection(items: [practiceItem], title: nil, footer: nil)
+        let playItem = GenericTableItem(title: L10n.Action.play, action: TrainSetItemAction.play)
+        let section = GenericTableSection(items: [practiceItem, playItem], title: nil, footer: nil)
         return [section]
     }
 }
 
 enum TrainSetItemAction: TableItemAction {
     case practice
+    case play
 }
