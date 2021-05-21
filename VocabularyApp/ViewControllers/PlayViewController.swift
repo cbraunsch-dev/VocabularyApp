@@ -8,25 +8,60 @@
 
 import UIKit
 
+
 class PlayViewController: UIViewController, SetManageable {
 
     var set: SetLocalDataModel?
     
+    private var gameRunning = false
+    private var timeBetweenSpawns = 1000
+    
+    private var dynamicAnimator: UIDynamicAnimator!
+    private var gravityBehavior: UIGravityBehavior!
+    private var screenBoundsCollisionBehavior: UICollisionBehavior!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
+        gravityBehavior = UIGravityBehavior(items: [])
+        screenBoundsCollisionBehavior = UICollisionBehavior(items: [])
+        screenBoundsCollisionBehavior.translatesReferenceBoundsIntoBoundary = true
+        dynamicAnimator.addBehavior(gravityBehavior)
+        dynamicAnimator.addBehavior(screenBoundsCollisionBehavior)
+        
+        gameRunning = true
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.runGame()
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func runGame() {
+        while(gameRunning) {
+            DispatchQueue.main.async {
+                self.spawnLabel()
+            }
+            
+            Thread.sleep(forTimeInterval: 3)
+        }
     }
-    */
-
+    
+    private func spawnLabel() {
+        let newLabel = UILabel()
+        newLabel.text = self.pickRandomWord()
+        newLabel.sizeToFit()
+        self.view.addSubview(newLabel)
+        self.gravityBehavior.addItem(newLabel)
+        self.screenBoundsCollisionBehavior.addItem(newLabel)
+    }
+    
+    private func pickRandomWord() -> String {
+        guard let availableSet = self.set else {
+            return "No words available"
+        }
+        let randomIndex = Int.random(in: 0..<availableSet.vocabularyPairs.count)
+        let randomWord = availableSet.vocabularyPairs[randomIndex].wordOrPhrase
+        return randomWord
+    }
 }

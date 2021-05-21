@@ -67,6 +67,8 @@ class TrainSetViewController: UIViewController, TableDisplayCapable, SetManageab
             setManageableVc.set = self.set
             break
         case .play:
+            var setManageableVc = segue.destination as! SetManageable
+            setManageableVc.set = self.set
             break
         }
     }
