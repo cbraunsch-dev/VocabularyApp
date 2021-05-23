@@ -13,6 +13,10 @@ class PlayViewController: UIViewController, SetManageable {
 
     var set: SetLocalDataModel?
     
+    private let ThrowingThreshold: CGFloat = 100
+    private let ThrowingVelocityPadding: CGFloat = 300
+    private let maximumThrowingMagnitude: CGFloat = 450
+    
     private var gameRunning = false
     private var timeBetweenSpawns = 1000
     
@@ -65,10 +69,9 @@ class PlayViewController: UIViewController, SetManageable {
             
             break
         case .ended:
-            // Reset UI Kit dynamics
-            dynamicAnimator.removeAllBehaviors()
-            dynamicAnimator.addBehavior(gravityBehavior)
-            dynamicAnimator.addBehavior(screenBoundsCollisionBehavior)
+            if let viewToToss = self.viewBeingDragged {
+                tossView(viewToToss: viewToToss, sender: sender)
+            }
             
             self.viewBeingDragged = nil
             break
@@ -77,6 +80,38 @@ class PlayViewController: UIViewController, SetManageable {
                 availableAttachmentBehavior.anchorPoint = sender.location(in: self.view)
             }
             break
+        }
+    }
+    
+    private func tossView(viewToToss: UIView, sender: UIPanGestureRecognizer) {
+        // Reset UI Kit dynamics
+        dynamicAnimator.removeAllBehaviors()
+        dynamicAnimator.addBehavior(gravityBehavior)
+        dynamicAnimator.addBehavior(screenBoundsCollisionBehavior)
+        
+        // Add a push behavior to toss the view
+        let velocity = sender.velocity(in: view)
+        let magnitude = sqrt((velocity.x * velocity.x) + (velocity.y * velocity.y))
+        if magnitude > ThrowingThreshold {
+            let clampedMagnitude = magnitude / ThrowingVelocityPadding > maximumThrowingMagnitude ? maximumThrowingMagnitude : magnitude / ThrowingVelocityPadding
+            let pushBehavior = UIPushBehavior(items: [viewToToss], mode: .instantaneous)
+            pushBehavior.pushDirection = CGVector(dx: velocity.x / 10, dy: velocity.y / 10)
+            pushBehavior.magnitude = clampedMagnitude
+            dynamicAnimator.addBehavior(pushBehavior)
+
+            // Give it a little spin
+            let angle = Int(arc4random_uniform(20)) - 10
+            let itemBehavior = UIDynamicItemBehavior(items: [viewToToss])
+            itemBehavior.friction = 0.2
+            itemBehavior.allowsRotation = true
+            itemBehavior.addAngularVelocity(CGFloat(angle), for: viewToToss)
+            dynamicAnimator.addBehavior(itemBehavior)
+            
+            // remove the push and rotation behaviors after some time
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                self.dynamicAnimator.removeBehavior(pushBehavior)
+                self.dynamicAnimator.removeBehavior(itemBehavior)
+            })
         }
     }
     
