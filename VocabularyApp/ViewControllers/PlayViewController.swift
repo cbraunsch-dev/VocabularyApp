@@ -19,6 +19,9 @@ class PlayViewController: UIViewController, SetManageable {
     private var dynamicAnimator: UIDynamicAnimator!
     private var gravityBehavior: UIGravityBehavior!
     private var screenBoundsCollisionBehavior: UICollisionBehavior!
+    private var attachmentBehavior: UIAttachmentBehavior? = nil
+    
+    private var viewBeingDragged: UIView? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,10 +33,52 @@ class PlayViewController: UIViewController, SetManageable {
         dynamicAnimator.addBehavior(gravityBehavior)
         dynamicAnimator.addBehavior(screenBoundsCollisionBehavior)
         
+       // self.view.addGestureRecognizer(self.panGestureRecognizer)
+        
         gameRunning = true
         
         DispatchQueue.global(qos: .userInitiated).async {
             self.runGame()
+        }
+    }
+    
+    @IBAction
+    func handlePanGesture(sender: UIPanGestureRecognizer) {
+        switch sender.state {
+        case .began:
+            // Find view that I touched
+            let view = sender.view
+            let location = sender.location(in: sender.view)
+            let childView = view?.hitTest(location, with: nil)
+            if childView is UILabel {
+                print("Touching label, I guess")
+                self.viewBeingDragged = childView
+            }
+            
+            if let touchedView = self.viewBeingDragged {
+                // Prepare UI Kit dynamics
+                gravityBehavior.removeItem(touchedView)
+                attachmentBehavior = UIAttachmentBehavior(item: touchedView, attachedToAnchor: location)
+                dynamicAnimator.addBehavior(attachmentBehavior!)
+            }
+            
+            break
+        case .ended:
+            // Reset UI Kit dynamics
+            if let availableViewBeingDragged = self.viewBeingDragged {
+                gravityBehavior.addItem(availableViewBeingDragged)
+                dynamicAnimator.removeAllBehaviors()
+                dynamicAnimator.addBehavior(gravityBehavior)
+                dynamicAnimator.addBehavior(screenBoundsCollisionBehavior)
+                
+                self.viewBeingDragged = nil
+            }
+            break
+        default:
+            if let availableAttachmentBehavior = self.attachmentBehavior {
+                availableAttachmentBehavior.anchorPoint = sender.location(in: self.view)
+            }
+            break
         }
     }
     
@@ -51,6 +96,7 @@ class PlayViewController: UIViewController, SetManageable {
         let newLabel = UILabel()
         newLabel.text = self.pickRandomWord()
         newLabel.sizeToFit()
+        newLabel.isUserInteractionEnabled = true    // Needed, otherwise we can't "grab" the view by touching it
         self.view.addSubview(newLabel)
         self.gravityBehavior.addItem(newLabel)
         self.screenBoundsCollisionBehavior.addItem(newLabel)

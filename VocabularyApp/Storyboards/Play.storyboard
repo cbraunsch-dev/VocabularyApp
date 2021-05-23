@@ -18,10 +18,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="SBe-26-jQL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="E3R-VY-RNf" appends="YES" id="ybG-t4-v46"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="Rzw-ex-tP5"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vzA-Gg-RTw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="E3R-VY-RNf">
+                    <connections>
+                        <action selector="handlePanGestureWithSender:" destination="mPv-Bg-BkJ" id="4EO-LN-hq9"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="419" y="-867"/>
         </scene>
