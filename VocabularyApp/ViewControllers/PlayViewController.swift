@@ -57,22 +57,20 @@ class PlayViewController: UIViewController, SetManageable {
             
             if let touchedView = self.viewBeingDragged {
                 // Prepare UI Kit dynamics
-                gravityBehavior.removeItem(touchedView)
-                attachmentBehavior = UIAttachmentBehavior(item: touchedView, attachedToAnchor: location)
+                let pointInViewThatWasTouched = sender.location(in: touchedView)
+                let centerOffset = UIOffset(horizontal: pointInViewThatWasTouched.x - touchedView.bounds.midX, vertical: pointInViewThatWasTouched.y - touchedView.bounds.midY)
+                attachmentBehavior = UIAttachmentBehavior(item: touchedView, offsetFromCenter: centerOffset, attachedToAnchor: location)
                 dynamicAnimator.addBehavior(attachmentBehavior!)
             }
             
             break
         case .ended:
             // Reset UI Kit dynamics
-            if let availableViewBeingDragged = self.viewBeingDragged {
-                gravityBehavior.addItem(availableViewBeingDragged)
-                dynamicAnimator.removeAllBehaviors()
-                dynamicAnimator.addBehavior(gravityBehavior)
-                dynamicAnimator.addBehavior(screenBoundsCollisionBehavior)
-                
-                self.viewBeingDragged = nil
-            }
+            dynamicAnimator.removeAllBehaviors()
+            dynamicAnimator.addBehavior(gravityBehavior)
+            dynamicAnimator.addBehavior(screenBoundsCollisionBehavior)
+            
+            self.viewBeingDragged = nil
             break
         default:
             if let availableAttachmentBehavior = self.attachmentBehavior {
