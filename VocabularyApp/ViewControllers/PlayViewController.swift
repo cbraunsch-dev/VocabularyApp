@@ -46,19 +46,22 @@ class PlayViewController: UIViewController, SetManageable {
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let firstTouch = touches.first {
+            let hitView = self.view.hitTest(firstTouch.location(in: self.view), with: event)
+            if(hitView is UILabel) {
+                print("Touched a label!")
+                self.viewBeingDragged = hitView
+            }
+        }
+    }
+    
     @IBAction
     func handlePanGesture(sender: UIPanGestureRecognizer) {
         switch sender.state {
         case .began:
-            // Find view that I touched
-            let view = sender.view
+            // TODO: Could move calculation of location to where I detect the touched view. But for now this is good enough. It might make the detection of where the anchor point on the touched word is a bit more accurate though.
             let location = sender.location(in: sender.view)
-            let childView = view?.hitTest(location, with: nil)
-            if childView is UILabel {
-                print("Touching label, I guess")
-                self.viewBeingDragged = childView
-            }
-            
             if let touchedView = self.viewBeingDragged {
                 // Prepare UI Kit dynamics
                 let pointInViewThatWasTouched = sender.location(in: touchedView)
