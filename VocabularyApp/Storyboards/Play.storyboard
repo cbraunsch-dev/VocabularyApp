@@ -23,12 +23,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4k-IW-2ZD">
-                                <rect key="frame" x="53.5" y="167" width="53" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rL5-fF-1kb">
                                 <rect key="frame" x="52" y="401" width="56" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -41,13 +35,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Sf-zb-C2J">
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="130" placeholderIntrinsicHeight="36" translatesAutoresizingMaskIntoConstraints="NO" id="5Sf-zb-C2J" customClass="BucketView" customModule="VocabularyApp" customModuleProvider="target">
                                 <rect key="frame" x="15" y="123" width="130" height="36"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="0dm-tT-tw9"/>
-                                    <constraint firstAttribute="height" constant="36" id="cAA-7w-UUx"/>
-                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ze2-wa-gmU">
                                 <rect key="frame" x="15" y="357" width="130" height="36"/>
@@ -88,8 +77,6 @@
                             <constraint firstItem="WEa-jv-4AN" firstAttribute="centerY" secondItem="SBe-26-jQL" secondAttribute="centerY" constant="-100" id="aRr-ZL-7Pz"/>
                             <constraint firstItem="5Sf-zb-C2J" firstAttribute="top" secondItem="SBe-26-jQL" secondAttribute="top" constant="35" id="bO1-NV-JQd"/>
                             <constraint firstItem="tZf-CM-8ng" firstAttribute="centerX" secondItem="WEa-jv-4AN" secondAttribute="centerX" id="gQv-To-hDL"/>
-                            <constraint firstItem="A4k-IW-2ZD" firstAttribute="centerX" secondItem="5Sf-zb-C2J" secondAttribute="centerX" id="ieY-yP-YLI"/>
-                            <constraint firstItem="A4k-IW-2ZD" firstAttribute="top" secondItem="5Sf-zb-C2J" secondAttribute="bottom" constant="8" symbolic="YES" id="mUs-gn-1FI"/>
                             <constraint firstItem="rL5-fF-1kb" firstAttribute="centerX" secondItem="ze2-wa-gmU" secondAttribute="centerX" id="mW3-Jk-DUF"/>
                             <constraint firstItem="ze2-wa-gmU" firstAttribute="centerY" secondItem="SBe-26-jQL" secondAttribute="centerY" constant="-100" id="qB4-i2-9x0"/>
                             <constraint firstItem="ze2-wa-gmU" firstAttribute="leading" secondItem="SBe-26-jQL" secondAttribute="leading" constant="15" id="sMA-vx-aQj"/>
@@ -101,7 +88,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Rzw-ex-tP5"/>
                     <connections>
-                        <outlet property="bucket1" destination="Fr9-oq-flQ" id="ex3-lH-F5B"/>
+                        <outlet property="bucket1" destination="5Sf-zb-C2J" id="CXO-HQ-7Oa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vzA-Gg-RTw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

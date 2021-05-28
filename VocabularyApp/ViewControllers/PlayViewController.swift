@@ -28,32 +28,16 @@ class PlayViewController: UIViewController, SetManageable {
     private var viewBeingDragged: UIView? = nil
     private var labels = [UILabel]()
     
-    @IBOutlet var bucket1: UIView!
+    @IBOutlet var bucket1: BucketView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Give buckets some initial values
+        bucket1.text.text = "Persnickety"
+        
         dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
         gravityBehavior = UIGravityBehavior(items: [])
-        gravityBehavior.action = {
-            /*self.labels.forEach({item in
-                let leftSideInBucket = self.bucket1.point(inside: CGPoint(x: item.frame.minX, y: item.frame.midY), with: nil)
-                let centerInBucket = self.bucket1.point(inside: CGPoint(x: item.frame.midX, y: item.frame.midY), with: nil)
-                let rightSideInBucket = self.bucket1.point(inside: CGPoint(x: item.frame.maxX, y: item.frame.maxY), with: nil)
-                if(leftSideInBucket) {
-                    print("Left side (\(item.frame.minX), \(item.frame.midY)) of item \(item.text) is in bucket \(DispatchTime.now())")
-                }
-                if(centerInBucket) {
-                    print("Center (\(item.frame.midX), \(item.frame.midY)) of item \(item.text) is in bucket")
-                }
-                if(rightSideInBucket) {
-                    print("Right side (\(item.frame.maxX), \(item.frame.maxY)) of item \(item.text) is in bucket")
-                }
-                if(leftSideInBucket || centerInBucket || rightSideInBucket) {
-                    //print("OMG item \(item.text) is in bucket! \(DispatchTime.now())")
-                }
-            })*/
-        }
         screenBoundsCollisionBehavior = UICollisionBehavior(items: [])
         screenBoundsCollisionBehavior.translatesReferenceBoundsIntoBoundary = true
         dynamicAnimator.addBehavior(gravityBehavior)
@@ -87,14 +71,6 @@ class PlayViewController: UIViewController, SetManageable {
                 let pointInViewThatWasTouched = sender.location(in: touchedView)
                 let centerOffset = UIOffset(horizontal: pointInViewThatWasTouched.x - touchedView.bounds.midX, vertical: pointInViewThatWasTouched.y - touchedView.bounds.midY)
                 attachmentBehavior = UIAttachmentBehavior(item: touchedView, offsetFromCenter: centerOffset, attachedToAnchor: location)
-                attachmentBehavior?.action = {
-                    self.attachmentBehavior?.items.forEach({itly in
-                        let item = itly as! UILabel
-                        if(item.frame.intersects(self.bucket1.frame)) {
-                            print("Item \(item.text) DANGLING INTERSECTS with bucket \(DispatchTime.now())")
-                        }
-                    })
-                }
                 dynamicAnimator.addBehavior(attachmentBehavior!)
             }
             
@@ -111,6 +87,15 @@ class PlayViewController: UIViewController, SetManageable {
                 availableAttachmentBehavior.anchorPoint = sender.location(in: self.view)
             }
             break
+        }
+    }
+    
+    fileprivate func checkForItemCollisionsWithBucket(itemBehavior: UIDynamicItemBehavior) {
+        itemBehavior.items.forEach { itly in
+            let item = itly as! UILabel
+            if(item.frame.intersects(self.bucket1.frame)) {
+                print("Item \(item.text) INTERSECTS with bucket \(DispatchTime.now())")
+            }
         }
     }
     
@@ -137,12 +122,7 @@ class PlayViewController: UIViewController, SetManageable {
             itemBehavior.allowsRotation = true
             itemBehavior.addAngularVelocity(CGFloat(angle), for: viewToToss)
             itemBehavior.action = {
-                itemBehavior.items.forEach { itly in
-                    let item = itly as! UILabel
-                    if(item.frame.intersects(self.bucket1.frame)) {
-                        print("Item \(item.text) TOSSING INTERSECTS with bucket \(DispatchTime.now())")
-                    }
-                }
+                self.checkForItemCollisionsWithBucket(itemBehavior: itemBehavior)
             }
             dynamicAnimator.addBehavior(itemBehavior)
             
@@ -156,12 +136,7 @@ class PlayViewController: UIViewController, SetManageable {
             // the item has collided with a bucket
             let itemBehavior = UIDynamicItemBehavior(items: [viewToToss])
             itemBehavior.action = {
-                itemBehavior.items.forEach { itly in
-                    let item = itly as! UILabel
-                    if(item.frame.intersects(self.bucket1.frame)) {
-                        print("Item \(item.text) DROPPING INTERSECTS with bucket \(DispatchTime.now())")
-                    }
-                }
+                self.checkForItemCollisionsWithBucket(itemBehavior: itemBehavior)
             }
             dynamicAnimator.addBehavior(itemBehavior)
             

@@ -46,6 +46,8 @@
 		662A39C3223EA5BE00EEA98B /* ModalSpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662A39C2223EA5BE00EEA98B /* ModalSpinnerView.swift */; };
 		663D0AFF225708BE00BE8148 /* LearnSetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663D0AFE225708BE00BE8148 /* LearnSetViewModel.swift */; };
 		663D0B0122570B8400BE8148 /* LearnSetViewControllerSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663D0B0022570B8400BE8148 /* LearnSetViewControllerSnapshotTests.swift */; };
+		664950A926609F3000CC67A2 /* BucketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664950A826609F3000CC67A2 /* BucketView.swift */; };
+		664950AD26609FD100CC67A2 /* BucketViewSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664950AC26609FD100CC67A2 /* BucketViewSnapshotTests.swift */; };
 		665326BA223617E300516DA3 /* SetsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665326B9223617E300516DA3 /* SetsViewModelTests.swift */; };
 		66805AA0223F53CE00379133 /* VocabularyPairEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66805A9F223F53CE00379133 /* VocabularyPairEntity.swift */; };
 		66852022223B61BE00BF631F /* ImportVocabularyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66852021223B61BE00BF631F /* ImportVocabularyService.swift */; };
@@ -167,6 +169,8 @@
 		662A39C2223EA5BE00EEA98B /* ModalSpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalSpinnerView.swift; sourceTree = "<group>"; };
 		663D0AFE225708BE00BE8148 /* LearnSetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnSetViewModel.swift; sourceTree = "<group>"; };
 		663D0B0022570B8400BE8148 /* LearnSetViewControllerSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnSetViewControllerSnapshotTests.swift; sourceTree = "<group>"; };
+		664950A826609F3000CC67A2 /* BucketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketView.swift; sourceTree = "<group>"; };
+		664950AC26609FD100CC67A2 /* BucketViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketViewSnapshotTests.swift; sourceTree = "<group>"; };
 		665326B9223617E300516DA3 /* SetsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsViewModelTests.swift; sourceTree = "<group>"; };
 		66805A9F223F53CE00379133 /* VocabularyPairEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyPairEntity.swift; sourceTree = "<group>"; };
 		66852021223B61BE00BF631F /* ImportVocabularyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportVocabularyService.swift; sourceTree = "<group>"; };
@@ -498,6 +502,7 @@
 				66E8FF72225B013300CEC1A2 /* TrainSetViewControllerSnapshotTests.swift */,
 				6694FBFA225C4CD2003669E6 /* FlashCardViewSnapshotTests.swift */,
 				6694FC00225C524C003669E6 /* PracticeSetViewControllerSnapshotTests.swift */,
+				664950AC26609FD100CC67A2 /* BucketViewSnapshotTests.swift */,
 			);
 			path = SnapshotTestCases;
 			sourceTree = "<group>";
@@ -518,6 +523,7 @@
 				662A39C0223EA48C00EEA98B /* SpinnerView.swift */,
 				662A39C2223EA5BE00EEA98B /* ModalSpinnerView.swift */,
 				6694FBF8225C4BEA003669E6 /* FlashCardView.swift */,
+				664950A826609F3000CC67A2 /* BucketView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -796,6 +802,7 @@
 				668C4C9E225A545600EA0E85 /* WorkflowInterested.swift in Sources */,
 				661F6CB522106F4500B11FDE /* StoryboardName.swift in Sources */,
 				661F6C8A22106A3800B11FDE /* ResultConverter.swift in Sources */,
+				664950A926609F3000CC67A2 /* BucketView.swift in Sources */,
 				66B910B8222197A300C5D0B5 /* AppConstants.swift in Sources */,
 				661F6C8522106A3800B11FDE /* OperationResult.swift in Sources */,
 				6698EC4326536B4C00DCD1F4 /* PlayViewController.swift in Sources */,
@@ -868,6 +875,7 @@
 				66B910BA222197CC00C5D0B5 /* TitleValueCellContentViewSnapshotTests.swift in Sources */,
 				66852026223B641F00BF631F /* CsvImportVocabularyServiceTests.swift in Sources */,
 				66B910B22221964D00C5D0B5 /* AddSetViewControllerSnapshotTests.swift in Sources */,
+				664950AD26609FD100CC67A2 /* BucketViewSnapshotTests.swift in Sources */,
 				6694FC01225C524C003669E6 /* PracticeSetViewControllerSnapshotTests.swift in Sources */,
 				665326BA223617E300516DA3 /* SetsViewModelTests.swift in Sources */,
 				66B910D32221A25900C5D0B5 /* AddSetViewModelTests.swift in Sources */,
