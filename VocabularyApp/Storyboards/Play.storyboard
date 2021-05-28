@@ -100,6 +100,9 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="Rzw-ex-tP5"/>
+                    <connections>
+                        <outlet property="bucket1" destination="Fr9-oq-flQ" id="ex3-lH-F5B"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vzA-Gg-RTw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="E3R-VY-RNf">

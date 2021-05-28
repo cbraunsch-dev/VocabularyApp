@@ -26,18 +26,38 @@ class PlayViewController: UIViewController, SetManageable {
     private var attachmentBehavior: UIAttachmentBehavior? = nil
     
     private var viewBeingDragged: UIView? = nil
+    private var labels = [UILabel]()
+    
+    @IBOutlet var bucket1: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
         gravityBehavior = UIGravityBehavior(items: [])
+        gravityBehavior.action = {
+            /*self.labels.forEach({item in
+                let leftSideInBucket = self.bucket1.point(inside: CGPoint(x: item.frame.minX, y: item.frame.midY), with: nil)
+                let centerInBucket = self.bucket1.point(inside: CGPoint(x: item.frame.midX, y: item.frame.midY), with: nil)
+                let rightSideInBucket = self.bucket1.point(inside: CGPoint(x: item.frame.maxX, y: item.frame.maxY), with: nil)
+                if(leftSideInBucket) {
+                    print("Left side (\(item.frame.minX), \(item.frame.midY)) of item \(item.text) is in bucket \(DispatchTime.now())")
+                }
+                if(centerInBucket) {
+                    print("Center (\(item.frame.midX), \(item.frame.midY)) of item \(item.text) is in bucket")
+                }
+                if(rightSideInBucket) {
+                    print("Right side (\(item.frame.maxX), \(item.frame.maxY)) of item \(item.text) is in bucket")
+                }
+                if(leftSideInBucket || centerInBucket || rightSideInBucket) {
+                    //print("OMG item \(item.text) is in bucket! \(DispatchTime.now())")
+                }
+            })*/
+        }
         screenBoundsCollisionBehavior = UICollisionBehavior(items: [])
         screenBoundsCollisionBehavior.translatesReferenceBoundsIntoBoundary = true
         dynamicAnimator.addBehavior(gravityBehavior)
         dynamicAnimator.addBehavior(screenBoundsCollisionBehavior)
-        
-       // self.view.addGestureRecognizer(self.panGestureRecognizer)
         
         gameRunning = true
         
@@ -67,6 +87,14 @@ class PlayViewController: UIViewController, SetManageable {
                 let pointInViewThatWasTouched = sender.location(in: touchedView)
                 let centerOffset = UIOffset(horizontal: pointInViewThatWasTouched.x - touchedView.bounds.midX, vertical: pointInViewThatWasTouched.y - touchedView.bounds.midY)
                 attachmentBehavior = UIAttachmentBehavior(item: touchedView, offsetFromCenter: centerOffset, attachedToAnchor: location)
+                attachmentBehavior?.action = {
+                    self.attachmentBehavior?.items.forEach({itly in
+                        let item = itly as! UILabel
+                        if(item.frame.intersects(self.bucket1.frame)) {
+                            print("Item \(item.text) DANGLING INTERSECTS with bucket \(DispatchTime.now())")
+                        }
+                    })
+                }
                 dynamicAnimator.addBehavior(attachmentBehavior!)
             }
             
@@ -108,11 +136,37 @@ class PlayViewController: UIViewController, SetManageable {
             itemBehavior.friction = 0.2
             itemBehavior.allowsRotation = true
             itemBehavior.addAngularVelocity(CGFloat(angle), for: viewToToss)
+            itemBehavior.action = {
+                itemBehavior.items.forEach { itly in
+                    let item = itly as! UILabel
+                    if(item.frame.intersects(self.bucket1.frame)) {
+                        print("Item \(item.text) TOSSING INTERSECTS with bucket \(DispatchTime.now())")
+                    }
+                }
+            }
             dynamicAnimator.addBehavior(itemBehavior)
             
             // remove the push and rotation behaviors after some time
             DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
                 self.dynamicAnimator.removeBehavior(pushBehavior)
+                self.dynamicAnimator.removeBehavior(itemBehavior)
+            })
+        } else {
+            // Attach more or less an empty behavior to it but use that behavior to track whether
+            // the item has collided with a bucket
+            let itemBehavior = UIDynamicItemBehavior(items: [viewToToss])
+            itemBehavior.action = {
+                itemBehavior.items.forEach { itly in
+                    let item = itly as! UILabel
+                    if(item.frame.intersects(self.bucket1.frame)) {
+                        print("Item \(item.text) DROPPING INTERSECTS with bucket \(DispatchTime.now())")
+                    }
+                }
+            }
+            dynamicAnimator.addBehavior(itemBehavior)
+            
+            // remove the empty behavior after some time
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
                 self.dynamicAnimator.removeBehavior(itemBehavior)
             })
         }
@@ -134,6 +188,7 @@ class PlayViewController: UIViewController, SetManageable {
         newLabel.sizeToFit()
         newLabel.isUserInteractionEnabled = true    // Needed, otherwise we can't "grab" the view by touching it
         self.view.addSubview(newLabel)
+        self.labels.append(newLabel)
         self.gravityBehavior.addItem(newLabel)
         self.screenBoundsCollisionBehavior.addItem(newLabel)
     }
