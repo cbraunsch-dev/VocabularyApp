@@ -41,6 +41,9 @@ let appContainer: Container = {
     container.register(RandomNumberService.self) { _ in
         VocabularyAppRandomNumberService()
     }
+    container.register(GameItemList.self) { _ in
+        WordMatchGameItemList()
+    }
     
     container.register(SetsViewModelType.self) { r in
         SetsViewModel(
@@ -73,6 +76,13 @@ let appContainer: Container = {
     container.register(PracticeSetViewModelType.self) { r in
         PracticeSetViewModel(
             randomNumberService: r.resolve(RandomNumberService.self)!
+        )
+    }
+    container.register(WordMatchGameController.self) { r in
+        WordMatchGameController(pile: r.resolve(GameItemList.self)!,
+                                bucket: [VocabularyPairLocalDataModel](),
+                                blackItems: [VocabularyPairLocalDataModel](),
+                                greenItems: [VocabularyPairLocalDataModel]()
         )
     }
     

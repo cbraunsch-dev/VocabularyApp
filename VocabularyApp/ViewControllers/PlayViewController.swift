@@ -28,13 +28,18 @@ class PlayViewController: UIViewController, SetManageable {
     private var viewBeingDragged: UIView? = nil
     private var labels = [UILabel]()
     
+    var gameController: WordMatchGameController!
+    
     @IBOutlet var bucket1: BucketView!
+    @IBOutlet var bucket2: BucketView!
+    @IBOutlet var bucket3: BucketView!
+    @IBOutlet var bucket4: BucketView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Give buckets some initial values
-        bucket1.text.text = "Persnickety"
+        // Give buckets their IDs
+        bucket1.id = BucketId.bucket1.rawValue
         
         dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
         gravityBehavior = UIGravityBehavior(items: [])
@@ -48,6 +53,10 @@ class PlayViewController: UIViewController, SetManageable {
         DispatchQueue.global(qos: .userInitiated).async {
             self.runGame()
         }
+        
+        self.gameController.vocabularyPairs = self.set!.vocabularyPairs
+        self.gameController.delegate = self
+        self.gameController.startGame()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -176,4 +185,44 @@ class PlayViewController: UIViewController, SetManageable {
         let randomWord = availableSet.vocabularyPairs[randomIndex].wordOrPhrase
         return randomWord
     }
+}
+
+extension PlayViewController: WordMatchGameControllerDelegate {
+    func spawnText(text: String, color: UIColor) {
+        
+    }
+    
+    func removeText(text: String) {
+        
+    }
+    
+    func updateText(text: String, with color: UIColor) {
+        
+    }
+    
+    func updateBucket(bucketId: BucketId, with pair: VocabularyPairLocalDataModel, useDefinition: Bool) {
+        switch bucketId {
+        case .bucket1:
+            bucket1.updateWith(pair: pair, useDefinition: useDefinition)
+            break
+        case .bucket2:
+            bucket2.updateWith(pair: pair, useDefinition: useDefinition)
+            break
+        case .bucket3:
+            bucket3.updateWith(pair: pair, useDefinition: useDefinition)
+            break
+        case .bucket4:
+            bucket4.updateWith(pair: pair, useDefinition: useDefinition)
+            break
+        }
+    }
+    
+    
+}
+
+enum BucketId: String {
+    case bucket1 = "Bucket 1"
+    case bucket2 = "Bucket 2"
+    case bucket3 = "Bucket 3"
+    case bucket4 = "Bucket 4"
 }

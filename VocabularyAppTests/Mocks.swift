@@ -116,3 +116,46 @@ class MockRandomNumberService: RandomNumberService {
         return stub
     }
 }
+
+class MockWordMatchGameControllerDelegate: WordMatchGameControllerDelegate {
+    var bucketWasUpdated = false
+    var bucketVocabDictionary = [String: VocabularyPairLocalDataModel]()
+    
+    func spawnText(text: String, color: UIColor) {
+        
+    }
+    
+    func removeText(text: String) {
+        
+    }
+    
+    func updateText(text: String, with color: UIColor) {
+        
+    }
+    
+    func updateBucket(bucketId: BucketId, with pair: VocabularyPairLocalDataModel, useDefinition: Bool) {
+        bucketWasUpdated = true
+        bucketVocabDictionary[bucketId.rawValue] = pair
+    }
+    
+    func verifyThatBucket(with bucketId: BucketId, wasUpdatedWith pair: VocabularyPairLocalDataModel) -> Bool {
+        return bucketVocabDictionary[bucketId.rawValue] == pair
+    }
+}
+
+class MockGameItemList: GameItemList {
+    var randomItemsStubs: [[VocabularyPairLocalDataModel]]?
+    var indexOfCurrentInvocation = 0
+    
+    func randomItems(nrOfItems: Int) -> [VocabularyPairLocalDataModel] {
+        if let stubs = randomItemsStubs {
+            guard indexOfCurrentInvocation < stubs.count else {
+                fatalError("Invoked the mock too many times. Either invoke it fewer times or provide more stubs")
+            }
+            let stub = stubs[self.indexOfCurrentInvocation]
+            self.indexOfCurrentInvocation = indexOfCurrentInvocation + 1
+            return stub
+        }
+        return [VocabularyPairLocalDataModel]()
+    }
+}

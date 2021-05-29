@@ -9,6 +9,7 @@
 import UIKit
 
 class BucketView: UIView {
+    var id: String = ""
     let text = UILabel()
     
     required init?(coder aDecoder: NSCoder) {
@@ -19,6 +20,14 @@ class BucketView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupView()
+    }
+    
+    func updateWith(pair: VocabularyPairLocalDataModel, useDefinition: Bool) {
+        if(useDefinition) {
+            text.text = pair.definition
+        } else {
+            text.text = pair.wordOrPhrase
+        }
     }
     
     // Returns true if the word is a match for the bucket, false otherwise.
