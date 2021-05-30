@@ -10,23 +10,36 @@ import Foundation
 import UIKit
 
 class WordMatchGameController {
-    private var pile: GameItemList
+    private var gameLoop: GameLoop
+    private let pile: GameItemList
+    private let bucket: GameItemList
     var vocabularyPairs = [VocabularyPairLocalDataModel]()
     var delegate: WordMatchGameControllerDelegate? = nil
     
-    init(pile: GameItemList,
-         bucket: [VocabularyPairLocalDataModel],
-         blackItems: [VocabularyPairLocalDataModel],
-         greenItems: [VocabularyPairLocalDataModel]) {
+    init(gameLoop: GameLoop,
+         pile: GameItemList,
+         bucket: GameItemList,
+         blackItems: GameItemList,
+         greenItems: GameItemList) {
+        self.gameLoop = gameLoop
         self.pile = pile
+        self.bucket = bucket
+        self.gameLoop.delegate = self
     }
     
     func startGame() {
-        self.pile.items = self.vocabularyPairs
+        self.vocabularyPairs.forEach { pair in
+            self.pile.addItem(item: pair)
+        }
+        self.gameLoop.start()
         let randomItemsFromPile = pile.randomItems(nrOfItems: 4)
         guard randomItemsFromPile.count == 4 else {
             return
         }
+        self.bucket.addItem(item: randomItemsFromPile[0])
+        self.bucket.addItem(item: randomItemsFromPile[1])
+        self.bucket.addItem(item: randomItemsFromPile[2])
+        self.bucket.addItem(item: randomItemsFromPile[3])
         delegate?.updateBucket(bucketId: BucketId.bucket1, with: randomItemsFromPile[0], useDefinition: true)
         delegate?.updateBucket(bucketId: BucketId.bucket2, with: randomItemsFromPile[1], useDefinition: true)
         delegate?.updateBucket(bucketId: BucketId.bucket3, with: randomItemsFromPile[2], useDefinition: true)
@@ -42,12 +55,31 @@ class WordMatchGameController {
     }
 }
 
+extension WordMatchGameController: GameLoopDelegate {
+    func update() {
+        let bucketItems = self.bucket.obtainItems()
+        let matchingItemsInPile = self.pile.obtainItemsThatMatch(matcher: bucketItems)
+        if(matchingItemsInPile.count > 0) {
+            // The item still exists in our pile of items that we can take so make it green
+            let indexOfRandomItem = Int.random(in: 0..<matchingItemsInPile.count)
+            let randomMatch = matchingItemsInPile[indexOfRandomItem]
+            self.delegate?.spawnPair(pair: randomMatch, color: UIColor.green, useDefinition: false)
+        } else {
+            // The item has already been taken from our pile so take a different random item from the pile and make it black
+            guard let randomItemFromPile = self.pile.randomItems(nrOfItems: 1).first else {
+                return
+            }
+            self.delegate?.spawnPair(pair: randomItemFromPile, color: UIColor.black, useDefinition: false)
+        }
+    }
+}
+
 protocol WordMatchGameControllerDelegate {
-    func spawnText(text: String, color: UIColor)
+    func spawnPair(pair: VocabularyPairLocalDataModel, color: UIColor, useDefinition: Bool)
     
-    func removeText(text: String)
+    func removePair(pair: VocabularyPairLocalDataModel, useDefinition: Bool)
     
-    func updateText(text: String, with color: UIColor)
+    func updatePair(pair: VocabularyPairLocalDataModel, with color: UIColor, useDefinition: Bool)
     
     func updateBucket(bucketId: BucketId, with pair: VocabularyPairLocalDataModel, useDefinition: Bool)
 }

@@ -120,16 +120,19 @@ class MockRandomNumberService: RandomNumberService {
 class MockWordMatchGameControllerDelegate: WordMatchGameControllerDelegate {
     var bucketWasUpdated = false
     var bucketVocabDictionary = [String: VocabularyPairLocalDataModel]()
+    var spawnedPair: VocabularyPairLocalDataModel?
+    var spawnedTextColor: UIColor?
     
-    func spawnText(text: String, color: UIColor) {
+    func spawnPair(pair: VocabularyPairLocalDataModel, color: UIColor, useDefinition: Bool) {
+        self.spawnedPair = pair
+        self.spawnedTextColor = color
+    }
+    
+    func removePair(pair: VocabularyPairLocalDataModel, useDefinition: Bool) {
         
     }
     
-    func removeText(text: String) {
-        
-    }
-    
-    func updateText(text: String, with color: UIColor) {
+    func updatePair(pair: VocabularyPairLocalDataModel, with color: UIColor, useDefinition: Bool) {
         
     }
     
@@ -146,6 +149,11 @@ class MockWordMatchGameControllerDelegate: WordMatchGameControllerDelegate {
 class MockGameItemList: GameItemList {
     var randomItemsStubs: [[VocabularyPairLocalDataModel]]?
     var indexOfCurrentInvocation = 0
+    var items = [VocabularyPairLocalDataModel]()
+    var didObtainItems = false
+    var didObtainItemsThatMatch = false
+    var matchedItemsStub: [VocabularyPairLocalDataModel]? = nil
+    var addedItems = [VocabularyPairLocalDataModel]()
     
     func randomItems(nrOfItems: Int) -> [VocabularyPairLocalDataModel] {
         if let stubs = randomItemsStubs {
@@ -158,4 +166,32 @@ class MockGameItemList: GameItemList {
         }
         return [VocabularyPairLocalDataModel]()
     }
+    
+    func obtainItems() -> [VocabularyPairLocalDataModel] {
+        self.didObtainItems = true
+        return [VocabularyPairLocalDataModel]()
+    }
+    
+    func obtainItemsThatMatch(matcher: [VocabularyPairLocalDataModel]) -> [VocabularyPairLocalDataModel] {        
+        self.didObtainItemsThatMatch = true
+        if let stub = self.matchedItemsStub {
+            return stub
+        }
+        return [VocabularyPairLocalDataModel]()
+    }
+    
+    func addItem(item: VocabularyPairLocalDataModel) {
+        self.addedItems.append(item)
+    }
+}
+
+class MockGameLoop: GameLoop {
+    var didStartGameLoop = false
+    var delegate: GameLoopDelegate?
+    
+    func start() {
+        didStartGameLoop = true
+    }
+    
+    
 }

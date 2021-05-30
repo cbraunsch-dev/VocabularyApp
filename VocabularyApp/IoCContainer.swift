@@ -44,6 +44,9 @@ let appContainer: Container = {
     container.register(GameItemList.self) { _ in
         WordMatchGameItemList()
     }
+    container.register(GameLoop.self) { _ in
+        WordMatchGameLoop()
+    }
     
     container.register(SetsViewModelType.self) { r in
         SetsViewModel(
@@ -79,10 +82,11 @@ let appContainer: Container = {
         )
     }
     container.register(WordMatchGameController.self) { r in
-        WordMatchGameController(pile: r.resolve(GameItemList.self)!,
-                                bucket: [VocabularyPairLocalDataModel](),
-                                blackItems: [VocabularyPairLocalDataModel](),
-                                greenItems: [VocabularyPairLocalDataModel]()
+        WordMatchGameController(gameLoop: r.resolve(GameLoop.self)!,
+                                pile: r.resolve(GameItemList.self)!,
+                                bucket: r.resolve(GameItemList.self)!,
+                                blackItems: r.resolve(GameItemList.self)!,
+                                greenItems: r.resolve(GameItemList.self)!
         )
     }
     

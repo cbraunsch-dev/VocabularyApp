@@ -11,6 +11,9 @@ import Foundation
 protocol GameItemList {
     var items: [VocabularyPairLocalDataModel] { get set }
     func randomItems(nrOfItems: Int) -> [VocabularyPairLocalDataModel]
+    func addItem(item: VocabularyPairLocalDataModel)
+    func obtainItems() -> [VocabularyPairLocalDataModel]
+    func obtainItemsThatMatch(matcher: [VocabularyPairLocalDataModel]) -> [VocabularyPairLocalDataModel]
 }
 
 class WordMatchGameItemList: GameItemList {
@@ -27,5 +30,19 @@ class WordMatchGameItemList: GameItemList {
         }
         
         return randomPairs
+    }
+    
+    func obtainItems() -> [VocabularyPairLocalDataModel] {
+        return items
+    }
+    
+    func obtainItemsThatMatch(matcher: [VocabularyPairLocalDataModel]) -> [VocabularyPairLocalDataModel] {
+        return items.filter { item in
+            return matcher.contains(item)
+        }
+    }
+    
+    func addItem(item: VocabularyPairLocalDataModel) {
+        self.items.append(item)
     }
 }

@@ -157,13 +157,7 @@ class PlayViewController: UIViewController, SetManageable {
     }
     
     private func runGame() {
-        while(gameRunning) {
-            DispatchQueue.main.async {
-                self.spawnLabel()
-            }
-            
-            Thread.sleep(forTimeInterval: 3)
-        }
+        
     }
     
     private func spawnLabel() {
@@ -188,15 +182,27 @@ class PlayViewController: UIViewController, SetManageable {
 }
 
 extension PlayViewController: WordMatchGameControllerDelegate {
-    func spawnText(text: String, color: UIColor) {
+    func spawnPair(pair: VocabularyPairLocalDataModel, color: UIColor, useDefinition: Bool) {
+        let newLabel = UILabel()
+        if(useDefinition) {
+            newLabel.text = pair.definition
+        } else {
+            newLabel.text = pair.wordOrPhrase
+        }
+        newLabel.textColor = color
+        newLabel.sizeToFit()
+        newLabel.isUserInteractionEnabled = true    // Needed, otherwise we can't "grab" the view by touching it
+        self.view.addSubview(newLabel)
+        self.labels.append(newLabel)
+        self.gravityBehavior.addItem(newLabel)
+        self.screenBoundsCollisionBehavior.addItem(newLabel)
+    }
+    
+    func removePair(pair: VocabularyPairLocalDataModel, useDefinition: Bool) {
         
     }
     
-    func removeText(text: String) {
-        
-    }
-    
-    func updateText(text: String, with color: UIColor) {
+    func updatePair(pair: VocabularyPairLocalDataModel, with color: UIColor, useDefinition: Bool) {
         
     }
     
