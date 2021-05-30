@@ -120,6 +120,7 @@ class WordMatchGameControllerTests: XCTestCase {
         XCTAssertEqual(randomItemFromPile, self.mockDelegate.spawnedPair)
         XCTAssertEqual(UIColor.black, self.mockDelegate.spawnedTextColor)
         XCTAssertEqual(randomItemFromPile, self.mockPile.removedItem)
+        XCTAssertTrue(self.mockBlackItems.addedItems.contains(randomItemFromPile))
     }
     
     func testUpdate_when_itemsLeftAfterFilteringWithPile_then_spawnOneOfThoseAsGreenItem() {
@@ -134,6 +135,7 @@ class WordMatchGameControllerTests: XCTestCase {
         XCTAssertEqual(randomItemFromPile, self.mockDelegate.spawnedPair)
         XCTAssertEqual(UIColor.green, self.mockDelegate.spawnedTextColor)
         XCTAssertEqual(randomItemFromPile, self.mockPile.removedItem)
+        XCTAssertTrue(self.mockGreenItems.addedItems.contains(randomItemFromPile))
     }
     
     func testPairMatched_then_removeGreenItem() {

@@ -76,6 +76,7 @@ extension WordMatchGameController: GameLoopDelegate {
             let indexOfRandomItem = Int.random(in: 0..<matchingItemsInPile.count)
             let randomMatch = matchingItemsInPile[indexOfRandomItem]
             self.pile.removeItem(item: randomMatch)
+            self.greenItems.addItem(item: randomMatch)
             self.delegate?.spawnPair(pair: randomMatch, color: UIColor.green, useDefinition: false)
         } else {
             // The item has already been taken from our pile so take a different random item from the pile and make it black
@@ -83,6 +84,7 @@ extension WordMatchGameController: GameLoopDelegate {
                 return
             }
             self.pile.removeItem(item: randomItemFromPile)
+            self.blackItems.addItem(item: randomItemFromPile)
             self.delegate?.spawnPair(pair: randomItemFromPile, color: UIColor.black, useDefinition: false)
         }
     }
