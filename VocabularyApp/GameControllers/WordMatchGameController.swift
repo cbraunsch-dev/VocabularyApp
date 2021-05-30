@@ -53,6 +53,7 @@ class WordMatchGameController {
     func pairMatched(pair: VocabularyPairLocalDataModel) {
         self.delegate?.removePair(pair: pair, useDefinition: false)
         self.greenItems.removeItem(item: pair)
+        self.bucket.removeItem(item: pair)
     }
     
     func requestPairForBucket(bucketId: BucketId) {
@@ -61,8 +62,10 @@ class WordMatchGameController {
             self.delegate?.updatePair(pair: blackItem, with: .green, useDefinition: false)
             self.blackItems.removeItem(item: blackItem)
             self.greenItems.addItem(item: blackItem)
+            self.bucket.addItem(item: blackItem)
         } else if let itemFromPile = self.pile.randomItems(nrOfItems: 1).first {
             self.delegate?.updateBucket(bucketId: bucketId, with: itemFromPile, useDefinition: true)
+            self.bucket.addItem(item: itemFromPile)
         }
     }
 }

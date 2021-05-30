@@ -150,6 +150,17 @@ class WordMatchGameControllerTests: XCTestCase {
         XCTAssertEqual(matchedPair, self.mockGreenItems.removedItem)
     }
     
+    func testPairMatched_then_removeItemFromBucket() {
+        //Arrange
+        let matchedPair = VocabularyPairLocalDataModel(wordOrPhrase: "Corndog", definition: "Ewww, gross")
+        
+        //Act
+        self.testee.pairMatched(pair: matchedPair)
+        
+        //Assert
+        XCTAssertEqual(matchedPair, self.mockBucket.removedItem)
+    }
+    
     func testRequestPairForBucket_when_blackItemsAvailable_then_updateBucketWithBlackItem() {
         //Arrange
         let someBucketId = BucketId.bucket2
@@ -165,6 +176,7 @@ class WordMatchGameControllerTests: XCTestCase {
         XCTAssertTrue(self.mockGreenItems.addedItems.contains(someBlackPair))
         XCTAssertEqual(someBlackPair, self.mockDelegate.updatedPair)
         XCTAssertEqual(UIColor.green, self.mockDelegate.updatedColor)
+        XCTAssertTrue(self.mockBucket.addedItems.contains(someBlackPair))
     }
     
     func testRequestPairForBucket_when_noBlackItemsAvailable_then_updateBucketWithItemFromPile() {
@@ -178,5 +190,6 @@ class WordMatchGameControllerTests: XCTestCase {
         
         //Assert
         XCTAssertTrue(self.mockDelegate.verifyThatBucket(with: someBucketId, wasUpdatedWith: somePairFromPile))
+        XCTAssertTrue(self.mockBucket.addedItems.contains(somePairFromPile))
     }
 }
