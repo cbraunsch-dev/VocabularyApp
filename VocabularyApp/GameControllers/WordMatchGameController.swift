@@ -31,7 +31,6 @@ class WordMatchGameController {
         self.vocabularyPairs.forEach { pair in
             self.pile.addItem(item: pair)
         }
-        self.gameLoop.start()
         let randomItemsFromPile = pile.randomItems(nrOfItems: 4)
         guard randomItemsFromPile.count == 4 else {
             return
@@ -44,6 +43,7 @@ class WordMatchGameController {
         delegate?.updateBucket(bucketId: BucketId.bucket2, with: randomItemsFromPile[1], useDefinition: true)
         delegate?.updateBucket(bucketId: BucketId.bucket3, with: randomItemsFromPile[2], useDefinition: true)
         delegate?.updateBucket(bucketId: BucketId.bucket4, with: randomItemsFromPile[3], useDefinition: true)
+        self.gameLoop.start()
     }
     
     func pairMatched(pair: VocabularyPairLocalDataModel) {
@@ -63,12 +63,14 @@ extension WordMatchGameController: GameLoopDelegate {
             // The item still exists in our pile of items that we can take so make it green
             let indexOfRandomItem = Int.random(in: 0..<matchingItemsInPile.count)
             let randomMatch = matchingItemsInPile[indexOfRandomItem]
+            self.pile.removeItem(item: randomMatch)
             self.delegate?.spawnPair(pair: randomMatch, color: UIColor.green, useDefinition: false)
         } else {
             // The item has already been taken from our pile so take a different random item from the pile and make it black
             guard let randomItemFromPile = self.pile.randomItems(nrOfItems: 1).first else {
                 return
             }
+            self.pile.removeItem(item: randomItemFromPile)
             self.delegate?.spawnPair(pair: randomItemFromPile, color: UIColor.black, useDefinition: false)
         }
     }

@@ -17,7 +17,10 @@ class WordMatchGameListTests: XCTestCase {
         let pair3 = VocabularyPairLocalDataModel(wordOrPhrase: "Word 3", definition: "Definition 3")
         let pair4 = VocabularyPairLocalDataModel(wordOrPhrase: "Word 4", definition: "Definition 4")
         let testee = WordMatchGameItemList()
-        testee.items = [pair1, pair2, pair3, pair4]
+        testee.addItem(item: pair1)
+        testee.addItem(item: pair2)
+        testee.addItem(item: pair3)
+        testee.addItem(item: pair4)
         
         //Act
         let result = testee.obtainItemsThatMatch(matcher: [pair1, pair3])
@@ -33,7 +36,10 @@ class WordMatchGameListTests: XCTestCase {
         let pair3 = VocabularyPairLocalDataModel(wordOrPhrase: "Word 3", definition: "Definition 3")
         let pair4 = VocabularyPairLocalDataModel(wordOrPhrase: "Word 4", definition: "Definition 4")
         let testee = WordMatchGameItemList()
-        testee.items = [pair1, pair2, pair3, pair4]
+        testee.addItem(item: pair1)
+        testee.addItem(item: pair2)
+        testee.addItem(item: pair3)
+        testee.addItem(item: pair4)
         let pair5 = VocabularyPairLocalDataModel(wordOrPhrase: "Word 5", definition: "Definition 5")
         
         //Act
@@ -41,5 +47,42 @@ class WordMatchGameListTests: XCTestCase {
         
         //Assert
         XCTAssertEqual([pair1], result)
+    }
+    
+    func testRemoveItem_when_itemExists_then_removeItemFromList() {
+        //Arrange
+        let pair1 = VocabularyPairLocalDataModel(wordOrPhrase: "Word 1", definition: "Definition 1")
+        let pair2 = VocabularyPairLocalDataModel(wordOrPhrase: "Word 2", definition: "Definition 2")
+        let pair3 = VocabularyPairLocalDataModel(wordOrPhrase: "Word 3", definition: "Definition 3")
+        let pair4 = VocabularyPairLocalDataModel(wordOrPhrase: "Word 4", definition: "Definition 4")
+        let testee = WordMatchGameItemList()
+        testee.addItem(item: pair1)
+        testee.addItem(item: pair2)
+        testee.addItem(item: pair3)
+        testee.addItem(item: pair4)
+        
+        //Act
+        testee.removeItem(item: pair2)
+        
+        //Assert
+        XCTAssertEqual([pair1, pair3, pair4], testee.obtainItems())
+    }
+    
+    func testRemoveItem_when_itemDoesNotExist_then_dontRemoveAnythingFromList() {
+        //Arrange
+        let pair1 = VocabularyPairLocalDataModel(wordOrPhrase: "Word 1", definition: "Definition 1")
+        let pair2 = VocabularyPairLocalDataModel(wordOrPhrase: "Word 2", definition: "Definition 2")
+        let pair3 = VocabularyPairLocalDataModel(wordOrPhrase: "Word 3", definition: "Definition 3")
+        let pair4 = VocabularyPairLocalDataModel(wordOrPhrase: "Word 4", definition: "Definition 4")
+        let testee = WordMatchGameItemList()
+        testee.addItem(item: pair1)
+        testee.addItem(item: pair2)
+        testee.addItem(item: pair3)
+        
+        //Act
+        testee.removeItem(item: pair4)
+        
+        //Assert
+        XCTAssertEqual([pair1, pair2, pair3], testee.obtainItems())
     }
 }

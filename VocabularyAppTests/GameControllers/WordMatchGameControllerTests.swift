@@ -76,7 +76,14 @@ class WordMatchGameControllerTests: XCTestCase {
         XCTAssertFalse(self.mockDelegate.bucketWasUpdated)
     }
     
-    func testStartGame_then_startGameLoop() {
+    func testStartGame_when_pileHasEnoughItems_then_startGameLoop() {
+        //Arrange
+        let pair1 = VocabularyPairLocalDataModel(wordOrPhrase: "Chocolate", definition: "The best thing ever")
+        let pair2 = VocabularyPairLocalDataModel(wordOrPhrase: "Vanilla", definition: "Also pretty dope")
+        let pair3 = VocabularyPairLocalDataModel(wordOrPhrase: "Corndog", definition: "Ultra weird")
+        let pair4 = VocabularyPairLocalDataModel(wordOrPhrase: "Nugget", definition: "Depends...")
+        self.mockPile.randomItemsStubs = [[pair1, pair2, pair3, pair4]]
+        
         //Act
         self.testee.startGame()
         
@@ -112,6 +119,7 @@ class WordMatchGameControllerTests: XCTestCase {
         //Assert
         XCTAssertEqual(randomItemFromPile, self.mockDelegate.spawnedPair)
         XCTAssertEqual(UIColor.black, self.mockDelegate.spawnedTextColor)
+        XCTAssertEqual(randomItemFromPile, self.mockPile.removedItem)
     }
     
     func testUpdate_when_itemsLeftAfterFilteringWithPile_then_spawnOneOfThoseAsGreenItem() {
@@ -125,5 +133,6 @@ class WordMatchGameControllerTests: XCTestCase {
         //Assert
         XCTAssertEqual(randomItemFromPile, self.mockDelegate.spawnedPair)
         XCTAssertEqual(UIColor.green, self.mockDelegate.spawnedTextColor)
+        XCTAssertEqual(randomItemFromPile, self.mockPile.removedItem)
     }
 }

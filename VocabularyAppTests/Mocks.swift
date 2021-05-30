@@ -154,6 +154,7 @@ class MockGameItemList: GameItemList {
     var didObtainItemsThatMatch = false
     var matchedItemsStub: [VocabularyPairLocalDataModel]? = nil
     var addedItems = [VocabularyPairLocalDataModel]()
+    var removedItem: VocabularyPairLocalDataModel?
     
     func randomItems(nrOfItems: Int) -> [VocabularyPairLocalDataModel] {
         if let stubs = randomItemsStubs {
@@ -182,6 +183,10 @@ class MockGameItemList: GameItemList {
     
     func addItem(item: VocabularyPairLocalDataModel) {
         self.addedItems.append(item)
+    }
+    
+    func removeItem(item: VocabularyPairLocalDataModel) {
+        self.removedItem = item
     }
 }
 

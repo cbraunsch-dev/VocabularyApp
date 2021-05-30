@@ -9,15 +9,15 @@
 import Foundation
 
 protocol GameItemList {
-    var items: [VocabularyPairLocalDataModel] { get set }
     func randomItems(nrOfItems: Int) -> [VocabularyPairLocalDataModel]
     func addItem(item: VocabularyPairLocalDataModel)
     func obtainItems() -> [VocabularyPairLocalDataModel]
     func obtainItemsThatMatch(matcher: [VocabularyPairLocalDataModel]) -> [VocabularyPairLocalDataModel]
+    func removeItem(item: VocabularyPairLocalDataModel)
 }
 
 class WordMatchGameItemList: GameItemList {
-    var items  = [VocabularyPairLocalDataModel]()
+    private var items  = [VocabularyPairLocalDataModel]()
     
     func randomItems(nrOfItems: Int) -> [VocabularyPairLocalDataModel] {
         var randomPairs = [VocabularyPairLocalDataModel]()
@@ -44,5 +44,11 @@ class WordMatchGameItemList: GameItemList {
     
     func addItem(item: VocabularyPairLocalDataModel) {
         self.items.append(item)
+    }
+    
+    func removeItem(item: VocabularyPairLocalDataModel) {
+        self.items.removeAll(where: { it in
+            it == item
+        })
     }
 }

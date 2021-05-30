@@ -43,7 +43,7 @@ let appContainer: Container = {
     }
     container.register(GameItemList.self) { _ in
         WordMatchGameItemList()
-    }
+    }.inObjectScope(.transient)
     container.register(GameLoop.self) { _ in
         WordMatchGameLoop()
     }
