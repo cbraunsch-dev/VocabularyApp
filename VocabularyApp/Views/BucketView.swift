@@ -9,8 +9,10 @@
 import UIKit
 
 class BucketView: UIView {
-    var id: String = ""
+    var bucketId: BucketId?
+    var delegate: BucketViewDelegate?
     let text = UILabel()
+    private var pair: VocabularyPairLocalDataModel!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -23,6 +25,7 @@ class BucketView: UIView {
     }
     
     func updateWith(pair: VocabularyPairLocalDataModel, useDefinition: Bool) {
+        self.pair = pair
         if(useDefinition) {
             text.text = pair.definition
         } else {
@@ -30,9 +33,14 @@ class BucketView: UIView {
         }
     }
     
-    // Returns true if the word is a match for the bucket, false otherwise.
-    func wordWasDroppedIntoBucket(word: String) -> Bool {
-        return false
+    // Returns the pair that matched with the word. If no match was found, nil is returned
+    func wordWasDroppedIntoBucket(word: String) -> VocabularyPairLocalDataModel? {
+        let oldPair = self.pair
+        if(word == self.pair.definition || word == self.pair.wordOrPhrase) {
+            self.delegate?.requestPairForBucket(bucketId: self.bucketId!)
+            return oldPair
+        }
+        return nil
     }
 
     private func setupView() {
@@ -51,4 +59,8 @@ class BucketView: UIView {
             make.right.equalTo(self).offset(-LayoutConstants.buX2)
         }
     }
+}
+
+protocol BucketViewDelegate {
+    func requestPairForBucket(bucketId: BucketId)
 }

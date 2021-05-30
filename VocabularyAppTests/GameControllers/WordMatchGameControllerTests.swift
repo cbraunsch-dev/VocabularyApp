@@ -135,4 +135,46 @@ class WordMatchGameControllerTests: XCTestCase {
         XCTAssertEqual(UIColor.green, self.mockDelegate.spawnedTextColor)
         XCTAssertEqual(randomItemFromPile, self.mockPile.removedItem)
     }
+    
+    func testPairMatched_then_removeGreenItem() {
+        //Arrange
+        let matchedPair = VocabularyPairLocalDataModel(wordOrPhrase: "Corndog", definition: "Ewww, gross")
+        
+        //Act
+        self.testee.pairMatched(pair: matchedPair)
+        
+        //Assert
+        XCTAssertEqual(matchedPair, self.mockDelegate.removedPair)
+        XCTAssertEqual(matchedPair, self.mockGreenItems.removedItem)
+    }
+    
+    func testRequestPairForBucket_when_blackItemsAvailable_then_updateBucketWithBlackItem() {
+        //Arrange
+        let someBucketId = BucketId.bucket2
+        let someBlackPair = VocabularyPairLocalDataModel(wordOrPhrase: "Corndog", definition: "Ewww, gross")
+        self.mockBlackItems.randomItemsStubs = [[someBlackPair]]
+        
+        //Act
+        self.testee.requestPairForBucket(bucketId: someBucketId)
+        
+        //Assert
+        XCTAssertTrue(self.mockDelegate.verifyThatBucket(with: someBucketId, wasUpdatedWith: someBlackPair))
+        XCTAssertEqual(someBlackPair, self.mockBlackItems.removedItem)
+        XCTAssertTrue(self.mockGreenItems.addedItems.contains(someBlackPair))
+        XCTAssertEqual(someBlackPair, self.mockDelegate.updatedPair)
+        XCTAssertEqual(UIColor.green, self.mockDelegate.updatedColor)
+    }
+    
+    func testRequestPairForBucket_when_noBlackItemsAvailable_then_updateBucketWithItemFromPile() {
+        //Arrange
+        let someBucketId = BucketId.bucket2
+        let somePairFromPile = VocabularyPairLocalDataModel(wordOrPhrase: "Corndog", definition: "Ewww, gross")
+        self.mockPile.randomItemsStubs = [[somePairFromPile]]
+        
+        //Act
+        self.testee.requestPairForBucket(bucketId: someBucketId)
+        
+        //Assert
+        XCTAssertTrue(self.mockDelegate.verifyThatBucket(with: someBucketId, wasUpdatedWith: somePairFromPile))
+    }
 }

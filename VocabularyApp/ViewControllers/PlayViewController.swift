@@ -39,7 +39,14 @@ class PlayViewController: UIViewController, SetManageable {
         super.viewDidLoad()
         
         // Give buckets their IDs
-        bucket1.id = BucketId.bucket1.rawValue
+        bucket1.bucketId = BucketId.bucket1
+        bucket2.bucketId = BucketId.bucket2
+        bucket3.bucketId = BucketId.bucket3
+        bucket4.bucketId = BucketId.bucket4
+        bucket1.delegate = self
+        bucket2.delegate = self
+        bucket3.delegate = self
+        bucket4.delegate = self
         
         dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
         gravityBehavior = UIGravityBehavior(items: [])
@@ -100,10 +107,28 @@ class PlayViewController: UIViewController, SetManageable {
     }
     
     fileprivate func checkForItemCollisionsWithBucket(itemBehavior: UIDynamicItemBehavior) {
-        itemBehavior.items.forEach { itly in
-            let item = itly as! UILabel
+        itemBehavior.items.forEach { it in
+            let item = it as! UILabel
             if(item.frame.intersects(self.bucket1.frame)) {
-                print("Item \(item.text) INTERSECTS with bucket \(DispatchTime.now())")
+                print("Item \(item.text) INTERSECTS with bucket 1 \(DispatchTime.now())")
+                if let matchedPair = self.bucket1.wordWasDroppedIntoBucket(word: item.text!) {
+                    self.gameController.pairMatched(pair: matchedPair)
+                }
+            } else if(item.frame.intersects(self.bucket2.frame)) {
+                print("Item \(item.text) INTERSECTS with bucket 2 \(DispatchTime.now())")
+                if let matchedPair = self.bucket2.wordWasDroppedIntoBucket(word: item.text!) {
+                    self.gameController.pairMatched(pair: matchedPair)
+                }
+            } else if(item.frame.intersects(self.bucket3.frame)) {
+                print("Item \(item.text) INTERSECTS with bucket 3 \(DispatchTime.now())")
+                if let matchedPair = self.bucket3.wordWasDroppedIntoBucket(word: item.text!) {
+                    self.gameController.pairMatched(pair: matchedPair)
+                }
+            } else if(item.frame.intersects(self.bucket4.frame)) {
+                print("Item \(item.text) INTERSECTS with bucket 4 \(DispatchTime.now())")
+                if let matchedPair = self.bucket4.wordWasDroppedIntoBucket(word: item.text!) {
+                    self.gameController.pairMatched(pair: matchedPair)
+                }
             }
         }
     }
@@ -199,11 +224,33 @@ extension PlayViewController: WordMatchGameControllerDelegate {
     }
     
     func removePair(pair: VocabularyPairLocalDataModel, useDefinition: Bool) {
-        
+        guard let indexOfItemToRemove = self.labels.firstIndex(where: { item in
+            if(useDefinition) {
+                return item.text == pair.definition
+            } else {
+                return item.text == pair.wordOrPhrase
+            }
+        }) else {
+            return
+        }
+        let labelToRemove = self.labels[indexOfItemToRemove]
+        self.gravityBehavior.removeItem(labelToRemove)
+        self.screenBoundsCollisionBehavior.removeItem(labelToRemove)
+        labelToRemove.removeFromSuperview()
+        self.labels.remove(at: indexOfItemToRemove)
     }
     
     func updatePair(pair: VocabularyPairLocalDataModel, with color: UIColor, useDefinition: Bool) {
-        
+        guard let itemToUpdate = self.labels.first(where: { item in
+            if(useDefinition) {
+                return item.text == pair.definition
+            } else {
+                return item.text == pair.wordOrPhrase
+            }
+        }) else {
+            return
+        }
+        itemToUpdate.textColor = color
     }
     
     func updateBucket(bucketId: BucketId, with pair: VocabularyPairLocalDataModel, useDefinition: Bool) {
@@ -224,6 +271,12 @@ extension PlayViewController: WordMatchGameControllerDelegate {
     }
     
     
+}
+
+extension PlayViewController: BucketViewDelegate {
+    func requestPairForBucket(bucketId: BucketId) {
+        self.gameController.requestPairForBucket(bucketId: bucketId)
+    }
 }
 
 enum BucketId: String {

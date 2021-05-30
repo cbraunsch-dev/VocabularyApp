@@ -20,9 +20,13 @@ class WordMatchGameItemList: GameItemList {
     private var items  = [VocabularyPairLocalDataModel]()
     
     func randomItems(nrOfItems: Int) -> [VocabularyPairLocalDataModel] {
+        guard !items.isEmpty else {
+            return [VocabularyPairLocalDataModel]()
+        }
         var randomPairs = [VocabularyPairLocalDataModel]()
         var tempItems = items
-        for _ in 1...nrOfItems {
+        let nrOfItemsToGet = nrOfItems < items.count ? nrOfItems : items.count
+        for _ in 1...nrOfItemsToGet {
             let randomIndex = Int.random(in: 0..<tempItems.count)
             let randomPair = tempItems[randomIndex]
             randomPairs.append(randomPair)

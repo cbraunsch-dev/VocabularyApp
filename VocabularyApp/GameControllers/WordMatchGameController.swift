@@ -13,6 +13,8 @@ class WordMatchGameController {
     private var gameLoop: GameLoop
     private let pile: GameItemList
     private let bucket: GameItemList
+    private let greenItems: GameItemList
+    private let blackItems: GameItemList
     var vocabularyPairs = [VocabularyPairLocalDataModel]()
     var delegate: WordMatchGameControllerDelegate? = nil
     
@@ -24,6 +26,8 @@ class WordMatchGameController {
         self.gameLoop = gameLoop
         self.pile = pile
         self.bucket = bucket
+        self.greenItems = greenItems
+        self.blackItems = blackItems
         self.gameLoop.delegate = self
     }
     
@@ -47,11 +51,19 @@ class WordMatchGameController {
     }
     
     func pairMatched(pair: VocabularyPairLocalDataModel) {
-        
+        self.delegate?.removePair(pair: pair, useDefinition: false)
+        self.greenItems.removeItem(item: pair)
     }
     
     func requestPairForBucket(bucketId: BucketId) {
-        
+        if let blackItem = self.blackItems.randomItems(nrOfItems: 1).first {
+            self.delegate?.updateBucket(bucketId: bucketId, with: blackItem, useDefinition: true)
+            self.delegate?.updatePair(pair: blackItem, with: .green, useDefinition: false)
+            self.blackItems.removeItem(item: blackItem)
+            self.greenItems.addItem(item: blackItem)
+        } else if let itemFromPile = self.pile.randomItems(nrOfItems: 1).first {
+            self.delegate?.updateBucket(bucketId: bucketId, with: itemFromPile, useDefinition: true)
+        }
     }
 }
 

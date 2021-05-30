@@ -10,6 +10,47 @@ import XCTest
 @testable import VocabularyApp
 
 class WordMatchGameListTests: XCTestCase {
+    let anyString = ""
+    
+    func testRandomItems_when_noItems_then_returnEmptyList() {
+        //Arrange
+        let anyNr = 1
+        let testee = WordMatchGameItemList()
+        
+        //Act
+        let result = testee.randomItems(nrOfItems: anyNr)
+        
+        //Assert
+        XCTAssertTrue(result.isEmpty)
+    }
+    
+    func testRandomItems_when_lessItemsThanRequested_then_returnAllItems() {
+        //Arrange
+        let testee = WordMatchGameItemList()
+        testee.addItem(item: VocabularyPairLocalDataModel(wordOrPhrase: anyString, definition: anyString))
+        testee.addItem(item: VocabularyPairLocalDataModel(wordOrPhrase: anyString, definition: anyString))
+        
+        //Act
+        let result = testee.randomItems(nrOfItems: 3)
+        
+        //Assert
+        XCTAssertEqual(2, result.count)
+    }
+    
+    func testRandomItems_when_moreItemsThanRequested_then_returnRequestedNumberOfItems() {
+        //Arrange
+        let testee = WordMatchGameItemList()
+        testee.addItem(item: VocabularyPairLocalDataModel(wordOrPhrase: anyString, definition: anyString))
+        testee.addItem(item: VocabularyPairLocalDataModel(wordOrPhrase: anyString, definition: anyString))
+        testee.addItem(item: VocabularyPairLocalDataModel(wordOrPhrase: anyString, definition: anyString))
+        
+        //Act
+        let result = testee.randomItems(nrOfItems: 2)
+        
+        //Assert
+        XCTAssertEqual(2, result.count)
+    }
+    
     func testObtainItemsThatMatch_when_listContainsAllItemsOfMatcher_then_returnOnlyMatchingItems() {
         //Arrange
         let pair1 = VocabularyPairLocalDataModel(wordOrPhrase: "Word 1", definition: "Definition 1")

@@ -122,6 +122,9 @@ class MockWordMatchGameControllerDelegate: WordMatchGameControllerDelegate {
     var bucketVocabDictionary = [String: VocabularyPairLocalDataModel]()
     var spawnedPair: VocabularyPairLocalDataModel?
     var spawnedTextColor: UIColor?
+    var removedPair: VocabularyPairLocalDataModel?
+    var updatedPair: VocabularyPairLocalDataModel?
+    var updatedColor: UIColor?
     
     func spawnPair(pair: VocabularyPairLocalDataModel, color: UIColor, useDefinition: Bool) {
         self.spawnedPair = pair
@@ -129,11 +132,12 @@ class MockWordMatchGameControllerDelegate: WordMatchGameControllerDelegate {
     }
     
     func removePair(pair: VocabularyPairLocalDataModel, useDefinition: Bool) {
-        
+        self.removedPair = pair
     }
     
     func updatePair(pair: VocabularyPairLocalDataModel, with color: UIColor, useDefinition: Bool) {
-        
+        self.updatedPair = pair
+        self.updatedColor = color
     }
     
     func updateBucket(bucketId: BucketId, with pair: VocabularyPairLocalDataModel, useDefinition: Bool) {
