@@ -70,7 +70,7 @@ class PlayViewController: UIViewController, SetManageable {
         if let firstTouch = touches.first {
             let hitView = self.view.hitTest(firstTouch.location(in: self.view), with: event)
             if(hitView is UILabel) {
-                print("Touched a label!")
+                print("Touched label \(hitView)!")
                 self.viewBeingDragged = hitView
             }
         }
@@ -87,12 +87,19 @@ class PlayViewController: UIViewController, SetManageable {
                 let pointInViewThatWasTouched = sender.location(in: touchedView)
                 let centerOffset = UIOffset(horizontal: pointInViewThatWasTouched.x - touchedView.bounds.midX, vertical: pointInViewThatWasTouched.y - touchedView.bounds.midY)
                 attachmentBehavior = UIAttachmentBehavior(item: touchedView, offsetFromCenter: centerOffset, attachedToAnchor: location)
+                
+                // Clear out any temporary falling and tossing behaviors
+                dynamicAnimator.removeAllBehaviors()
+                dynamicAnimator.addBehavior(gravityBehavior)
+                dynamicAnimator.addBehavior(screenBoundsCollisionBehavior)
                 dynamicAnimator.addBehavior(attachmentBehavior!)
+                print("Picked up view \(touchedView)")
             }
             
             break
         case .ended:
             if let viewToToss = self.viewBeingDragged {
+                print("Toss view \(viewToToss)")
                 tossView(viewToToss: viewToToss, sender: sender)
             }
             
@@ -112,21 +119,25 @@ class PlayViewController: UIViewController, SetManageable {
             if(item.frame.intersects(self.bucket1.frame)) {
                 print("Item \(item.text) INTERSECTS with bucket 1 \(DispatchTime.now())")
                 if let matchedPair = self.bucket1.wordWasDroppedIntoBucket(word: item.text!) {
+                    print(">>>>Item \(item.text) matched bucket with pair \(matchedPair)")
                     self.gameController.pairMatched(pair: matchedPair)
                 }
             } else if(item.frame.intersects(self.bucket2.frame)) {
                 print("Item \(item.text) INTERSECTS with bucket 2 \(DispatchTime.now())")
                 if let matchedPair = self.bucket2.wordWasDroppedIntoBucket(word: item.text!) {
+                    print(">>>>Item \(item.text) matched bucket with pair \(matchedPair)")
                     self.gameController.pairMatched(pair: matchedPair)
                 }
             } else if(item.frame.intersects(self.bucket3.frame)) {
                 print("Item \(item.text) INTERSECTS with bucket 3 \(DispatchTime.now())")
                 if let matchedPair = self.bucket3.wordWasDroppedIntoBucket(word: item.text!) {
+                    print(">>>>Item \(item.text) matched bucket with pair \(matchedPair)")
                     self.gameController.pairMatched(pair: matchedPair)
                 }
             } else if(item.frame.intersects(self.bucket4.frame)) {
                 print("Item \(item.text) INTERSECTS with bucket 4 \(DispatchTime.now())")
                 if let matchedPair = self.bucket4.wordWasDroppedIntoBucket(word: item.text!) {
+                    print(">>>>Item \(item.text) matched bucket with pair \(matchedPair)")
                     self.gameController.pairMatched(pair: matchedPair)
                 }
             }
@@ -147,6 +158,7 @@ class PlayViewController: UIViewController, SetManageable {
             let pushBehavior = UIPushBehavior(items: [viewToToss], mode: .instantaneous)
             pushBehavior.pushDirection = CGVector(dx: velocity.x / 10, dy: velocity.y / 10)
             pushBehavior.magnitude = clampedMagnitude
+            print("Add push behavior to item: \(viewToToss)")
             dynamicAnimator.addBehavior(pushBehavior)
 
             // Give it a little spin
@@ -172,6 +184,7 @@ class PlayViewController: UIViewController, SetManageable {
             itemBehavior.action = {
                 self.checkForItemCollisionsWithBucket(itemBehavior: itemBehavior)
             }
+            print("Add empty behavior to item: \(viewToToss)")
             dynamicAnimator.addBehavior(itemBehavior)
             
             // remove the empty behavior after some time
@@ -238,6 +251,7 @@ extension PlayViewController: WordMatchGameControllerDelegate {
         self.screenBoundsCollisionBehavior.removeItem(labelToRemove)
         labelToRemove.removeFromSuperview()
         self.labels.remove(at: indexOfItemToRemove)
+        print("Removed label \(labelToRemove)")
     }
     
     func updatePair(pair: VocabularyPairLocalDataModel, with color: UIColor, useDefinition: Bool) {
