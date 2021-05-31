@@ -121,24 +121,28 @@ class PlayViewController: UIViewController, SetManageable {
                 if let matchedPair = self.bucket1.wordWasDroppedIntoBucket(word: item.text!) {
                     print(">>>>Item \(item.text) matched bucket with pair \(matchedPair)")
                     self.gameController.pairMatched(pair: matchedPair)
+                    self.gameController.reassignAllBuckets()
                 }
             } else if(item.frame.intersects(self.bucket2.frame)) {
                 print("Item \(item.text) INTERSECTS with bucket 2 \(DispatchTime.now())")
                 if let matchedPair = self.bucket2.wordWasDroppedIntoBucket(word: item.text!) {
                     print(">>>>Item \(item.text) matched bucket with pair \(matchedPair)")
                     self.gameController.pairMatched(pair: matchedPair)
+                    self.gameController.reassignAllBuckets()
                 }
             } else if(item.frame.intersects(self.bucket3.frame)) {
                 print("Item \(item.text) INTERSECTS with bucket 3 \(DispatchTime.now())")
                 if let matchedPair = self.bucket3.wordWasDroppedIntoBucket(word: item.text!) {
                     print(">>>>Item \(item.text) matched bucket with pair \(matchedPair)")
                     self.gameController.pairMatched(pair: matchedPair)
+                    self.gameController.reassignAllBuckets()
                 }
             } else if(item.frame.intersects(self.bucket4.frame)) {
                 print("Item \(item.text) INTERSECTS with bucket 4 \(DispatchTime.now())")
                 if let matchedPair = self.bucket4.wordWasDroppedIntoBucket(word: item.text!) {
                     print(">>>>Item \(item.text) matched bucket with pair \(matchedPair)")
                     self.gameController.pairMatched(pair: matchedPair)
+                    self.gameController.reassignAllBuckets()
                 }
             }
         }
