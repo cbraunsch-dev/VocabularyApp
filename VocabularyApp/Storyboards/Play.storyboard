@@ -41,15 +41,25 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="cHL-Ci-cVV"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New high score: 123" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLu-B2-GeS" userLabel="HighScore">
+                                <rect key="frame" x="130" y="465" width="154.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SBe-26-jQL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Fr9-oq-flQ" firstAttribute="top" secondItem="SBe-26-jQL" secondAttribute="top" constant="35" id="8SQ-WR-CdH"/>
+                            <constraint firstItem="SBe-26-jQL" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rLu-B2-GeS" secondAttribute="trailing" constant="20" id="9OE-81-aBO"/>
+                            <constraint firstItem="rLu-B2-GeS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="SBe-26-jQL" secondAttribute="leading" constant="20" id="EVY-gX-W7K"/>
                             <constraint firstItem="WEa-jv-4AN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ze2-wa-gmU" secondAttribute="trailing" constant="20" id="GNY-Uo-Iat"/>
                             <constraint firstItem="SBe-26-jQL" firstAttribute="trailing" secondItem="WEa-jv-4AN" secondAttribute="trailing" constant="15" id="GZR-J5-JUl"/>
+                            <constraint firstItem="rLu-B2-GeS" firstAttribute="centerY" secondItem="SBe-26-jQL" secondAttribute="centerY" id="Hya-6d-Jcf"/>
                             <constraint firstItem="5Sf-zb-C2J" firstAttribute="leading" secondItem="SBe-26-jQL" secondAttribute="leading" constant="15" id="JYs-s7-I21"/>
+                            <constraint firstItem="rLu-B2-GeS" firstAttribute="centerX" secondItem="SBe-26-jQL" secondAttribute="centerX" id="TMe-vA-4Sk"/>
                             <constraint firstItem="WEa-jv-4AN" firstAttribute="centerY" secondItem="SBe-26-jQL" secondAttribute="centerY" constant="-100" id="aRr-ZL-7Pz"/>
                             <constraint firstItem="5Sf-zb-C2J" firstAttribute="top" secondItem="SBe-26-jQL" secondAttribute="top" constant="35" id="bO1-NV-JQd"/>
                             <constraint firstItem="ze2-wa-gmU" firstAttribute="centerY" secondItem="SBe-26-jQL" secondAttribute="centerY" constant="-100" id="qB4-i2-9x0"/>
@@ -67,6 +77,7 @@
                         <outlet property="bucket2" destination="Fr9-oq-flQ" id="QCX-zo-8M1"/>
                         <outlet property="bucket3" destination="ze2-wa-gmU" id="dUf-g0-GmQ"/>
                         <outlet property="bucket4" destination="WEa-jv-4AN" id="1EM-EB-ehV"/>
+                        <outlet property="highScoreLabel" destination="rLu-B2-GeS" id="nMR-U9-9HY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vzA-Gg-RTw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -26,11 +26,13 @@ class PlayViewController: UIViewController, SetManageable {
     private var labels = [UILabel]()
     
     var gameController: GameController!
+    var highScoreService: HighScoreService!
     
     @IBOutlet var bucket1: BucketView!
     @IBOutlet var bucket2: BucketView!
     @IBOutlet var bucket3: BucketView!
     @IBOutlet var bucket4: BucketView!
+    @IBOutlet var highScoreLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -252,7 +254,19 @@ extension PlayViewController: WordMatchGameControllerDelegate {
     }
     
     func gameOver() {
-        // TODO show high score
+        self.highScoreLabel.alpha = 1
+        let nrOfLabelsLeft = self.labels.count
+        if self.highScoreService.saveHighScore(score: nrOfLabelsLeft) {
+            self.highScoreLabel.text = "New high score: \(self.highScoreService.getHighScore())"
+        } else {
+            self.highScoreLabel.text = "Current high score: \(self.highScoreService.getHighScore())"
+        }
+        
+        // Hide buckets
+        self.bucket1.alpha = 0
+        self.bucket2.alpha = 0
+        self.bucket3.alpha = 0
+        self.bucket4.alpha = 0
     }
 }
 

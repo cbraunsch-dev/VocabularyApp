@@ -47,6 +47,9 @@ let appContainer: Container = {
     container.register(GameLoop.self) { _ in
         WordMatchGameLoop()
     }
+    container.register(HighScoreService.self) { _ in
+        UserDefaultsHighScoreService()
+    }
     
     container.register(SetsViewModelType.self) { r in
         SetsViewModel(

@@ -16,21 +16,24 @@ import RxTest
 class PlayViewControllerSnapshotTests: FBSnapshotTestCase, TestDataGenerating {
     private var viewController: PlayViewController!
     private var navigationViewController: UINavigationController!
-    private var gameController: MockGameController!
+    private var mockGameController: MockGameController!
+    private var mockHighScoreService: MockHighScoreService!
     
     override func setUp() {
         super.setUp()
         self.setupSnapshotTest()
         self.recordMode = false
-        self.gameController = MockGameController()
+        self.mockGameController = MockGameController()
+        self.mockHighScoreService = MockHighScoreService()
         self.viewController = (UIStoryboard(name: StoryboardName.play.rawValue, bundle: Bundle.main).instantiateViewController(withIdentifier: "PlayViewController") as! PlayViewController)
-        self.viewController.gameController = self.gameController
+        self.viewController.gameController = self.mockGameController
+        self.viewController.highScoreService = self.mockHighScoreService
         self.navigationViewController = UINavigationController()
         self.navigationViewController.pushViewController(self.viewController, animated: false)
     }
     
     override func tearDown() {
-        self.gameController = nil
+        self.mockGameController = nil
         self.viewController = nil
         self.navigationViewController = nil
     }
@@ -74,6 +77,48 @@ class PlayViewControllerSnapshotTests: FBSnapshotTestCase, TestDataGenerating {
         self.viewController.updateBucket(bucketId: .bucket4, with: pair4, useDefinition: true)
         
         //Assert
+        verifyViewController(viewController: self.navigationViewController)
+    }
+    
+    func testGameOver_when_noNewHighScore() {
+        // Arrange
+        let pair = VocabularyPairLocalDataModel(wordOrPhrase: "Word", definition: "Defintion")
+        self.mockHighScoreService.saveHighScoreStub = false
+        self.mockHighScoreService.highScoreStub = 1337
+        let vocabPairs = self.createTestVocabularyPairs()
+        let set = SetLocalDataModel(id: "1", name: "Serbian", vocabularyPairs: vocabPairs)
+        self.viewController.set = set
+        self.loadView(of: self.viewController)
+        self.viewController.updateBucket(bucketId: .bucket1, with: pair, useDefinition: true)
+        self.viewController.updateBucket(bucketId: .bucket2, with: pair, useDefinition: true)
+        self.viewController.updateBucket(bucketId: .bucket3, with: pair, useDefinition: true)
+        self.viewController.updateBucket(bucketId: .bucket4, with: pair, useDefinition: true)
+        
+        // Act
+        self.viewController.gameOver()
+        
+        // Assert
+        verifyViewController(viewController: self.navigationViewController)
+    }
+    
+    func testGameOver_when_newHighScore() {
+        // Arrange
+        let pair = VocabularyPairLocalDataModel(wordOrPhrase: "Word", definition: "Defintion")
+        self.mockHighScoreService.saveHighScoreStub = true
+        self.mockHighScoreService.highScoreStub = 1337
+        let vocabPairs = self.createTestVocabularyPairs()
+        let set = SetLocalDataModel(id: "1", name: "Serbian", vocabularyPairs: vocabPairs)
+        self.viewController.set = set
+        self.loadView(of: self.viewController)
+        self.viewController.updateBucket(bucketId: .bucket1, with: pair, useDefinition: true)
+        self.viewController.updateBucket(bucketId: .bucket2, with: pair, useDefinition: true)
+        self.viewController.updateBucket(bucketId: .bucket3, with: pair, useDefinition: true)
+        self.viewController.updateBucket(bucketId: .bucket4, with: pair, useDefinition: true)
+        
+        // Act
+        self.viewController.gameOver()
+        
+        // Assert
         verifyViewController(viewController: self.navigationViewController)
     }
 }

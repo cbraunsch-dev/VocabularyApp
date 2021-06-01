@@ -32,6 +32,7 @@ extension SwinjectStoryboard {
         }
         defaultContainer.storyboardInitCompleted(PlayViewController.self) { r, c in
             c.gameController = appContainer.resolve(GameController.self)!
+            c.highScoreService = appContainer.resolve(HighScoreService.self)!
         }
     }
 }

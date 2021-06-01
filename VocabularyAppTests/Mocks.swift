@@ -228,3 +228,22 @@ class MockGameController: GameController {
     var vocabularyPairs: [VocabularyPairLocalDataModel] = [VocabularyPairLocalDataModel]()
     var delegate: WordMatchGameControllerDelegate?
 }
+
+class MockHighScoreService: HighScoreService {
+    var saveHighScoreStub: Bool?
+    var highScoreStub: Int?
+    
+    func saveHighScore(score: Int) -> Bool {
+        if let stub = self.saveHighScoreStub {
+            return stub
+        }
+        return false
+    }
+    
+    func getHighScore() -> Int {
+        if let stub = self.highScoreStub {
+            return stub
+        }
+        return 0
+    }
+}
