@@ -90,10 +90,18 @@ class WordMatchGameController: GameController {
     
     func reassignAllBuckets() {
         let randomizedBucketItems = self.bucket.randomItems(nrOfItems: 4)
-        self.delegate?.updateBucket(bucketId: .bucket1, with: randomizedBucketItems[0], useDefinition: true)
-        self.delegate?.updateBucket(bucketId: .bucket2, with: randomizedBucketItems[1], useDefinition: true)
-        self.delegate?.updateBucket(bucketId: .bucket3, with: randomizedBucketItems[2], useDefinition: true)
-        self.delegate?.updateBucket(bucketId: .bucket4, with: randomizedBucketItems[3], useDefinition: true)
+        if randomizedBucketItems.count > 0 {
+            self.delegate?.updateBucket(bucketId: .bucket1, with: randomizedBucketItems[0], useDefinition: true)
+        }
+        if randomizedBucketItems.count > 1 {
+            self.delegate?.updateBucket(bucketId: .bucket2, with: randomizedBucketItems[1], useDefinition: true)
+        }
+        if randomizedBucketItems.count > 2 {
+            self.delegate?.updateBucket(bucketId: .bucket3, with: randomizedBucketItems[2], useDefinition: true)
+        }
+        if randomizedBucketItems.count > 3 {
+            self.delegate?.updateBucket(bucketId: .bucket4, with: randomizedBucketItems[3], useDefinition: true)
+        }
     }
 }
 

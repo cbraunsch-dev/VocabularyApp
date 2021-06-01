@@ -221,9 +221,12 @@ extension PlayViewController: WordMatchGameControllerDelegate {
         let labelToRemove = self.labels[indexOfItemToRemove]
         self.gravityBehavior.removeItem(labelToRemove)
         self.screenBoundsCollisionBehavior.removeItem(labelToRemove)
-        labelToRemove.removeFromSuperview()
-        self.labels.remove(at: indexOfItemToRemove)
-        print("Removed label \(labelToRemove)")
+        UIView.animate(withDuration: 0.5, animations: {
+            labelToRemove.alpha = 0
+        }, completion: {_ in
+            labelToRemove.removeFromSuperview()
+            self.labels.remove(at: indexOfItemToRemove)
+        })
     }
     
     func updatePair(pair: VocabularyPairLocalDataModel, with color: UIColor, useDefinition: Bool) {
@@ -257,12 +260,13 @@ extension PlayViewController: WordMatchGameControllerDelegate {
     }
     
     func gameOver() {
-        self.highScoreLabel.alpha = 1
         let nrOfLabelsLeft = self.labels.count
-        if self.highScoreService.saveHighScore(score: nrOfLabelsLeft) {
-            self.highScoreLabel.text = "New high score: \(self.highScoreService.getHighScore())"
+        if self.highScoreService.saveHighScore(set: self.set!, score: nrOfLabelsLeft) {
+            self.highScoreLabel.text = "New high score: \(self.highScoreService.getHighScore(set: self.set!))"
+            self.highScoreLabel.alpha = 1
         } else {
-            self.highScoreLabel.text = "Current high score: \(self.highScoreService.getHighScore())"
+            self.highScoreLabel.text = "Your score: \(nrOfLabelsLeft). Current high score: \(self.highScoreService.getHighScore(set: self.set!))"
+            self.highScoreLabel.alpha = 1
         }
         
         // Hide buckets

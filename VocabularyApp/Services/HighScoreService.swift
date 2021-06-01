@@ -11,25 +11,27 @@ import Foundation
 protocol HighScoreService {
     
     // Saves the new score if it is a high score. Returns true if it is a high score.
-    func saveHighScore(score: Int) -> Bool
+    func saveHighScore(set: SetLocalDataModel, score: Int) -> Bool
     
     // Gets the currently saved high score
-    func getHighScore() -> Int
+    func getHighScore(set: SetLocalDataModel) -> Int
 }
 
 class UserDefaultsHighScoreService: HighScoreService {
     private let key = "High_Score"
     
-    func saveHighScore(score: Int) -> Bool {
-        let currentScore = UserDefaults.standard.integer(forKey: self.key)
+    func saveHighScore(set: SetLocalDataModel, score: Int) -> Bool {
+        let scoreKey = "\(set.name)-\(self.key)"
+        let currentScore = UserDefaults.standard.integer(forKey: scoreKey)
         if score < currentScore || currentScore == 0 {
-            UserDefaults.standard.setValue(score, forKey: self.key)
+            UserDefaults.standard.setValue(score, forKey: scoreKey)
             return true
         }
         return false
     }
     
-    func getHighScore() -> Int {
-        return UserDefaults.standard.integer(forKey: self.key)
+    func getHighScore(set: SetLocalDataModel) -> Int {
+        let scoreKey = "\(set.name)-\(self.key)"
+        return UserDefaults.standard.integer(forKey: scoreKey)
     }
 }
