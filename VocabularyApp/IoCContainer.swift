@@ -81,7 +81,7 @@ let appContainer: Container = {
             randomNumberService: r.resolve(RandomNumberService.self)!
         )
     }
-    container.register(WordMatchGameController.self) { r in
+    container.register(GameController.self) { r in
         WordMatchGameController(gameLoop: r.resolve(GameLoop.self)!,
                                 pile: r.resolve(GameItemList.self)!,
                                 bucket: r.resolve(GameItemList.self)!,

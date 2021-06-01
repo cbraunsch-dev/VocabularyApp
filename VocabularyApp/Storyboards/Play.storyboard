@@ -17,17 +17,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="130" placeholderIntrinsicHeight="36" translatesAutoresizingMaskIntoConstraints="NO" id="5Sf-zb-C2J" customClass="BucketView" customModule="VocabularyApp" customModuleProvider="target">
+                            <view contentMode="scaleToFill" verticalHuggingPriority="249" placeholderIntrinsicWidth="130" placeholderIntrinsicHeight="36" translatesAutoresizingMaskIntoConstraints="NO" id="5Sf-zb-C2J" customClass="BucketView" customModule="VocabularyApp" customModuleProvider="target">
                                 <rect key="frame" x="15" y="123" width="130" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="RXs-Wy-nKp"/>
+                                </constraints>
                             </view>
-                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="130" placeholderIntrinsicHeight="36" translatesAutoresizingMaskIntoConstraints="NO" id="ze2-wa-gmU" customClass="BucketView" customModule="VocabularyApp" customModuleProvider="target">
+                            <view contentMode="scaleToFill" verticalHuggingPriority="249" placeholderIntrinsicWidth="130" placeholderIntrinsicHeight="36" translatesAutoresizingMaskIntoConstraints="NO" id="ze2-wa-gmU" customClass="BucketView" customModule="VocabularyApp" customModuleProvider="target">
                                 <rect key="frame" x="15" y="357" width="130" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="gEx-ad-wTU"/>
+                                </constraints>
                             </view>
-                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="130" placeholderIntrinsicHeight="36" translatesAutoresizingMaskIntoConstraints="NO" id="Fr9-oq-flQ" customClass="BucketView" customModule="VocabularyApp" customModuleProvider="target">
+                            <view contentMode="scaleToFill" verticalHuggingPriority="249" placeholderIntrinsicWidth="130" placeholderIntrinsicHeight="36" translatesAutoresizingMaskIntoConstraints="NO" id="Fr9-oq-flQ" customClass="BucketView" customModule="VocabularyApp" customModuleProvider="target">
                                 <rect key="frame" x="269" y="123" width="130" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="AR6-tN-DMd"/>
+                                </constraints>
                             </view>
-                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="130" placeholderIntrinsicHeight="36" translatesAutoresizingMaskIntoConstraints="NO" id="WEa-jv-4AN" customClass="BucketView" customModule="VocabularyApp" customModuleProvider="target">
+                            <view contentMode="scaleToFill" verticalHuggingPriority="249" placeholderIntrinsicWidth="130" placeholderIntrinsicHeight="36" translatesAutoresizingMaskIntoConstraints="NO" id="WEa-jv-4AN" customClass="BucketView" customModule="VocabularyApp" customModuleProvider="target">
                                 <rect key="frame" x="269" y="357" width="130" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="cHL-Ci-cVV"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SBe-26-jQL"/>
@@ -35,6 +47,7 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Fr9-oq-flQ" firstAttribute="top" secondItem="SBe-26-jQL" secondAttribute="top" constant="35" id="8SQ-WR-CdH"/>
+                            <constraint firstItem="WEa-jv-4AN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ze2-wa-gmU" secondAttribute="trailing" constant="20" id="GNY-Uo-Iat"/>
                             <constraint firstItem="SBe-26-jQL" firstAttribute="trailing" secondItem="WEa-jv-4AN" secondAttribute="trailing" constant="15" id="GZR-J5-JUl"/>
                             <constraint firstItem="5Sf-zb-C2J" firstAttribute="leading" secondItem="SBe-26-jQL" secondAttribute="leading" constant="15" id="JYs-s7-I21"/>
                             <constraint firstItem="WEa-jv-4AN" firstAttribute="centerY" secondItem="SBe-26-jQL" secondAttribute="centerY" constant="-100" id="aRr-ZL-7Pz"/>
@@ -42,6 +55,7 @@
                             <constraint firstItem="ze2-wa-gmU" firstAttribute="centerY" secondItem="SBe-26-jQL" secondAttribute="centerY" constant="-100" id="qB4-i2-9x0"/>
                             <constraint firstItem="ze2-wa-gmU" firstAttribute="leading" secondItem="SBe-26-jQL" secondAttribute="leading" constant="15" id="sMA-vx-aQj"/>
                             <constraint firstItem="SBe-26-jQL" firstAttribute="trailing" secondItem="Fr9-oq-flQ" secondAttribute="trailing" constant="15" id="sPB-4p-Aut"/>
+                            <constraint firstItem="Fr9-oq-flQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5Sf-zb-C2J" secondAttribute="trailing" constant="20" id="vtO-mO-kA6"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="E3R-VY-RNf" appends="YES" id="ybG-t4-v46"/>

@@ -25,7 +25,7 @@ class PlayViewController: UIViewController, SetManageable {
     private var viewBeingDragged: UIView? = nil
     private var labels = [UILabel]()
     
-    var gameController: WordMatchGameController!
+    var gameController: GameController!
     
     @IBOutlet var bucket1: BucketView!
     @IBOutlet var bucket2: BucketView!

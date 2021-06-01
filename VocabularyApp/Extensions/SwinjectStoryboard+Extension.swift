@@ -31,7 +31,7 @@ extension SwinjectStoryboard {
             c.viewModel = appContainer.resolve(PracticeSetViewModelType.self)!
         }
         defaultContainer.storyboardInitCompleted(PlayViewController.self) { r, c in
-            c.gameController = appContainer.resolve(WordMatchGameController.self)!
+            c.gameController = appContainer.resolve(GameController.self)!
         }
     }
 }

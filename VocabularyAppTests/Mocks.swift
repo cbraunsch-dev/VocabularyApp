@@ -201,6 +201,25 @@ class MockGameLoop: GameLoop {
     func start() {
         didStartGameLoop = true
     }
+}
+
+class MockGameController: GameController {
+    func startGame() {
+        
+    }
     
+    func pairMatched(pair: VocabularyPairLocalDataModel) {
+        
+    }
     
+    func requestPairForBucket(bucketId: BucketId) {
+        
+    }
+    
+    func reassignAllBuckets() {
+        
+    }
+    
+    var vocabularyPairs: [VocabularyPairLocalDataModel] = [VocabularyPairLocalDataModel]()
+    var delegate: WordMatchGameControllerDelegate?
 }

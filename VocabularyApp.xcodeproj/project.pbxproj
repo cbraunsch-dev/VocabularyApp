@@ -79,6 +79,7 @@
 		6698EC4326536B4C00DCD1F4 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6698EC4226536B4C00DCD1F4 /* PlayViewController.swift */; };
 		6698EC4726536D1E00DCD1F4 /* Play.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6698EC4626536D1E00DCD1F4 /* Play.storyboard */; };
 		66AECAB1225E6B840029BB13 /* RandomNumberService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AECAB0225E6B840029BB13 /* RandomNumberService.swift */; };
+		66B2F0482665DEF600DB8318 /* PlayViewControllerSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B2F0472665DEF600DB8318 /* PlayViewControllerSnapshotTests.swift */; };
 		66B910B02221950F00C5D0B5 /* AddSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910AF2221950F00C5D0B5 /* AddSetViewController.swift */; };
 		66B910B22221964D00C5D0B5 /* AddSetViewControllerSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910B12221964D00C5D0B5 /* AddSetViewControllerSnapshotTests.swift */; };
 		66B910B62221973100C5D0B5 /* TitleValueCellContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910B52221973100C5D0B5 /* TitleValueCellContentView.swift */; };
@@ -207,6 +208,7 @@
 		6698EC4226536B4C00DCD1F4 /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		6698EC4626536D1E00DCD1F4 /* Play.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Play.storyboard; sourceTree = "<group>"; };
 		66AECAB0225E6B840029BB13 /* RandomNumberService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumberService.swift; sourceTree = "<group>"; };
+		66B2F0472665DEF600DB8318 /* PlayViewControllerSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewControllerSnapshotTests.swift; sourceTree = "<group>"; };
 		66B910AF2221950F00C5D0B5 /* AddSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSetViewController.swift; sourceTree = "<group>"; };
 		66B910B12221964D00C5D0B5 /* AddSetViewControllerSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSetViewControllerSnapshotTests.swift; sourceTree = "<group>"; };
 		66B910B52221973100C5D0B5 /* TitleValueCellContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleValueCellContentView.swift; sourceTree = "<group>"; };
@@ -515,6 +517,7 @@
 				6694FBFA225C4CD2003669E6 /* FlashCardViewSnapshotTests.swift */,
 				6694FC00225C524C003669E6 /* PracticeSetViewControllerSnapshotTests.swift */,
 				664950AC26609FD100CC67A2 /* BucketViewSnapshotTests.swift */,
+				66B2F0472665DEF600DB8318 /* PlayViewControllerSnapshotTests.swift */,
 			);
 			path = SnapshotTestCases;
 			sourceTree = "<group>";
@@ -919,6 +922,7 @@
 				6690B4DF222CE7E500B3CE14 /* Mocks.swift in Sources */,
 				6601D9E0222E3B88007ABC28 /* RealmSetLocalDataServiceTests.swift in Sources */,
 				661F6CB322106EC200B11FDE /* TestDataGenerating.swift in Sources */,
+				66B2F0482665DEF600DB8318 /* PlayViewControllerSnapshotTests.swift in Sources */,
 				661F6CB122106EC200B11FDE /* AssertionDataExtractionCapable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,7 +9,20 @@
 import Foundation
 import UIKit
 
-class WordMatchGameController {
+protocol GameController {
+    func startGame()
+    
+    func pairMatched(pair: VocabularyPairLocalDataModel)
+    
+    func requestPairForBucket(bucketId: BucketId)
+    
+    func reassignAllBuckets()
+    
+    var vocabularyPairs: [VocabularyPairLocalDataModel] { get set }
+    var delegate: WordMatchGameControllerDelegate? { get set }
+}
+
+class WordMatchGameController: GameController {
     private var gameLoop: GameLoop
     private let pile: GameItemList
     private let bucket: GameItemList
