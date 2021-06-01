@@ -195,6 +195,7 @@ extension PlayViewController: WordMatchGameControllerDelegate {
             newLabel.text = pair.wordOrPhrase
         }
         newLabel.textColor = color
+        newLabel.font = UIFont.systemFont(ofSize: FontConstants.large)
         newLabel.sizeToFit()
         let spawnPosX = self.view.frame.size.width / 2 - newLabel.frame.width / 2
         newLabel.frame.origin = CGPoint(x: spawnPosX, y: 0.0)
