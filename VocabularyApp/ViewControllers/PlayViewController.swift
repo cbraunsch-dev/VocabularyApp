@@ -15,7 +15,7 @@ class PlayViewController: UIViewController, SetManageable {
     
     private let ThrowingThreshold: CGFloat = 100
     private let ThrowingVelocityPadding: CGFloat = 300
-    private let maximumThrowingMagnitude: CGFloat = 450
+    private let maximumThrowingMagnitude: CGFloat = 100
     
     private var dynamicAnimator: UIDynamicAnimator!
     private var gravityBehavior: UIGravityBehavior!
