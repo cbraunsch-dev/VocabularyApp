@@ -18,6 +18,8 @@ protocol GameController {
     
     func reassignAllBuckets()
     
+    func pauseGame()
+    
     var vocabularyPairs: [VocabularyPairLocalDataModel] { get set }
     var delegate: WordMatchGameControllerDelegate? { get set }
 }
@@ -61,6 +63,10 @@ class WordMatchGameController: GameController {
         delegate?.updateBucket(bucketId: BucketId.bucket3, with: randomItemsFromPile[2], useDefinition: true)
         delegate?.updateBucket(bucketId: BucketId.bucket4, with: randomItemsFromPile[3], useDefinition: true)
         self.gameLoop.start()
+    }
+    
+    func pauseGame() {
+        self.gameLoop.stop()
     }
     
     func pairMatched(pair: VocabularyPairLocalDataModel) {

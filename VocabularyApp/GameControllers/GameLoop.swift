@@ -12,6 +12,8 @@ protocol GameLoop{
     var delegate: GameLoopDelegate? { get set }
     
     func start()
+    
+    func stop()
 }
 
 protocol GameLoopDelegate {
@@ -33,5 +35,9 @@ class WordMatchGameLoop: GameLoop {
                 }
             }
         }
+    }
+    
+    func stop() {
+        gameRunning = false
     }
 }

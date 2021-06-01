@@ -270,6 +270,12 @@ extension PlayViewController: WordMatchGameControllerDelegate {
         self.bucket2.alpha = 0
         self.bucket3.alpha = 0
         self.bucket4.alpha = 0
+        
+        self.gameController.pauseGame()
+        
+        self.labels.forEach { label in
+            label.alpha = 0
+        }
     }
 }
 

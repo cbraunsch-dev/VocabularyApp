@@ -22,7 +22,7 @@ class UserDefaultsHighScoreService: HighScoreService {
     
     func saveHighScore(score: Int) -> Bool {
         let currentScore = UserDefaults.standard.integer(forKey: self.key)
-        if score > currentScore {
+        if score < currentScore || currentScore == 0 {
             UserDefaults.standard.setValue(score, forKey: self.key)
             return true
         }
