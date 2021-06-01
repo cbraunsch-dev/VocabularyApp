@@ -206,9 +206,17 @@ class MockGameLoop: GameLoop {
     func start() {
         didStartGameLoop = true
     }
+    
+    func stop() {
+        
+    }
 }
 
 class MockGameController: GameController {
+    func pauseGame() {
+        
+    }
+    
     func startGame() {
         
     }
