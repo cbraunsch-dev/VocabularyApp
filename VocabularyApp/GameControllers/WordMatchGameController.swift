@@ -105,6 +105,7 @@ extension WordMatchGameController: GameLoopDelegate {
         } else {
             // The item has already been taken from our pile so take a different random item from the pile and make it black
             guard let randomItemFromPile = self.pile.randomItems(nrOfItems: 1).first else {
+                self.delegate?.gameOver()
                 return
             }
             self.pile.removeItem(item: randomItemFromPile)
@@ -122,4 +123,6 @@ protocol WordMatchGameControllerDelegate {
     func updatePair(pair: VocabularyPairLocalDataModel, with color: UIColor, useDefinition: Bool)
     
     func updateBucket(bucketId: BucketId, with pair: VocabularyPairLocalDataModel, useDefinition: Bool)
+    
+    func gameOver()
 }

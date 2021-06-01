@@ -138,6 +138,29 @@ class WordMatchGameControllerTests: XCTestCase {
         XCTAssertTrue(self.mockGreenItems.addedItems.contains(randomItemFromPile))
     }
     
+    func testUpdate_then_removeItemFromPile() {
+        //Arrange
+        let randomItemFromPile = VocabularyPairLocalDataModel(wordOrPhrase: "Corndog", definition: "Ugh")
+        self.mockPile.matchedItemsStub = [randomItemFromPile]
+        
+        //Act
+        self.testee.update()
+        
+        //Assert
+        XCTAssertEqual(randomItemFromPile, self.mockPile.removedItem)
+    }
+    
+    func testUpdate_when_noMoreItemsInPile_then_gameOver() {
+        // Arrange
+        self.mockPile.randomItemsStubs = [[VocabularyPairLocalDataModel]()]
+        
+        // Act
+        self.testee.update()
+        
+        // Assert
+        XCTAssertTrue(self.mockDelegate.didCallGameOver)
+    }
+    
     func testPairMatched_then_removeGreenItem() {
         //Arrange
         let matchedPair = VocabularyPairLocalDataModel(wordOrPhrase: "Corndog", definition: "Ewww, gross")

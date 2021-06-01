@@ -125,6 +125,7 @@ class MockWordMatchGameControllerDelegate: WordMatchGameControllerDelegate {
     var removedPair: VocabularyPairLocalDataModel?
     var updatedPair: VocabularyPairLocalDataModel?
     var updatedColor: UIColor?
+    var didCallGameOver = false
     
     func spawnPair(pair: VocabularyPairLocalDataModel, color: UIColor, useDefinition: Bool) {
         self.spawnedPair = pair
@@ -147,6 +148,10 @@ class MockWordMatchGameControllerDelegate: WordMatchGameControllerDelegate {
     
     func verifyThatBucket(with bucketId: BucketId, wasUpdatedWith pair: VocabularyPairLocalDataModel) -> Bool {
         return bucketVocabDictionary[bucketId.rawValue] == pair
+    }
+    
+    func gameOver() {
+        self.didCallGameOver = true
     }
 }
 

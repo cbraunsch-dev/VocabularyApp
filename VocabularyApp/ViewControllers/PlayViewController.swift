@@ -251,7 +251,9 @@ extension PlayViewController: WordMatchGameControllerDelegate {
         }
     }
     
-    
+    func gameOver() {
+        // TODO show high score
+    }
 }
 
 extension PlayViewController: BucketViewDelegate {
