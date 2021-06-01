@@ -33,6 +33,7 @@ class PlayViewController: UIViewController, SetManageable {
     @IBOutlet var bucket3: BucketView!
     @IBOutlet var bucket4: BucketView!
     @IBOutlet var highScoreLabel: UILabel!
+    @IBOutlet var bottomBrick: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +54,7 @@ class PlayViewController: UIViewController, SetManageable {
         screenBoundsCollisionBehavior.translatesReferenceBoundsIntoBoundary = true
         dynamicAnimator.addBehavior(gravityBehavior)
         dynamicAnimator.addBehavior(screenBoundsCollisionBehavior)
+        screenBoundsCollisionBehavior.addItem(bottomBrick)
         
         self.gameController.vocabularyPairs = self.set!.vocabularyPairs
         self.gameController.delegate = self
