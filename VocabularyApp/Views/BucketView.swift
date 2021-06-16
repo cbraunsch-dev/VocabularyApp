@@ -13,6 +13,7 @@ class BucketView: UIView {
     var delegate: BucketViewDelegate?
     let text = UILabel()
     private var pair: VocabularyPairLocalDataModel!
+    public private(set) var hoveringOverBucket: Bool = false
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -22,6 +23,28 @@ class BucketView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupView()
+    }
+    
+    func startHoveringOver() {
+        if(!self.hoveringOverBucket) {
+            self.hoveringOverBucket = true
+            print("\(NSDate().timeIntervalSince1970) Start hovering over bucket: \(self.bucketId)")
+            UIView.animate(withDuration: 0.5, animations: {
+                self.backgroundColor = UIColor.lightGray
+            }, completion: {_ in
+            })
+        }
+    }
+    
+    func stopHoveringOver() {
+        if(self.hoveringOverBucket) {
+            self.hoveringOverBucket = false
+            print("\(NSDate().timeIntervalSince1970) Stop hovering over bucket: \(self.bucketId)")
+            UIView.animate(withDuration: 0.5, animations: {
+                self.backgroundColor = UIColor.white
+            }, completion: {_ in
+            })
+        }
     }
     
     func updateWith(pair: VocabularyPairLocalDataModel, useDefinition: Bool) {

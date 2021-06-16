@@ -81,6 +81,10 @@ class PlayViewController: UIViewController, SetManageable {
                 let pointInViewThatWasTouched = sender.location(in: touchedView)
                 let centerOffset = UIOffset(horizontal: pointInViewThatWasTouched.x - touchedView.bounds.midX, vertical: pointInViewThatWasTouched.y - touchedView.bounds.midY)
                 attachmentBehavior = UIAttachmentBehavior(item: touchedView, offsetFromCenter: centerOffset, attachedToAnchor: location)
+                attachmentBehavior?.action = {
+                    // TODO: check if word hovering over bucket
+                    self.checkIfWordHoveringOverBuckets(itemBehavior: self.attachmentBehavior!)
+                }
                 
                 // Remove collision behavior from item being dragged
                 screenBoundsCollisionBehavior.removeItem(touchedView)
@@ -136,7 +140,42 @@ class PlayViewController: UIViewController, SetManageable {
         }
     }
     
+    fileprivate func checkIfWordHoveringOverBuckets(itemBehavior: UIAttachmentBehavior) {
+        itemBehavior.items.forEach { it in
+            let item = it as! UILabel
+            if(item.frame.intersects(self.bucket1.frame)) {
+                self.bucket1.startHoveringOver()
+            } else {
+                self.bucket1.stopHoveringOver()
+            }
+            
+            if(item.frame.intersects(self.bucket2.frame)) {
+                self.bucket2.startHoveringOver()
+            } else {
+                self.bucket2.stopHoveringOver()
+            }
+            
+            if(item.frame.intersects(self.bucket3.frame)) {
+                self.bucket3.startHoveringOver()
+            } else {
+                self.bucket3.stopHoveringOver()
+            }
+            
+            if(item.frame.intersects(self.bucket4.frame)) {
+                self.bucket4.startHoveringOver()
+            } else {
+                self.bucket4.stopHoveringOver()
+            }
+        }
+    }
+    
     private func tossView(viewToToss: UIView, sender: UIPanGestureRecognizer) {
+        // Stop the hovering effects
+        self.bucket1.stopHoveringOver()
+        self.bucket2.stopHoveringOver()
+        self.bucket3.stopHoveringOver()
+        self.bucket4.stopHoveringOver()
+        
         // Reset UI Kit dynamics
         dynamicAnimator.removeAllBehaviors()
         dynamicAnimator.addBehavior(gravityBehavior)
