@@ -12,6 +12,8 @@ class BucketView: UIView {
     var bucketId: BucketId?
     var delegate: BucketViewDelegate?
     let text = UILabel()
+    var timerService = appContainer.resolve(TimerService.self)
+    private let feedbackView = BucketFeedbackView()
     private var pair: VocabularyPairLocalDataModel!
     public private(set) var hoveringOverBucket: Bool = false
     
@@ -28,7 +30,6 @@ class BucketView: UIView {
     func startHoveringOver() {
         if(!self.hoveringOverBucket) {
             self.hoveringOverBucket = true
-            print("\(NSDate().timeIntervalSince1970) Start hovering over bucket: \(self.bucketId)")
             UIView.animate(withDuration: 0.5, animations: {
                 self.backgroundColor = UIColor.lightGray
             }, completion: {_ in
@@ -39,7 +40,6 @@ class BucketView: UIView {
     func stopHoveringOver() {
         if(self.hoveringOverBucket) {
             self.hoveringOverBucket = false
-            print("\(NSDate().timeIntervalSince1970) Stop hovering over bucket: \(self.bucketId)")
             UIView.animate(withDuration: 0.5, animations: {
                 self.backgroundColor = UIColor.white
             }, completion: {_ in
@@ -61,8 +61,12 @@ class BucketView: UIView {
         let oldPair = self.pair
         if(word == self.pair.definition || word == self.pair.wordOrPhrase) {
             self.delegate?.requestPairForBucket(bucketId: self.bucketId!)
+            self.feedbackView.showSuccess()
+            self.feedbackView.alpha = 1
             return oldPair
         }
+        self.feedbackView.showFailure()
+        self.feedbackView.alpha = 1
         return nil
     }
 
@@ -72,14 +76,20 @@ class BucketView: UIView {
         self.text.textColor = UIColor.black
         self.text.textAlignment = .center
         self.text.numberOfLines = 0
+        self.feedbackView.alpha = 0
         
         self.addSubview(self.text)
+        self.addSubview(self.feedbackView)
         
         self.text.snp.makeConstraints { make in
             make.left.equalTo(self).offset(LayoutConstants.buX2)
             make.top.equalTo(self).offset(LayoutConstants.buX2)
             make.bottom.equalTo(self).offset(-LayoutConstants.buX2)
             make.right.equalTo(self).offset(-LayoutConstants.buX2)
+        }
+        self.feedbackView.snp.makeConstraints { make in
+            make.centerX.equalTo(self)
+            make.centerY.equalTo(self)
         }
     }
 }

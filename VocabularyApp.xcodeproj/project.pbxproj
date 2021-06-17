@@ -109,6 +109,7 @@
 		66E8FF73225B013300CEC1A2 /* TrainSetViewControllerSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E8FF72225B013300CEC1A2 /* TrainSetViewControllerSnapshotTests.swift */; };
 		66E8FF75225B01BC00CEC1A2 /* TrainSet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66E8FF74225B01BC00CEC1A2 /* TrainSet.storyboard */; };
 		66E8FF77225B03EB00CEC1A2 /* TrainSetViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E8FF76225B03EB00CEC1A2 /* TrainSetViewModelTests.swift */; };
+		66F65617267B00C3003FA05C /* TimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F65616267B00C3003FA05C /* TimerService.swift */; };
 		66FD81B02230DAA50035A034 /* LearnSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD81AF2230DAA50035A034 /* LearnSetViewController.swift */; };
 		66FD81B22230DAD30035A034 /* Set.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66FD81B12230DAD30035A034 /* Set.storyboard */; };
 		66FD81B42230DE930035A034 /* AddVocabulary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66FD81B32230DE930035A034 /* AddVocabulary.storyboard */; };
@@ -243,6 +244,7 @@
 		66E8FF72225B013300CEC1A2 /* TrainSetViewControllerSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainSetViewControllerSnapshotTests.swift; sourceTree = "<group>"; };
 		66E8FF74225B01BC00CEC1A2 /* TrainSet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrainSet.storyboard; sourceTree = "<group>"; };
 		66E8FF76225B03EB00CEC1A2 /* TrainSetViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainSetViewModelTests.swift; sourceTree = "<group>"; };
+		66F65616267B00C3003FA05C /* TimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerService.swift; sourceTree = "<group>"; };
 		66FD81AF2230DAA50035A034 /* LearnSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnSetViewController.swift; sourceTree = "<group>"; };
 		66FD81B12230DAD30035A034 /* Set.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Set.storyboard; sourceTree = "<group>"; };
 		66FD81B32230DE930035A034 /* AddVocabulary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddVocabulary.storyboard; sourceTree = "<group>"; };
@@ -424,6 +426,7 @@
 				66852021223B61BE00BF631F /* ImportVocabularyService.swift */,
 				66AECAB0225E6B840029BB13 /* RandomNumberService.swift */,
 				66B2F04B2665E82600DB8318 /* HighScoreService.swift */,
+				66F65616267B00C3003FA05C /* TimerService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -850,6 +853,7 @@
 				66B910B8222197A300C5D0B5 /* AppConstants.swift in Sources */,
 				661F6C8522106A3800B11FDE /* OperationResult.swift in Sources */,
 				6698EC4326536B4C00DCD1F4 /* PlayViewController.swift in Sources */,
+				66F65617267B00C3003FA05C /* TimerService.swift in Sources */,
 				6694FBF5225C487A003669E6 /* PracticeSetViewController.swift in Sources */,
 				66CF6CF92230E6F1007CA838 /* GenericTableSection.swift in Sources */,
 				66B910CA22219A1B00C5D0B5 /* TitleValueTableItem.swift in Sources */,

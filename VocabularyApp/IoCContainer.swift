@@ -41,6 +41,9 @@ let appContainer: Container = {
     container.register(RandomNumberService.self) { _ in
         VocabularyAppRandomNumberService()
     }
+    container.register(TimerService.self) { _ in
+        NSTimerService()
+    }
     container.register(GameItemList.self) { _ in
         WordMatchGameItemList()
     }.inObjectScope(.transient)
