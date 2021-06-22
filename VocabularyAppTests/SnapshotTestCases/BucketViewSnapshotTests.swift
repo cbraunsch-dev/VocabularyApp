@@ -125,7 +125,30 @@ class BucketViewSnapshotTests: FBSnapshotTestCase {
         FBSnapshotVerifyView(containerView)
     }
     
-    // TODO: testWordWasDroppedIntoBucket_when_thereIsAMatchAndTimerHasExpired
+    func testWordWasDroppedIntoBucket_when_thereIsAMatchAndTimerHasExpired() {
+        //Arrange
+        self.recordMode = false
+        let timerService = MockTimerService()
+        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 440, height: 300))
+        containerView.backgroundColor = UIColor.white
+        let testee = BucketView(frame: CGRect.zero)
+        testee.timerService = timerService
+        containerView.addSubview(testee)
+        testee.snp.makeConstraints { make in
+            make.centerX.equalTo(containerView)
+            make.centerY.equalTo(containerView)
+            make.width.equalTo(400)
+            make.height.equalTo(250)
+        }
+        testee.updateWith(pair: VocabularyPairLocalDataModel(wordOrPhrase: "Chocolate", definition: "Tasty, delicious goodness"), useDefinition: false)
+        _ = testee.wordWasDroppedIntoBucket(word: "Chocolate")
+        
+        // Act
+        timerService.executeCompletionBlock()
+        
+        // Assert
+        FBSnapshotVerifyView(containerView)
+    }
     
     func testWordWasDroppedIntoBucket_when_thereIsNoMatch() {
         //Arrange
@@ -149,5 +172,28 @@ class BucketViewSnapshotTests: FBSnapshotTestCase {
         FBSnapshotVerifyView(containerView)
     }
     
-    // TODO: testWordWasDroppedIntoBucket_when_thereIsNoMatchAndTimerHasExpired
+    func testWordWasDroppedIntoBucket_when_thereIsNoMatchAndTimerHasExpired() {
+        //Arrange
+        self.recordMode = false
+        let timerService = MockTimerService()
+        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 440, height: 300))
+        containerView.backgroundColor = UIColor.white
+        let testee = BucketView(frame: CGRect.zero)
+        testee.timerService = timerService
+        containerView.addSubview(testee)
+        testee.snp.makeConstraints { make in
+            make.centerX.equalTo(containerView)
+            make.centerY.equalTo(containerView)
+            make.width.equalTo(400)
+            make.height.equalTo(250)
+        }
+        testee.updateWith(pair: VocabularyPairLocalDataModel(wordOrPhrase: "Chocolate", definition: "Tasty, delicious goodness"), useDefinition: false)
+        _ = testee.wordWasDroppedIntoBucket(word: "Corndog")
+        
+        //Act
+        timerService.executeCompletionBlock()
+        
+        //Assert
+        FBSnapshotVerifyView(containerView)
+    }
 }

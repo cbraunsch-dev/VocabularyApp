@@ -63,10 +63,16 @@ class BucketView: UIView {
             self.delegate?.requestPairForBucket(bucketId: self.bucketId!)
             self.feedbackView.showSuccess()
             self.feedbackView.alpha = 1
+            self.timerService?.startTimer(duration: 1.0, completion: {
+                self.feedbackView.alpha = 0
+            })
             return oldPair
         }
         self.feedbackView.showFailure()
         self.feedbackView.alpha = 1
+        self.timerService?.startTimer(duration: 1.0, completion: {
+            self.feedbackView.alpha = 0
+        })
         return nil
     }
 

@@ -255,3 +255,17 @@ class MockHighScoreService: HighScoreService {
         return 0
     }
 }
+
+class MockTimerService: TimerService {
+    var completionBlock: (() -> Void)? = nil
+    
+    func startTimer(duration: Float, completion: @escaping () -> Void) {
+        self.completionBlock = completion
+    }
+    
+    func executeCompletionBlock() {
+        if let block = self.completionBlock {
+            block()
+        }
+    }
+}
