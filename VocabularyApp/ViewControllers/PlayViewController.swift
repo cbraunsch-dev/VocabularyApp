@@ -113,29 +113,26 @@ class PlayViewController: UIViewController, SetManageable {
         }
     }
     
-    fileprivate func checkForItemCollisionsWithBucket(itemBehavior: UIDynamicItemBehavior) {
-        itemBehavior.items.forEach { it in
-            let item = it as! UILabel
-            if(item.frame.intersects(self.bucket1.frame)) {
-                if let matchedPair = self.bucket1.wordWasDroppedIntoBucket(word: item.text!) {
-                    self.gameController.pairMatched(pair: matchedPair)
-                    self.gameController.reassignAllBuckets()
-                }
-            } else if(item.frame.intersects(self.bucket2.frame)) {
-                if let matchedPair = self.bucket2.wordWasDroppedIntoBucket(word: item.text!) {
-                    self.gameController.pairMatched(pair: matchedPair)
-                    self.gameController.reassignAllBuckets()
-                }
-            } else if(item.frame.intersects(self.bucket3.frame)) {
-                if let matchedPair = self.bucket3.wordWasDroppedIntoBucket(word: item.text!) {
-                    self.gameController.pairMatched(pair: matchedPair)
-                    self.gameController.reassignAllBuckets()
-                }
-            } else if(item.frame.intersects(self.bucket4.frame)) {
-                if let matchedPair = self.bucket4.wordWasDroppedIntoBucket(word: item.text!) {
-                    self.gameController.pairMatched(pair: matchedPair)
-                    self.gameController.reassignAllBuckets()
-                }
+    fileprivate func checkForItemCollisionsWithBucket(item: UILabel) {
+        if(item.frame.intersects(self.bucket1.frame)) {
+            if let matchedPair = self.bucket1.wordWasDroppedIntoBucket(word: item.text!) {
+                self.gameController.pairMatched(pair: matchedPair)
+                self.gameController.reassignAllBuckets()
+            }
+        } else if(item.frame.intersects(self.bucket2.frame)) {
+            if let matchedPair = self.bucket2.wordWasDroppedIntoBucket(word: item.text!) {
+                self.gameController.pairMatched(pair: matchedPair)
+                self.gameController.reassignAllBuckets()
+            }
+        } else if(item.frame.intersects(self.bucket3.frame)) {
+            if let matchedPair = self.bucket3.wordWasDroppedIntoBucket(word: item.text!) {
+                self.gameController.pairMatched(pair: matchedPair)
+                self.gameController.reassignAllBuckets()
+            }
+        } else if(item.frame.intersects(self.bucket4.frame)) {
+            if let matchedPair = self.bucket4.wordWasDroppedIntoBucket(word: item.text!) {
+                self.gameController.pairMatched(pair: matchedPair)
+                self.gameController.reassignAllBuckets()
             }
         }
     }
@@ -208,21 +205,13 @@ class PlayViewController: UIViewController, SetManageable {
                 self.dynamicAnimator.removeBehavior(itemBehavior)
             })
         } else {
-            // Attach more or less an empty behavior to it but use that behavior to track whether
-            // the item has collided with a bucket
-            let itemBehavior = UIDynamicItemBehavior(items: [viewToToss])
-            itemBehavior.action = {
-                self.checkForItemCollisionsWithBucket(itemBehavior: itemBehavior)
-            }
-            dynamicAnimator.addBehavior(itemBehavior)
-            
             // Add collision behavior
             self.screenBoundsCollisionBehavior.addItem(viewToToss)
             
-            // remove the empty behavior after some time
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-                self.dynamicAnimator.removeBehavior(itemBehavior)
-            })
+            // Check for collision with bucket
+            if let tossedLabel = viewToToss as? UILabel {
+                self.checkForItemCollisionsWithBucket(item: tossedLabel)
+            }
         }
     }
 }
