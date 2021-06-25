@@ -62,18 +62,36 @@ class BucketView: UIView {
         if(word == self.pair.definition || word == self.pair.wordOrPhrase) {
             self.delegate?.requestPairForBucket(bucketId: self.bucketId!)
             self.feedbackView.showSuccess()
-            self.feedbackView.alpha = 1
+            self.showFeedbackView()
             self.timerService?.startTimer(duration: 1.0, completion: {
-                self.feedbackView.alpha = 0
+                self.hideFeedbackView()
             })
             return oldPair
         }
         self.feedbackView.showFailure()
-        self.feedbackView.alpha = 1
+        self.showFeedbackView()
         self.timerService?.startTimer(duration: 1.0, completion: {
-            self.feedbackView.alpha = 0
+            self.hideFeedbackView()
         })
         return nil
+    }
+    
+    private func showFeedbackView() {
+        self.feedbackView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        UIView.animate(withDuration: 0.3, animations: {
+            self.feedbackView.alpha = 1
+            self.feedbackView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        }, completion: {_ in
+        })
+    }
+    
+    private func hideFeedbackView() {
+        self.feedbackView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        UIView.animate(withDuration: 0.3, animations: {
+            self.feedbackView.alpha = 0
+            self.feedbackView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        }, completion: {_ in
+        })
     }
 
     private func setupView() {
