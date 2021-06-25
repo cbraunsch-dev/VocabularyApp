@@ -19,7 +19,7 @@ class NSTimerService: TimerService {
         if let alreadyStartedTimer = self.timer {
             alreadyStartedTimer.invalidate()
         }
-        self.timer = Timer.init(timeInterval: TimeInterval(duration), repeats: false, block: { _ in
+        Timer.scheduledTimer(withTimeInterval: TimeInterval(duration), repeats: false, block: {_ in
             completion()
         })
     }
