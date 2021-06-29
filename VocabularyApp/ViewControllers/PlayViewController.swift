@@ -34,6 +34,8 @@ class PlayViewController: UIViewController, SetManageable {
     @IBOutlet var bucket4: BucketView!
     @IBOutlet var highScoreLabel: UILabel!
     @IBOutlet var bottomBrick: UIView!
+    @IBOutlet var itemsRemainingLabel: UILabel!
+    @IBOutlet var percentMatchedLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

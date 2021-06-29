@@ -49,9 +49,27 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vfm-J6-LsZ">
                                 <rect key="frame" x="0.0" y="567" width="375" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Items remaining: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4Y-Xi-72t">
+                                        <rect key="frame" x="32" y="16" width="141" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Matched: 0%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8pM-R9-5Q1">
+                                        <rect key="frame" x="32" y="53" width="102" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <constraints>
+                                    <constraint firstItem="8pM-R9-5Q1" firstAttribute="leading" secondItem="vfm-J6-LsZ" secondAttribute="leading" constant="32" id="AoF-j4-GRR"/>
+                                    <constraint firstItem="b4Y-Xi-72t" firstAttribute="top" secondItem="vfm-J6-LsZ" secondAttribute="top" constant="16" id="VHC-60-gG8"/>
                                     <constraint firstAttribute="height" constant="100" id="dNn-NQ-ynJ"/>
+                                    <constraint firstItem="b4Y-Xi-72t" firstAttribute="leading" secondItem="vfm-J6-LsZ" secondAttribute="leading" constant="32" id="kq0-dT-XP6"/>
+                                    <constraint firstItem="8pM-R9-5Q1" firstAttribute="top" secondItem="b4Y-Xi-72t" secondAttribute="bottom" constant="16" id="q3t-2c-ze1"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -89,6 +107,8 @@
                         <outlet property="bucket3" destination="ze2-wa-gmU" id="dUf-g0-GmQ"/>
                         <outlet property="bucket4" destination="WEa-jv-4AN" id="1EM-EB-ehV"/>
                         <outlet property="highScoreLabel" destination="rLu-B2-GeS" id="nMR-U9-9HY"/>
+                        <outlet property="itemsRemainingLabel" destination="b4Y-Xi-72t" id="boB-ps-bty"/>
+                        <outlet property="percentMatchedLabel" destination="8pM-R9-5Q1" id="gtV-n9-kwf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vzA-Gg-RTw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

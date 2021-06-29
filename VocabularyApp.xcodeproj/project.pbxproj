@@ -63,6 +63,7 @@
 		6685202D223B6CEF00BF631F /* AddVocabularyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6685202C223B6CEF00BF631F /* AddVocabularyViewModel.swift */; };
 		6685202F223B6E9E00BF631F /* SchedulingCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6685202E223B6E9E00BF631F /* SchedulingCapable.swift */; };
 		66852031223B6FAD00BF631F /* AddVocabularyViewControllerSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66852030223B6FAD00BF631F /* AddVocabularyViewControllerSnapshotTests.swift */; };
+		66896EFE268BBA1D009213CD /* PlayViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66896EFD268BBA1D009213CD /* PlayViewModelTests.swift */; };
 		668C4C9E225A545600EA0E85 /* WorkflowInterested.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668C4C9D225A545600EA0E85 /* WorkflowInterested.swift */; };
 		668C4CA2225A569100EA0E85 /* WorkflowCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668C4CA1225A569100EA0E85 /* WorkflowCapable.swift */; };
 		6690B4D0222CE32700B3CE14 /* RealmConfigurationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6690B4CF222CE32700B3CE14 /* RealmConfigurationProvider.swift */; };
@@ -98,6 +99,7 @@
 		66B910CE22219B5D00C5D0B5 /* IoCContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910CD22219B5D00C5D0B5 /* IoCContainer.swift */; };
 		66B910D022219E6100C5D0B5 /* GenericItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910CF22219E6100C5D0B5 /* GenericItemType.swift */; };
 		66B910D32221A25900C5D0B5 /* AddSetViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B910D22221A25900C5D0B5 /* AddSetViewModelTests.swift */; };
+		66C6AB5726858B5800A48401 /* PlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C6AB5626858B5800A48401 /* PlayViewModel.swift */; };
 		66C72BB4223A0F1800A9AFE3 /* LearnSet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66C72BB3223A0F1800A9AFE3 /* LearnSet.storyboard */; };
 		66C72BB6223A1EEC00A9AFE3 /* AddVocabularyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C72BB5223A1EEC00A9AFE3 /* AddVocabularyViewController.swift */; };
 		66CF6CF72230E6D5007CA838 /* GenericTableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CF6CF62230E6D5007CA838 /* GenericTableItem.swift */; };
@@ -196,6 +198,7 @@
 		6685202C223B6CEF00BF631F /* AddVocabularyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVocabularyViewModel.swift; sourceTree = "<group>"; };
 		6685202E223B6E9E00BF631F /* SchedulingCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulingCapable.swift; sourceTree = "<group>"; };
 		66852030223B6FAD00BF631F /* AddVocabularyViewControllerSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVocabularyViewControllerSnapshotTests.swift; sourceTree = "<group>"; };
+		66896EFD268BBA1D009213CD /* PlayViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewModelTests.swift; sourceTree = "<group>"; };
 		668C4C9D225A545600EA0E85 /* WorkflowInterested.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowInterested.swift; sourceTree = "<group>"; };
 		668C4CA1225A569100EA0E85 /* WorkflowCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowCapable.swift; sourceTree = "<group>"; };
 		6690B4CF222CE32700B3CE14 /* RealmConfigurationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmConfigurationProvider.swift; sourceTree = "<group>"; };
@@ -233,6 +236,7 @@
 		66B910D22221A25900C5D0B5 /* AddSetViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSetViewModelTests.swift; sourceTree = "<group>"; };
 		66BD2FE72528D26900AD0C19 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "../../../../Downloads/realm-swift-5.4.7/ios/swift-12.0/Realm.framework"; sourceTree = "<group>"; };
 		66BD2FE82528D26900AD0C19 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "../../../../Downloads/realm-swift-5.4.7/ios/swift-12.0/RealmSwift.framework"; sourceTree = "<group>"; };
+		66C6AB5626858B5800A48401 /* PlayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewModel.swift; sourceTree = "<group>"; };
 		66C72BB3223A0F1800A9AFE3 /* LearnSet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LearnSet.storyboard; sourceTree = "<group>"; };
 		66C72BB5223A1EEC00A9AFE3 /* AddVocabularyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVocabularyViewController.swift; sourceTree = "<group>"; };
 		66CF6CF62230E6D5007CA838 /* GenericTableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableItem.swift; sourceTree = "<group>"; };
@@ -412,6 +416,7 @@
 				663D0AFE225708BE00BE8148 /* LearnSetViewModel.swift */,
 				66E8FF70225AFF6400CEC1A2 /* TrainSetViewModel.swift */,
 				6694FBF6225C48A4003669E6 /* PracticeSetViewModel.swift */,
+				66C6AB5626858B5800A48401 /* PlayViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -589,6 +594,7 @@
 				665326B9223617E300516DA3 /* SetsViewModelTests.swift */,
 				66116DA3223C0ADA0065DCD5 /* AddVocabularyViewModelTests.swift */,
 				66E8FF76225B03EB00CEC1A2 /* TrainSetViewModelTests.swift */,
+				66896EFD268BBA1D009213CD /* PlayViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -897,6 +903,7 @@
 				662A39C3223EA5BE00EEA98B /* ModalSpinnerView.swift in Sources */,
 				6694FBF9225C4BEA003669E6 /* FlashCardView.swift in Sources */,
 				6690B4E3222CE9FB00B3CE14 /* SetEntity.swift in Sources */,
+				66C6AB5726858B5800A48401 /* PlayViewModel.swift in Sources */,
 				661F6CA322106C4A00B11FDE /* ErrorMessageService.swift in Sources */,
 				661F6C9622106A8300B11FDE /* UITableViewCell+Extension.swift in Sources */,
 				668C4CA2225A569100EA0E85 /* WorkflowCapable.swift in Sources */,
@@ -925,6 +932,7 @@
 				66E8FF73225B013300CEC1A2 /* TrainSetViewControllerSnapshotTests.swift in Sources */,
 				66D0D7CC2679AC2D004237A0 /* BucketFeedbackViewSnapshotTests.swift in Sources */,
 				66116DA4223C0ADA0065DCD5 /* AddVocabularyViewModelTests.swift in Sources */,
+				66896EFE268BBA1D009213CD /* PlayViewModelTests.swift in Sources */,
 				66367012266311EA003D1702 /* WordMatchGameListTests.swift in Sources */,
 				66B910BA222197CC00C5D0B5 /* TitleValueCellContentViewSnapshotTests.swift in Sources */,
 				66852026223B641F00BF631F /* CsvImportVocabularyServiceTests.swift in Sources */,
