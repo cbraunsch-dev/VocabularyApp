@@ -87,6 +87,9 @@ let appContainer: Container = {
             randomNumberService: r.resolve(RandomNumberService.self)!
         )
     }
+    container.register(PlayViewModelType.self) { r in
+        PlayViewModel()
+    }
     container.register(GameController.self) { r in
         WordMatchGameController(gameLoop: r.resolve(GameLoop.self)!,
                                 pile: r.resolve(GameItemList.self)!,

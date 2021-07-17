@@ -7,11 +7,15 @@
 //
 
 import UIKit
-
+import RxSwift
+import RxCocoa
 
 class PlayViewController: UIViewController, SetManageable {
 
+    var viewModel: PlayViewModelType!
     var set: SetLocalDataModel?
+    
+    private let disposeBag = DisposeBag()
     
     private let ThrowingThreshold: CGFloat = 100
     private let ThrowingVelocityPadding: CGFloat = 300
@@ -40,6 +44,10 @@ class PlayViewController: UIViewController, SetManageable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.viewModel.outputs.itemsRemaining.subscribe(onNext: { nrRemaining in
+            self.itemsRemainingLabel.text = nrRemaining
+        }).disposed(by: self.disposeBag)
+        
         // Give buckets their IDs
         bucket1.bucketId = BucketId.bucket1
         bucket2.bucketId = BucketId.bucket2
@@ -61,6 +69,9 @@ class PlayViewController: UIViewController, SetManageable {
         self.gameController.vocabularyPairs = self.set!.vocabularyPairs
         self.gameController.delegate = self
         self.gameController.startGame()
+        
+        self.viewModel.inputs.pairs.onNext(self.set!.vocabularyPairs)
+        self.viewModel.inputs.viewDidLoad.onNext(())
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -236,6 +247,7 @@ extension PlayViewController: WordMatchGameControllerDelegate {
         self.labels.append(newLabel)
         self.gravityBehavior.addItem(newLabel)
         self.screenBoundsCollisionBehavior.addItem(newLabel)
+        self.viewModel.inputs.spawnPair.onNext(pair)
     }
     
     func removePair(pair: VocabularyPairLocalDataModel, useDefinition: Bool) {
