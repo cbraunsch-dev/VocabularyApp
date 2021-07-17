@@ -47,6 +47,9 @@ class PlayViewController: UIViewController, SetManageable {
         self.viewModel.outputs.itemsRemaining.subscribe(onNext: { nrRemaining in
             self.itemsRemainingLabel.text = nrRemaining
         }).disposed(by: self.disposeBag)
+        self.viewModel.outputs.percentMatched.subscribe(onNext: { percentMatched in
+            self.percentMatchedLabel.text = percentMatched
+        }).disposed(by: self.disposeBag)
         
         // Give buckets their IDs
         bucket1.bucketId = BucketId.bucket1
@@ -131,21 +134,25 @@ class PlayViewController: UIViewController, SetManageable {
             if let matchedPair = self.bucket1.wordWasDroppedIntoBucket(word: item.text!) {
                 self.gameController.pairMatched(pair: matchedPair)
                 self.gameController.reassignAllBuckets()
+                self.viewModel.inputs.pairMatched.onNext(matchedPair)
             }
         } else if(item.frame.intersects(self.bucket2.frame)) {
             if let matchedPair = self.bucket2.wordWasDroppedIntoBucket(word: item.text!) {
                 self.gameController.pairMatched(pair: matchedPair)
                 self.gameController.reassignAllBuckets()
+                self.viewModel.inputs.pairMatched.onNext(matchedPair)
             }
         } else if(item.frame.intersects(self.bucket3.frame)) {
             if let matchedPair = self.bucket3.wordWasDroppedIntoBucket(word: item.text!) {
                 self.gameController.pairMatched(pair: matchedPair)
                 self.gameController.reassignAllBuckets()
+                self.viewModel.inputs.pairMatched.onNext(matchedPair)
             }
         } else if(item.frame.intersects(self.bucket4.frame)) {
             if let matchedPair = self.bucket4.wordWasDroppedIntoBucket(word: item.text!) {
                 self.gameController.pairMatched(pair: matchedPair)
                 self.gameController.reassignAllBuckets()
+                self.viewModel.inputs.pairMatched.onNext(matchedPair)
             }
         }
     }

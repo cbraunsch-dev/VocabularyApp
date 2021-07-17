@@ -52,24 +52,48 @@ class PlayViewModel: PlayViewModelType, PlayViewModelInputs, PlayViewModelOutput
             .map { $0 |> PlaySnapshot.itemsRemainingLens *~ ($0.itemsRemaining - 1) }
             .bind(to: self.snapshot)
             .disposed(by: self.bag)
+        self.inputs.pairMatched
+            .withLatestFrom(self.snapshot)
+            .map { $0 |> PlaySnapshot.numberMatchedLens *~ ($0.numberMatched + 1) }
+            .bind(to: self.snapshot)
+            .disposed(by: self.bag)
         
         self.snapshot
             .map { "Items remaining: \($0.itemsRemaining)" }
             .bind(to: self.outputs.itemsRemaining)
             .disposed(by: self.bag)
+        self.snapshot
+            .map { self.calculatePercentage(itemsMatched: $0.numberMatched, totalNrOfItems: $0.totalNrOfItems) }
+            .map { "Matched: \($0)%" }
+            .bind(to: self.outputs.percentMatched)
+            .disposed(by: self.bag)
+    }
+    
+    private func calculatePercentage(itemsMatched: Int, totalNrOfItems: Int) -> Int {
+        let matchedFloat = Float(itemsMatched)
+        let totalFloat = Float(totalNrOfItems)
+        let percentage = matchedFloat / totalFloat
+        return Int(100 * percentage)
     }
     
     private func createSnapshot(pairs: [VocabularyPairLocalDataModel]) -> PlaySnapshot {
-        return PlaySnapshot(itemsRemaining: pairs.count, percentMatched: 0.0)
+        return PlaySnapshot(totalNrOfItems: pairs.count, itemsRemaining: pairs.count, numberMatched: 0)
     }
     
     struct PlaySnapshot {
+        let totalNrOfItems: Int
         let itemsRemaining: Int
-        let percentMatched: Float
+        let numberMatched: Int
         
         static let itemsRemainingLens = Lens<PlaySnapshot, Int>(
             get: { $0.itemsRemaining },
-            set: { itemsRemaining, snapshot in PlaySnapshot(itemsRemaining: itemsRemaining, percentMatched: snapshot.percentMatched)
+            set: { itemsRemaining, snapshot in PlaySnapshot(totalNrOfItems: snapshot.totalNrOfItems, itemsRemaining: itemsRemaining, numberMatched: snapshot.numberMatched)
+            }
+        )
+        
+        static let numberMatchedLens = Lens<PlaySnapshot, Int>(
+            get: { $0.numberMatched },
+            set: { percentMatched, snapshot in PlaySnapshot(totalNrOfItems: snapshot.totalNrOfItems, itemsRemaining: snapshot.itemsRemaining, numberMatched: percentMatched)
             }
         )
     }

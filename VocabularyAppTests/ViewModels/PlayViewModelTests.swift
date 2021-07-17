@@ -64,5 +64,22 @@ class PlayViewModelTests: XCTestCase, AssertionDataExtractionCapable {
     //  Or the first time we match something after we've spawned the last item? That probably
     //  makes the most sense tbh
     
-    // TODO: testPairMatched_then_updatePercentMatched
+    func testPairMatched_then_updatePercentMatched() {
+        //Arrange
+        let scheduler1 = TestScheduler(initialClock: 0)
+        let scheduler2 = TestScheduler(initialClock: 0)
+        let observer = scheduler2.createObserver(String.self)
+        self.testee.outputs.percentMatched.subscribe(observer).disposed(by: self.bag)
+        
+        //Act
+        scheduler1.createColdObservable([Recorded.next(100, pair1)]).asObservable().bind(to: self.testee.inputs.pairMatched).disposed(by: self.bag)
+        scheduler1.start()
+        
+        //Assert
+        guard let percentMatched = self.extractValue(from: observer) else {
+            XCTFail("Nothing was emitted")
+            return
+        }
+        XCTAssertEqual("Matched: 25%", percentMatched)
+    }
 }
