@@ -245,6 +245,11 @@ extension PlayViewController: WordMatchGameControllerDelegate {
         newLabel.frame.origin = CGPoint(x: spawnPosX, y: 0.0)
         newLabel.isUserInteractionEnabled = true    // Needed, otherwise we can't "grab" the view by touching it
         self.view.addSubview(newLabel)
+        
+        // Limit width of flash cards
+        newLabel.snp.makeConstraints { make in
+            make.width.lessThanOrEqualTo(200)
+        }
         newLabel.setNeedsLayout()
         newLabel.layoutIfNeeded()
         
@@ -264,7 +269,7 @@ extension PlayViewController: WordMatchGameControllerDelegate {
         }) else {
             return
         }
-        let labelToRemove = self.labels[indexOfItemToRemove]        
+        let labelToRemove = self.labels[indexOfItemToRemove]
         UIView.animate(withDuration: 0.5, animations: {
             labelToRemove.alpha = 0
         }, completion: {_ in
