@@ -11,7 +11,6 @@ import RxSwift
 import RxCocoa
 
 class PlayViewController: UIViewController, SetManageable {
-
     var viewModel: PlayViewModelType!
     var set: SetLocalDataModel?
     
@@ -27,7 +26,7 @@ class PlayViewController: UIViewController, SetManageable {
     private var attachmentBehavior: UIAttachmentBehavior? = nil
     
     private var viewBeingDragged: UIView? = nil
-    private var labels = [UILabel]()
+    private var labels = [FlashCardView]()
     
     var gameController: GameController!
     var highScoreService: HighScoreService!
@@ -80,7 +79,7 @@ class PlayViewController: UIViewController, SetManageable {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let firstTouch = touches.first {
             let hitView = self.view.hitTest(firstTouch.location(in: self.view), with: event)
-            if(hitView is UILabel) {
+            if(hitView is FlashCardView) {
                 self.viewBeingDragged = hitView
             }
         }
@@ -92,6 +91,7 @@ class PlayViewController: UIViewController, SetManageable {
         case .began:
             // TODO: Could move calculation of location to where I detect the touched view. But for now this is good enough. It might make the detection of where the anchor point on the touched word is a bit more accurate though.
             let location = sender.location(in: sender.view)
+            
             if let touchedView = self.viewBeingDragged {
                 // Prepare UI Kit dynamics
                 let pointInViewThatWasTouched = sender.location(in: touchedView)
@@ -104,14 +104,8 @@ class PlayViewController: UIViewController, SetManageable {
                 
                 // Remove collision behavior from item being dragged
                 screenBoundsCollisionBehavior.removeItem(touchedView)
-                // Clear out any temporary falling and tossing behaviors
-                dynamicAnimator.removeAllBehaviors()
-                dynamicAnimator.addBehavior(gravityBehavior)
-                dynamicAnimator.addBehavior(screenBoundsCollisionBehavior)
                 dynamicAnimator.addBehavior(attachmentBehavior!)
-                print("Picked up view \(touchedView)")
             }
-            
             break
         case .ended:
             if let viewToToss = self.viewBeingDragged {
@@ -120,6 +114,10 @@ class PlayViewController: UIViewController, SetManageable {
             }
             
             self.viewBeingDragged = nil
+            if let availableAttachmetBehavior = self.attachmentBehavior {
+                self.dynamicAnimator.removeBehavior(availableAttachmetBehavior)
+                self.attachmentBehavior = nil
+            }
             break
         default:
             if let availableAttachmentBehavior = self.attachmentBehavior {
@@ -129,27 +127,27 @@ class PlayViewController: UIViewController, SetManageable {
         }
     }
     
-    fileprivate func checkForItemCollisionsWithBucket(item: UILabel) {
+    fileprivate func checkForItemCollisionsWithBucket(item: FlashCardView) {
         if(item.frame.intersects(self.bucket1.frame)) {
-            if let matchedPair = self.bucket1.wordWasDroppedIntoBucket(word: item.text!) {
+            if let matchedPair = self.bucket1.wordWasDroppedIntoBucket(word: item.text.text!) {
                 self.gameController.pairMatched(pair: matchedPair)
                 self.gameController.reassignAllBuckets()
                 self.viewModel.inputs.pairMatched.onNext(matchedPair)
             }
         } else if(item.frame.intersects(self.bucket2.frame)) {
-            if let matchedPair = self.bucket2.wordWasDroppedIntoBucket(word: item.text!) {
+            if let matchedPair = self.bucket2.wordWasDroppedIntoBucket(word: item.text.text!) {
                 self.gameController.pairMatched(pair: matchedPair)
                 self.gameController.reassignAllBuckets()
                 self.viewModel.inputs.pairMatched.onNext(matchedPair)
             }
         } else if(item.frame.intersects(self.bucket3.frame)) {
-            if let matchedPair = self.bucket3.wordWasDroppedIntoBucket(word: item.text!) {
+            if let matchedPair = self.bucket3.wordWasDroppedIntoBucket(word: item.text.text!) {
                 self.gameController.pairMatched(pair: matchedPair)
                 self.gameController.reassignAllBuckets()
                 self.viewModel.inputs.pairMatched.onNext(matchedPair)
             }
         } else if(item.frame.intersects(self.bucket4.frame)) {
-            if let matchedPair = self.bucket4.wordWasDroppedIntoBucket(word: item.text!) {
+            if let matchedPair = self.bucket4.wordWasDroppedIntoBucket(word: item.text.text!) {
                 self.gameController.pairMatched(pair: matchedPair)
                 self.gameController.reassignAllBuckets()
                 self.viewModel.inputs.pairMatched.onNext(matchedPair)
@@ -159,7 +157,7 @@ class PlayViewController: UIViewController, SetManageable {
     
     fileprivate func checkIfWordHoveringOverBuckets(itemBehavior: UIAttachmentBehavior) {
         itemBehavior.items.forEach { it in
-            let item = it as! UILabel
+            let item = it as! FlashCardView
             if(item.frame.intersects(self.bucket1.frame)) {
                 self.bucket1.startHoveringOver()
             } else {
@@ -193,11 +191,6 @@ class PlayViewController: UIViewController, SetManageable {
         self.bucket3.stopHoveringOver()
         self.bucket4.stopHoveringOver()
         
-        // Reset UI Kit dynamics
-        dynamicAnimator.removeAllBehaviors()
-        dynamicAnimator.addBehavior(gravityBehavior)
-        dynamicAnimator.addBehavior(screenBoundsCollisionBehavior)
-        
         // Add a push behavior to toss the view
         let velocity = sender.velocity(in: view)
         let magnitude = sqrt((velocity.x * velocity.x) + (velocity.y * velocity.y))
@@ -229,7 +222,7 @@ class PlayViewController: UIViewController, SetManageable {
             self.screenBoundsCollisionBehavior.addItem(viewToToss)
             
             // Check for collision with bucket
-            if let tossedLabel = viewToToss as? UILabel {
+            if let tossedLabel = viewToToss as? FlashCardView {
                 self.checkForItemCollisionsWithBucket(item: tossedLabel)
             }
         }
@@ -238,19 +231,23 @@ class PlayViewController: UIViewController, SetManageable {
 
 extension PlayViewController: WordMatchGameControllerDelegate {
     func spawnPair(pair: VocabularyPairLocalDataModel, color: UIColor, useDefinition: Bool) {
-        let newLabel = UILabel()
+        let newLabel = FlashCardView()
+        newLabel.translatesAutoresizingMaskIntoConstraints = false
         if(useDefinition) {
-            newLabel.text = pair.definition
+            newLabel.text.text = pair.definition
         } else {
-            newLabel.text = pair.wordOrPhrase
+            newLabel.text.text = pair.wordOrPhrase
         }
-        newLabel.textColor = color
-        newLabel.font = UIFont.systemFont(ofSize: FontConstants.large)
-        newLabel.sizeToFit()
+        newLabel.text.numberOfLines = 0
+        newLabel.updateColor(color: color)
+        newLabel.text.font = UIFont.systemFont(ofSize: FontConstants.large)
         let spawnPosX = self.view.frame.size.width / 2 - newLabel.frame.width / 2
         newLabel.frame.origin = CGPoint(x: spawnPosX, y: 0.0)
         newLabel.isUserInteractionEnabled = true    // Needed, otherwise we can't "grab" the view by touching it
         self.view.addSubview(newLabel)
+        newLabel.setNeedsLayout()
+        newLabel.layoutIfNeeded()
+        
         self.labels.append(newLabel)
         self.gravityBehavior.addItem(newLabel)
         self.screenBoundsCollisionBehavior.addItem(newLabel)
@@ -260,19 +257,19 @@ extension PlayViewController: WordMatchGameControllerDelegate {
     func removePair(pair: VocabularyPairLocalDataModel, useDefinition: Bool) {
         guard let indexOfItemToRemove = self.labels.firstIndex(where: { item in
             if(useDefinition) {
-                return item.text == pair.definition
+                return item.text.text == pair.definition
             } else {
-                return item.text == pair.wordOrPhrase
+                return item.text.text == pair.wordOrPhrase
             }
         }) else {
             return
         }
-        let labelToRemove = self.labels[indexOfItemToRemove]
-        self.gravityBehavior.removeItem(labelToRemove)
-        self.screenBoundsCollisionBehavior.removeItem(labelToRemove)
+        let labelToRemove = self.labels[indexOfItemToRemove]        
         UIView.animate(withDuration: 0.5, animations: {
             labelToRemove.alpha = 0
         }, completion: {_ in
+            self.gravityBehavior.removeItem(labelToRemove)
+            self.screenBoundsCollisionBehavior.removeItem(labelToRemove)
             labelToRemove.removeFromSuperview()
             self.labels.remove(at: indexOfItemToRemove)
         })
@@ -281,14 +278,14 @@ extension PlayViewController: WordMatchGameControllerDelegate {
     func updatePair(pair: VocabularyPairLocalDataModel, with color: UIColor, useDefinition: Bool) {
         guard let itemToUpdate = self.labels.first(where: { item in
             if(useDefinition) {
-                return item.text == pair.definition
+                return item.text.text == pair.definition
             } else {
-                return item.text == pair.wordOrPhrase
+                return item.text.text == pair.wordOrPhrase
             }
         }) else {
             return
         }
-        itemToUpdate.textColor = color
+        itemToUpdate.updateColor(color: color)
     }
     
     func updateBucket(bucketId: BucketId, with pair: VocabularyPairLocalDataModel, useDefinition: Bool) {

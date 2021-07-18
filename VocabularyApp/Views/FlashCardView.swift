@@ -22,6 +22,14 @@ class FlashCardView: UIView {
         self.setupView()
     }
     
+    func updateColor(color: UIColor) {
+        if color == UIColor.black {
+            self.backgroundColor = UIColor.orange
+        } else {
+            self.backgroundColor = color
+        }
+    }
+    
     private func setupView() {
         self.backgroundColor = UIColor.orange
         
