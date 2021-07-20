@@ -128,31 +128,41 @@ class PlayViewController: UIViewController, SetManageable {
     }
     
     fileprivate func checkForItemCollisionsWithBucket(item: FlashCardView) {
-        if(item.frame.intersects(self.bucket1.frame)) {
-            if let matchedPair = self.bucket1.wordWasDroppedIntoBucket(word: item.text.text!) {
-                self.gameController.pairMatched(pair: matchedPair)
-                self.gameController.reassignAllBuckets()
-                self.viewModel.inputs.pairMatched.onNext(matchedPair)
-            }
-        } else if(item.frame.intersects(self.bucket2.frame)) {
-            if let matchedPair = self.bucket2.wordWasDroppedIntoBucket(word: item.text.text!) {
-                self.gameController.pairMatched(pair: matchedPair)
-                self.gameController.reassignAllBuckets()
-                self.viewModel.inputs.pairMatched.onNext(matchedPair)
-            }
-        } else if(item.frame.intersects(self.bucket3.frame)) {
-            if let matchedPair = self.bucket3.wordWasDroppedIntoBucket(word: item.text.text!) {
-                self.gameController.pairMatched(pair: matchedPair)
-                self.gameController.reassignAllBuckets()
-                self.viewModel.inputs.pairMatched.onNext(matchedPair)
-            }
-        } else if(item.frame.intersects(self.bucket4.frame)) {
-            if let matchedPair = self.bucket4.wordWasDroppedIntoBucket(word: item.text.text!) {
+        let intersectionBucket1 = item.frame.intersection(self.bucket1.frame).size
+        let intersectionBucket2 = item.frame.intersection(self.bucket2.frame).size
+        let intersectionBucket3 = item.frame.intersection(self.bucket3.frame).size
+        let intersectionBucket4 = item.frame.intersection(self.bucket4.frame).size
+        
+        // Find biggest intersection
+        var bucketThatWasHit: BucketView? = nil
+        var biggestIntersection = CGSize.zero
+        if self.areaBiggerThanTarget(area: intersectionBucket1, target: biggestIntersection) {
+            biggestIntersection = intersectionBucket1
+            bucketThatWasHit = bucket1
+        }
+        if self.areaBiggerThanTarget(area: intersectionBucket2, target: biggestIntersection) {
+            biggestIntersection = intersectionBucket2
+            bucketThatWasHit = bucket2
+        }
+        if self.areaBiggerThanTarget(area: intersectionBucket3, target: biggestIntersection) {
+            biggestIntersection = intersectionBucket3
+            bucketThatWasHit = bucket3
+        }
+        if self.areaBiggerThanTarget(area: intersectionBucket4, target: biggestIntersection) {
+            biggestIntersection = intersectionBucket4
+            bucketThatWasHit = bucket4
+        }
+        if let hitBucket = bucketThatWasHit {
+            if let matchedPair = hitBucket.wordWasDroppedIntoBucket(word: item.text.text!) {
                 self.gameController.pairMatched(pair: matchedPair)
                 self.gameController.reassignAllBuckets()
                 self.viewModel.inputs.pairMatched.onNext(matchedPair)
             }
         }
+    }
+    
+    private func areaBiggerThanTarget(area: CGSize, target: CGSize) -> Bool {
+        return (area.width * area.height) > (target.width * target.height)
     }
     
     fileprivate func checkIfWordHoveringOverBuckets(itemBehavior: UIAttachmentBehavior) {
