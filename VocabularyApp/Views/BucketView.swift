@@ -100,6 +100,7 @@ class BucketView: UIView {
         self.text.textColor = UIColor.black
         self.text.textAlignment = .center
         self.text.numberOfLines = 0
+        self.text.adjustsFontSizeToFitWidth = true
         self.feedbackView.alpha = 0
         
         self.addSubview(self.text)
@@ -115,6 +116,15 @@ class BucketView: UIView {
             make.centerX.equalTo(self)
             make.centerY.equalTo(self)
         }
+        
+        // Draw dashed line around view
+        let border = CAShapeLayer()
+        border.strokeColor = UIColor.black.cgColor
+        border.lineDashPattern = [2, 2]
+        border.frame = self.bounds
+        border.fillColor = nil
+        border.path = UIBezierPath(rect: self.bounds).cgPath
+        self.layer.addSublayer(border)
     }
 }
 

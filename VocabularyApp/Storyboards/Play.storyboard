@@ -18,28 +18,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" verticalHuggingPriority="249" placeholderIntrinsicWidth="130" placeholderIntrinsicHeight="36" translatesAutoresizingMaskIntoConstraints="NO" id="5Sf-zb-C2J" customClass="BucketView" customModule="VocabularyApp" customModuleProvider="target">
-                                <rect key="frame" x="15" y="79" width="130" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="RXs-Wy-nKp"/>
-                                </constraints>
+                                <rect key="frame" x="15" y="79" width="150" height="167"/>
                             </view>
                             <view contentMode="scaleToFill" verticalHuggingPriority="249" placeholderIntrinsicWidth="130" placeholderIntrinsicHeight="36" translatesAutoresizingMaskIntoConstraints="NO" id="ze2-wa-gmU" customClass="BucketView" customModule="VocabularyApp" customModuleProvider="target">
-                                <rect key="frame" x="15" y="237.5" width="130" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="gEx-ad-wTU"/>
-                                </constraints>
+                                <rect key="frame" x="15" y="261" width="150" height="166.5"/>
                             </view>
                             <view contentMode="scaleToFill" verticalHuggingPriority="249" placeholderIntrinsicWidth="130" placeholderIntrinsicHeight="36" translatesAutoresizingMaskIntoConstraints="NO" id="Fr9-oq-flQ" customClass="BucketView" customModule="VocabularyApp" customModuleProvider="target">
-                                <rect key="frame" x="230" y="79" width="130" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="AR6-tN-DMd"/>
-                                </constraints>
+                                <rect key="frame" x="210" y="79" width="150" height="167"/>
                             </view>
                             <view contentMode="scaleToFill" verticalHuggingPriority="249" placeholderIntrinsicWidth="130" placeholderIntrinsicHeight="36" translatesAutoresizingMaskIntoConstraints="NO" id="WEa-jv-4AN" customClass="BucketView" customModule="VocabularyApp" customModuleProvider="target">
-                                <rect key="frame" x="230" y="237.5" width="130" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="cHL-Ci-cVV"/>
-                                </constraints>
+                                <rect key="frame" x="210" y="261" width="150" height="166.5"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New high score: 123" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLu-B2-GeS" userLabel="HighScore">
                                 <rect key="frame" x="110.5" y="345.5" width="154.5" height="20.5"/>
@@ -77,23 +65,29 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="ze2-wa-gmU" firstAttribute="top" secondItem="5Sf-zb-C2J" secondAttribute="bottom" constant="15" id="1hh-Ji-Ke9"/>
                             <constraint firstItem="vfm-J6-LsZ" firstAttribute="leading" secondItem="SBe-26-jQL" secondAttribute="leading" id="3Xx-Ix-uHd"/>
-                            <constraint firstItem="Fr9-oq-flQ" firstAttribute="top" secondItem="SBe-26-jQL" secondAttribute="top" constant="35" id="8SQ-WR-CdH"/>
                             <constraint firstItem="SBe-26-jQL" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rLu-B2-GeS" secondAttribute="trailing" constant="20" id="9OE-81-aBO"/>
+                            <constraint firstItem="WEa-jv-4AN" firstAttribute="width" secondItem="fgK-p1-FOX" secondAttribute="width" multiplier="0.4" id="A1p-Hi-XnE"/>
+                            <constraint firstItem="Fr9-oq-flQ" firstAttribute="width" secondItem="fgK-p1-FOX" secondAttribute="width" multiplier="0.4" id="C8q-AX-OZD"/>
                             <constraint firstItem="rLu-B2-GeS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="SBe-26-jQL" secondAttribute="leading" constant="20" id="EVY-gX-W7K"/>
-                            <constraint firstItem="WEa-jv-4AN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ze2-wa-gmU" secondAttribute="trailing" constant="20" id="GNY-Uo-Iat"/>
-                            <constraint firstItem="SBe-26-jQL" firstAttribute="trailing" secondItem="WEa-jv-4AN" secondAttribute="trailing" constant="15" id="GZR-J5-JUl"/>
+                            <constraint firstItem="Fr9-oq-flQ" firstAttribute="height" secondItem="fgK-p1-FOX" secondAttribute="height" multiplier="0.25" id="EyY-nL-kTK"/>
+                            <constraint firstItem="ze2-wa-gmU" firstAttribute="leading" secondItem="SBe-26-jQL" secondAttribute="leading" constant="15" id="FQB-vs-APo"/>
                             <constraint firstItem="rLu-B2-GeS" firstAttribute="centerY" secondItem="SBe-26-jQL" secondAttribute="centerY" id="Hya-6d-Jcf"/>
-                            <constraint firstItem="5Sf-zb-C2J" firstAttribute="leading" secondItem="SBe-26-jQL" secondAttribute="leading" constant="15" id="JYs-s7-I21"/>
+                            <constraint firstItem="5Sf-zb-C2J" firstAttribute="height" secondItem="fgK-p1-FOX" secondAttribute="height" multiplier="0.25" id="M8x-9i-yGT"/>
+                            <constraint firstItem="WEa-jv-4AN" firstAttribute="top" secondItem="Fr9-oq-flQ" secondAttribute="bottom" constant="15" id="MnG-Ap-zu0"/>
+                            <constraint firstItem="Fr9-oq-flQ" firstAttribute="top" secondItem="SBe-26-jQL" secondAttribute="top" constant="35" id="PY7-TQ-Blf"/>
+                            <constraint firstItem="WEa-jv-4AN" firstAttribute="height" secondItem="fgK-p1-FOX" secondAttribute="height" multiplier="0.25" id="Sfb-vk-5vr"/>
+                            <constraint firstItem="5Sf-zb-C2J" firstAttribute="width" secondItem="fgK-p1-FOX" secondAttribute="width" multiplier="0.4" id="Sn2-cJ-zG8"/>
                             <constraint firstItem="rLu-B2-GeS" firstAttribute="centerX" secondItem="SBe-26-jQL" secondAttribute="centerX" id="TMe-vA-4Sk"/>
-                            <constraint firstItem="WEa-jv-4AN" firstAttribute="centerY" secondItem="SBe-26-jQL" secondAttribute="centerY" constant="-100" id="aRr-ZL-7Pz"/>
+                            <constraint firstItem="ze2-wa-gmU" firstAttribute="height" secondItem="fgK-p1-FOX" secondAttribute="height" multiplier="0.25" id="Trs-zi-lTe"/>
+                            <constraint firstItem="5Sf-zb-C2J" firstAttribute="leading" secondItem="SBe-26-jQL" secondAttribute="leading" constant="15" id="Zfa-z4-TL7"/>
                             <constraint firstItem="5Sf-zb-C2J" firstAttribute="top" secondItem="SBe-26-jQL" secondAttribute="top" constant="35" id="bO1-NV-JQd"/>
                             <constraint firstItem="SBe-26-jQL" firstAttribute="trailing" secondItem="vfm-J6-LsZ" secondAttribute="trailing" id="cJe-06-ffI"/>
-                            <constraint firstItem="ze2-wa-gmU" firstAttribute="centerY" secondItem="SBe-26-jQL" secondAttribute="centerY" constant="-100" id="qB4-i2-9x0"/>
-                            <constraint firstItem="ze2-wa-gmU" firstAttribute="leading" secondItem="SBe-26-jQL" secondAttribute="leading" constant="15" id="sMA-vx-aQj"/>
-                            <constraint firstItem="SBe-26-jQL" firstAttribute="trailing" secondItem="Fr9-oq-flQ" secondAttribute="trailing" constant="15" id="sPB-4p-Aut"/>
+                            <constraint firstItem="SBe-26-jQL" firstAttribute="trailing" secondItem="WEa-jv-4AN" secondAttribute="trailing" constant="15" id="jEk-B9-2HZ"/>
+                            <constraint firstItem="ze2-wa-gmU" firstAttribute="width" secondItem="fgK-p1-FOX" secondAttribute="width" multiplier="0.4" id="pKW-Uz-FaS"/>
+                            <constraint firstItem="Fr9-oq-flQ" firstAttribute="trailing" secondItem="SBe-26-jQL" secondAttribute="trailing" constant="-15" id="rWp-UK-tmL"/>
                             <constraint firstItem="vfm-J6-LsZ" firstAttribute="bottom" secondItem="SBe-26-jQL" secondAttribute="bottom" id="vcH-zx-E5z"/>
-                            <constraint firstItem="Fr9-oq-flQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5Sf-zb-C2J" secondAttribute="trailing" constant="20" id="vtO-mO-kA6"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="E3R-VY-RNf" appends="YES" id="ybG-t4-v46"/>
@@ -118,7 +112,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="418.84057971014494" y="-867.1875"/>
+            <point key="canvasLocation" x="418.39999999999998" y="-867.61619190404804"/>
         </scene>
         <!--Set Manageable Navigation Controller-->
         <scene sceneID="C8J-sP-sgH">
