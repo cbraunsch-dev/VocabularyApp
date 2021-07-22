@@ -153,10 +153,10 @@ class PlayViewController: UIViewController, SetManageable {
             bucketThatWasHit = bucket4
         }
         if let hitBucket = bucketThatWasHit {
-            if let matchedPair = hitBucket.wordWasDroppedIntoBucket(word: item.text.text!) {
-                self.gameController.pairMatched(pair: matchedPair)
+            if hitBucket.wordWasDroppedIntoBucket(word: item.pair!) != nil {
+                self.gameController.pairMatched(pair: item.pair!)
                 self.gameController.reassignAllBuckets()
-                self.viewModel.inputs.pairMatched.onNext(matchedPair)
+                self.viewModel.inputs.pairMatched.onNext(item.pair!)
             }
         }
     }
@@ -248,6 +248,7 @@ extension PlayViewController: WordMatchGameControllerDelegate {
         } else {
             newLabel.text.text = pair.wordOrPhrase
         }
+        newLabel.pair = pair
         newLabel.text.numberOfLines = 0
         newLabel.updateColor(color: color)
         newLabel.text.font = UIFont.systemFont(ofSize: FontConstants.large)

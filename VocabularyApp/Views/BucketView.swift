@@ -56,10 +56,11 @@ class BucketView: UIView {
         }
     }
     
+    // TODO: Just return a boolean instead of a pair here because we no longer need the pair
     // Returns the pair that matched with the word. If no match was found, nil is returned
-    func wordWasDroppedIntoBucket(word: String) -> VocabularyPairLocalDataModel? {
+    func wordWasDroppedIntoBucket(word: VocabularyPairLocalDataModel) -> VocabularyPairLocalDataModel? {
         let oldPair = self.pair
-        if(word == self.pair.definition || word == self.pair.wordOrPhrase) {
+        if(word.wordOrPhrase == self.pair.wordOrPhrase || word.definition == self.pair.definition) {
             self.delegate?.requestPairForBucket(bucketId: self.bucketId!)
             self.feedbackView.showSuccess()
             self.showFeedbackView()

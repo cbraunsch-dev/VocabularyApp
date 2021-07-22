@@ -116,10 +116,34 @@ class BucketViewSnapshotTests: FBSnapshotTestCase {
             make.width.equalTo(400)
             make.height.equalTo(250)
         }
+        let pair = VocabularyPairLocalDataModel(wordOrPhrase: "Chocolate", definition: "Tasty, delicious goodness")
+        testee.updateWith(pair: pair, useDefinition: false)
+        
+        //Act
+        _ = testee.wordWasDroppedIntoBucket(word: pair)
+        
+        //Assert
+        FBSnapshotVerifyView(containerView)
+    }
+    
+    func testWordWasDroppedIntoBucket_when_differentWordButSameDefinition() {
+        //Arrange
+        self.recordMode = false
+        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 440, height: 300))
+        containerView.backgroundColor = UIColor.white
+        let testee = BucketView(frame: CGRect.zero)
+        containerView.addSubview(testee)
+        testee.snp.makeConstraints { make in
+            make.centerX.equalTo(containerView)
+            make.centerY.equalTo(containerView)
+            make.width.equalTo(400)
+            make.height.equalTo(250)
+        }
         testee.updateWith(pair: VocabularyPairLocalDataModel(wordOrPhrase: "Chocolate", definition: "Tasty, delicious goodness"), useDefinition: false)
         
         //Act
-        _ = testee.wordWasDroppedIntoBucket(word: "Chocolate")
+        let pair = VocabularyPairLocalDataModel(wordOrPhrase: "Vanilla", definition: "Tasty, delicious goodness")
+        _ = testee.wordWasDroppedIntoBucket(word: pair)
         
         //Assert
         FBSnapshotVerifyView(containerView)
@@ -140,8 +164,9 @@ class BucketViewSnapshotTests: FBSnapshotTestCase {
             make.width.equalTo(400)
             make.height.equalTo(250)
         }
-        testee.updateWith(pair: VocabularyPairLocalDataModel(wordOrPhrase: "Chocolate", definition: "Tasty, delicious goodness"), useDefinition: false)
-        _ = testee.wordWasDroppedIntoBucket(word: "Chocolate")
+        let pair = VocabularyPairLocalDataModel(wordOrPhrase: "Chocolate", definition: "Tasty, delicious goodness")
+        testee.updateWith(pair: pair, useDefinition: false)
+        _ = testee.wordWasDroppedIntoBucket(word: pair)
         
         // Act
         timerService.executeCompletionBlock()
@@ -163,10 +188,12 @@ class BucketViewSnapshotTests: FBSnapshotTestCase {
             make.width.equalTo(400)
             make.height.equalTo(250)
         }
-        testee.updateWith(pair: VocabularyPairLocalDataModel(wordOrPhrase: "Chocolate", definition: "Tasty, delicious goodness"), useDefinition: false)
+        let pair = VocabularyPairLocalDataModel(wordOrPhrase: "Chocolate", definition: "Tasty, delicious goodness")
+        testee.updateWith(pair: pair, useDefinition: false)
         
         //Act
-        _ = testee.wordWasDroppedIntoBucket(word: "Corndog")
+        let otherPair = VocabularyPairLocalDataModel(wordOrPhrase: "Corndog", definition: "Just...weird...")
+        _ = testee.wordWasDroppedIntoBucket(word: otherPair)
         
         //Assert
         FBSnapshotVerifyView(containerView)
@@ -187,8 +214,10 @@ class BucketViewSnapshotTests: FBSnapshotTestCase {
             make.width.equalTo(400)
             make.height.equalTo(250)
         }
-        testee.updateWith(pair: VocabularyPairLocalDataModel(wordOrPhrase: "Chocolate", definition: "Tasty, delicious goodness"), useDefinition: false)
-        _ = testee.wordWasDroppedIntoBucket(word: "Corndog")
+        let pair = VocabularyPairLocalDataModel(wordOrPhrase: "Chocolate", definition: "Tasty, delicious goodness")
+        testee.updateWith(pair: pair, useDefinition: false)
+        let otherPair = VocabularyPairLocalDataModel(wordOrPhrase: "Corndog", definition: "Weird...just weird...")
+        _ = testee.wordWasDroppedIntoBucket(word: otherPair)
         
         //Act
         timerService.executeCompletionBlock()

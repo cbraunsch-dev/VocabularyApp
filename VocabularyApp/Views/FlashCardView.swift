@@ -11,6 +11,7 @@ import SnapKit
 
 class FlashCardView: UIView {
     let text = UILabel()
+    var pair: VocabularyPairLocalDataModel? = nil
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
